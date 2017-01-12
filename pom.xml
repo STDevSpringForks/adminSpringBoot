@@ -76,6 +76,17 @@
 		    <artifactId>commons-beanutils-core</artifactId>
 		    <version>1.8.3</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		</dependency>
 	    
 	<!-- End Muguruza -->
 		
