@@ -7,8 +7,8 @@ import static com.fd.admin.data_service.utils.AdminSpringConstants.CONTENT_TYPE;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -25,7 +25,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fd.admin.data_service.criptomonedas.bisto.BitsoCurrencies;
 import com.fd.admin.data_service.criptomonedas.bisto.BitsoTricker;
+import com.fd.admin.data_service.utils.AdminSpringConstants;
 
 
 /**
@@ -42,6 +44,20 @@ public class BitsoWebController {
     
     @RequestMapping(value = "/viewBitso", method = RequestMethod.GET)
     public String home(Model model) {
+    	
+    	final BigDecimal btc = new BigDecimal("0.00910131");
+        final BigDecimal mxn = new BigDecimal("7180.59");
+        final BigDecimal eth = new BigDecimal("0.08213620");
+        
+        final BigDecimal btcVender = new BigDecimal("26500.00");
+        
+        final BigDecimal ethMax = new BigDecimal("86.92");
+        
+        final BigDecimal comision = new BigDecimal("0.01");
+    	
+        System.out.println(AdminSpringConstants.meses[0][6]);
+        System.out.println(AdminSpringConstants.meses[1][6]);
+        
        try{
         
 	        // Send request
@@ -68,7 +84,7 @@ public class BitsoWebController {
         	//Obtener el valor booleano del atributo success, si este no se encuentra en el JSON obtener false por default.
         	if(jsonTricker.getBoolean("success",false)){
 
-        		List<BitsoTricker> listBitsoTricker = new ArrayList<>(); 
+        		Map<String,BitsoTricker> mapBitsoTricker = new HashMap<>(); 
         		
         		/*
         		 * Obtener el JSONArray de las divisas que se encuentran en el atributo payload.
@@ -88,9 +104,20 @@ public class BitsoWebController {
         			bitsoTricker.setAsk(new BigDecimal(jObj.getString("ask")));
         			bitsoTricker.setBid(new BigDecimal(jObj.getString("bid")));
         			
-        			listBitsoTricker.add(bitsoTricker);
+        			mapBitsoTricker.put(bitsoTricker.getBook(),bitsoTricker);
         			
         		});
+        		
+        		
+        		BitsoTricker ethBT = mapBitsoTricker.get(BitsoCurrencies.eth_mxn.getCurrency());
+        		BigDecimal _subTotal = ethBT.getBid().multiply(eth);
+        		BigDecimal _comision = _subTotal.multiply(comision);
+        		BigDecimal _total = _subTotal.subtract(_comision);
+        		
+        		
+        		System.out.println(_subTotal);
+        		System.out.println(_comision);
+        		System.out.println(_total);
         		
         		
 	        }

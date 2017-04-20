@@ -2,7 +2,6 @@ package com.fd.admin.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
-import java.text.Normalizer;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fd.admin.data_service.exception.DefaultCheckedException;
+import com.fd.admin.data_service.utils.AdminUtils;
 import com.fd.admin.data_service.validator.PalindromeValidator;
 import com.fd.admin.data_service_api.ObjectsService;
 import com.fd.admin.model.criteria.PalindromeSearchCriteria;
@@ -101,17 +101,12 @@ public class ExcerciseWebController {
      * @return
      * @throws Exception
      */
-    public static boolean isPalindrome(String phrase, String typeDelAccents) throws DefaultCheckedException {
+    public static boolean isPalindrome(String phrase) throws DefaultCheckedException {
         if (StringUtils.hasText(phrase)) {
             String phraseAux = StringUtils.trimAllWhitespace(phrase).toUpperCase();
 
-            if ("Normalizer".equalsIgnoreCase(typeDelAccents)) {
-                phraseAux = Normalizer.normalize(phraseAux, Normalizer.Form.NFD);
-                phraseAux = phraseAux.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
-            } else {
-                phraseAux = org.apache.commons.lang3.StringUtils.stripAccents(phraseAux);
-            }
-
+            phraseAux = AdminUtils.eliminarAcentos(phraseAux);
+            
             if (phraseAux.length() >= 2) {
                 String wordReverse = new StringBuilder(phraseAux).reverse().toString();
                 return phraseAux.equals(wordReverse);
@@ -123,15 +118,6 @@ public class ExcerciseWebController {
         }
     }
 
-    /**
-     * 
-     * @param phrase
-     * @return
-     * @throws DefaultCheckedException
-     */
-    public static boolean isPalindrome(String phrase) throws DefaultCheckedException {
-        return isPalindrome(phrase, "stripAccents");
-    }
     
     /**
      * viewPage: Palindrome

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Locale;
 
+import org.joda.time.LocalTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,15 +38,15 @@ public class HomeController {
         
         LOGGER.info("Welcome home! The client locale is {}.", locale);
         
-      //-----Parameterized ------- http://memorynotfound.com/spring-mvc-internationalization-i18n-example/
-        String welcome = messageSource.getMessage("welcome.message", new Object[]{"John Doe"}, locale);
+       //-----Parameterized ------- http://memorynotfound.com/spring-mvc-internationalization-i18n-example/
+        String welcome = messageSource.getMessage("welcome.message", new Object[]{"Fermín Muguruza"}, locale);
         model.addAttribute("message", welcome);
         
         // obtain locale from LocaleContextHolder
         Locale currentLocale = LocaleContextHolder.getLocale();
         model.addAttribute("locale", currentLocale);
 
-        model.addAttribute("startMeeting", "10:30");
+        model.addAttribute("startMeeting", LocalTime.now());
         //-----Parameterized ---------- http://memorynotfound.com/spring-mvc-internationalization-i18n-example/
         
         return VIEW_HOMECONTROLLER;
