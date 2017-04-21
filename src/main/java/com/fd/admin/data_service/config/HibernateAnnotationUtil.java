@@ -9,6 +9,10 @@ public class HibernateAnnotationUtil {
 
 	private static SessionFactory sessionFactory;
 	
+	/**
+	 * 
+	 * @return
+	 */
 	private static SessionFactory buildSessionFactory() {
         try {
             // Create the SessionFactory from hibernate-annotation.cfg.xml
@@ -33,7 +37,9 @@ public class HibernateAnnotationUtil {
     }
 	
 	public static SessionFactory getSessionFactory() {
-		if(sessionFactory == null) sessionFactory = buildSessionFactory();
+		if(sessionFactory == null){
+			sessionFactory = buildSessionFactory();
+		}
         return sessionFactory;
     }
 }

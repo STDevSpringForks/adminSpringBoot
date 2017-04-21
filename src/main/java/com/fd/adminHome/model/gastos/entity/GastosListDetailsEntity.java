@@ -1,6 +1,7 @@
 package com.fd.adminHome.model.gastos.entity;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ public class GastosListDetailsEntity {
 	private String tipoGasto;
 	private BigDecimal monto;
 	private String pathComprobante;
+	private byte[] fileComprobante;
 	private String descripcion;
 	
 	@Id
@@ -56,7 +58,12 @@ public class GastosListDetailsEntity {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
+	public byte[] getFileComprobante() {
+		return fileComprobante;
+	}
+	public void setFileComprobante(byte[] fileComprobante) {
+		this.fileComprobante = fileComprobante;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -64,10 +71,12 @@ public class GastosListDetailsEntity {
 		builder.append(rid);
 		builder.append(", tipoGasto=");
 		builder.append(tipoGasto);
-		builder.append(", total=");
+		builder.append(", monto=");
 		builder.append(monto);
 		builder.append(", pathComprobante=");
 		builder.append(pathComprobante);
+		builder.append(", fileComprobante=");
+		builder.append(Arrays.toString(fileComprobante));
 		builder.append(", descripcion=");
 		builder.append(descripcion);
 		builder.append("]");

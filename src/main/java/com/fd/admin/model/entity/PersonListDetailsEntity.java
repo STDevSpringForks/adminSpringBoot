@@ -1,13 +1,10 @@
 package com.fd.admin.model.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -16,41 +13,18 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "person", schema = "hibernate_adminspringmvc")
-public class PersonListDetailsEntity implements Serializable {
+@Table(name = "person")
+public class PersonListDetailsEntity {
 	
-	private static final long serialVersionUID = 7307878427431392006L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "authorSequence")
-	@SequenceGenerator(name = "authorSequence", sequenceName = "author_seq", initialValue = 1000)
-	@Column(name = "id", updatable = false, nullable = false)
     private int id;
-	
-	@Column(name = "firstName")
 	private String firstName;
-	
-	@Column(name = "lastName")
 	private String lastName;
-	
-	@Column(name = "gender")
 	private String gender;
-	
-	@Column(name = "email")
 	private String email;
 	
-	public PersonListDetailsEntity() {
-        super();
-    }
-
-    public PersonListDetailsEntity(String firstName, String lastName, String gender, String email) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.email = email;
-    }
-
+    @Id
+	@Column(name = "id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
 	}

@@ -58,6 +58,7 @@ create table gastosDetails(
     monto decimal(10,4) not null,
     descripcion varchar(9999) not null,
     pathComprobante varchar(500) not null,
+    photo longblob,
     primary key (rid)
 )
 #End Froy 20/Abr/2017 -------------------------------------------
