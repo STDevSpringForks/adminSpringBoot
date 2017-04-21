@@ -28,7 +28,8 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 @SpringBootApplication
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.fd.admin")
+//@ComponentScan(basePackages = "com.fd.admin")
+@ComponentScan(basePackages = "com.fd")
 public class AdminSpringBootApplication extends WebMvcConfigurerAdapter {
 											      
 	private static final String MESSAGE_SOURCE = "/WEB-INF/i18n/messages";

@@ -25,10 +25,13 @@
 		<!-- Set the current session context -->
 		<property name="current_session_context_class">thread</property>
 		
-<!-- http://www.journaldev.com/2924/hibernate-one-to-many-mapping-annotation -->
 		<mapping class="com.fd.admin.model.entity.PersonListDetailsEntity"/>
+		<mapping class="com.fd.adminHome.model.gastos.entity.GastosListDetailsEntity"/>
+		
+<!-- http://www.journaldev.com/2924/hibernate-one-to-many-mapping-annotation -->
+<!--		<mapping class="com.fd.admin.model.entity.PersonListDetailsEntity"/> -->
 <!--         <mapping class="com.journaldev.hibernate.model.Items1"/> -->
- 
+
     </session-factory>
 
 </hibernate-configuration>

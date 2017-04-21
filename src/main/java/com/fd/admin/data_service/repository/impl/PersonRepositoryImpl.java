@@ -63,14 +63,8 @@ public class PersonRepositoryImpl implements PersonRepository {
 			// session.save(item2);
 
 			// Query personDetails
-			List<PersonListDetailsEntity> personListDetailsEntity = session.createQuery("from person ",PersonListDetailsEntity.class).getResultList();
+			List<PersonListDetailsEntity> personListDetailsEntity = session.createQuery("from PersonListDetailsEntity ",PersonListDetailsEntity.class).getResultList();
 			displayPersonListDetailsEntity(personListDetailsEntity);
-
-			// Display personDetails [p.lastName = JavaPropertyName, not column
-			// Name]
-			// personListDetailsEntity = session.createQuery("from person p
-			// where p.lastName = 'Aguilar' ").getResultList();
-			// displayPersonListDetailsEntity(personListDetailsEntity);
 
 			session.getTransaction().commit();
 			
