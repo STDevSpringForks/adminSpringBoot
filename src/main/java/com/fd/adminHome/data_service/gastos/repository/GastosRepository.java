@@ -1,6 +1,7 @@
 package com.fd.adminHome.data_service.gastos.repository;
 
 import com.fd.adminHome.model.gastos.criteria.GastosListDetailsSearchCriteria;
+import com.fd.adminHome.model.gastos.entity.GastoEntity;
 import com.fd.adminHome.model.gastos.result.GastosListDetailsResult;
 
 /**
@@ -10,4 +11,5 @@ import com.fd.adminHome.model.gastos.result.GastosListDetailsResult;
  */
 public interface GastosRepository {
 	public GastosListDetailsResult retrieveGastosListDetails(GastosListDetailsSearchCriteria searchCriteria); 
+	public boolean saveGastosListDetails(GastoEntity gEntity); 
 }

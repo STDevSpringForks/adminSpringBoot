@@ -26,7 +26,7 @@
 		<property name="current_session_context_class">thread</property>
 		
 		<mapping class="com.fd.admin.model.entity.PersonListDetailsEntity"/>
-		<mapping class="com.fd.adminHome.model.gastos.entity.GastosListDetailsEntity"/>
+		<mapping class="com.fd.adminHome.model.gastos.entity.GastoEntity"/>
 		
 <!-- http://www.journaldev.com/2924/hibernate-one-to-many-mapping-annotation -->
 <!--		<mapping class="com.fd.admin.model.entity.PersonListDetailsEntity"/> -->

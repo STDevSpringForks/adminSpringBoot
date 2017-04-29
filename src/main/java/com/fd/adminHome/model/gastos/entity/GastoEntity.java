@@ -6,6 +6,7 @@ import java.util.Arrays;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,18 +17,18 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "gastosdetails")
-public class GastosListDetailsEntity {
+public class GastoEntity {
 
 	private int rid;
 	private String tipoGasto;
 	private BigDecimal monto;
-	private String pathComprobante;
-	private byte[] fileComprobante;
 	private String descripcion;
+	private String pathComprobante;
+	private byte[] byteComprobante;
 	
 	@Id
 	@Column(name = "rid")
-	@GeneratedValue()
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getRid() {
 		return rid;
 	}
@@ -46,42 +47,41 @@ public class GastosListDetailsEntity {
 	public void setMonto(BigDecimal monto) {
 		this.monto = monto;
 	}
-	public String getPathComprobante() {
-		return pathComprobante;
-	}
-	public void setPathComprobante(String pathComprobante) {
-		this.pathComprobante = pathComprobante;
-	}
 	public String getDescripcion() {
 		return descripcion;
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public byte[] getFileComprobante() {
-		return fileComprobante;
+	public String getPathComprobante() {
+		return pathComprobante;
 	}
-	public void setFileComprobante(byte[] fileComprobante) {
-		this.fileComprobante = fileComprobante;
+	public void setPathComprobante(String pathComprobante) {
+		this.pathComprobante = pathComprobante;
+	}
+	public byte[] getByteComprobante() {
+		return byteComprobante;
+	}
+	public void setByteComprobante(byte[] byteComprobante) {
+		this.byteComprobante = byteComprobante;
 	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("GastosListDetailsEntity [rid=");
+		builder.append("GastoEntity [rid=");
 		builder.append(rid);
 		builder.append(", tipoGasto=");
 		builder.append(tipoGasto);
 		builder.append(", monto=");
 		builder.append(monto);
-		builder.append(", pathComprobante=");
-		builder.append(pathComprobante);
-		builder.append(", fileComprobante=");
-		builder.append(Arrays.toString(fileComprobante));
 		builder.append(", descripcion=");
 		builder.append(descripcion);
+		builder.append(", pathComprobante=");
+		builder.append(pathComprobante);
+		builder.append(", byteComprobante=");
+		builder.append(Arrays.toString(byteComprobante));
 		builder.append("]");
 		return builder.toString();
 	}
-	
 	
 }

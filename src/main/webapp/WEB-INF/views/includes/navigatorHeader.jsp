@@ -26,7 +26,7 @@
 					<h4 class="ui header">Utils</h4>
 					<div class="ui link list">
 						<a href="${pageContext.request.contextPath}/twilio/viewTiwilioSMS" class="item"><span style="color: red;">(new) </span>Twilio</a>
-						<a href="${pageContext.request.contextPath}/gastos/g" class="item"><span style="color: red;">(new) </span>Gastos</a>
+						<a href="${pageContext.request.contextPath}/home/gastos/addGasto" class="item"><span style="color: red;">(new) </span>Añadir Gasto</a>
 						<a class="item">...</a>
 					</div>
 				</div>

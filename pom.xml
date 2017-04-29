@@ -178,6 +178,14 @@
 		    <version>2.3.23</version>
 		</dependency>
 		<!-- End Templase Email -->
+		
+		<!-- Start Subiendo archivos desde el form -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.3.2</version>
+		</dependency>
+		<!-- End Subiendo archivos desde el form -->
 
 	    
 	<!-- End Muguruza -->

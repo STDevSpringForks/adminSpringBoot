@@ -11,13 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.fd.admin.data_service.config.HibernateAnnotationUtil;
 import com.fd.admin.data_service.repository.PersonRepository;
 import com.fd.admin.model.criteria.PersonListDetailsSearchCriteria;
-import com.fd.admin.model.entity.ObjectsEntity;
 import com.fd.admin.model.entity.PersonListDetailsEntity;
 import com.fd.admin.model.result.PersonListDetailsResult;
-import com.fd.adminHome.model.gastos.entity.GastosListDetailsEntity;
 
 /**
  * 
@@ -43,7 +40,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 		List<PersonListDetailsEntity> personListDetailsEntity = session.createQuery("from PersonListDetailsEntity ",PersonListDetailsEntity.class).getResultList();
 		displayPersonListDetailsEntity(personListDetailsEntity);
 
-		endSession();
+		endSession(true);
 
 		return personListDetailsResult;
 	}
@@ -56,33 +53,15 @@ public class PersonRepositoryImpl implements PersonRepository {
 
 	@Override
 	public boolean savePersonListDetails(PersonListDetailsEntity personListDetailsEntity) {
-
 		initSession();
-		
-		boolean bResult = false;
-
 		try {
-			// start a transaction
-			LOGGER.info("Save the object...");
 			session.save(personListDetailsEntity);
-
-			// commit transaction
-			LOGGER.info("Done...");
-
-			bResult = true;
-
+			endSession(true);
 		}catch(Exception e){
-			
 			e.printStackTrace();
-			session.getTransaction().rollback();
-			
-		}finally {
-			endSession();
+			endSession(false);
 		}
-
-		
-		return bResult;
-
+		return true;
 	}
 	
 	private static void initSession() {
@@ -96,10 +75,13 @@ public class PersonRepositoryImpl implements PersonRepository {
 		session.beginTransaction();
 	}
 	
-	private static void endSession() {
-		session.getTransaction().commit();
+	private static void endSession(boolean commit) {
+		if(commit){
+			session.getTransaction().commit();
+		}else{
+			session.getTransaction().rollback();
+		}
 		session.close();
-		
 		StandardServiceRegistryBuilder.destroy(serviceRegistry);		
 	}
 

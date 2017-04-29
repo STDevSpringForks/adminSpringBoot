@@ -2,8 +2,10 @@ package com.fd.admin;
 
 import java.util.Locale;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,12 +22,16 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+import com.fd.adminHome.data_service.gastos.service.StorageProperties;
+import com.fd.adminHome.data_service.gastos.service.StorageService;
+
 /**
  * Principal clase para la ejecución de la aplicación.
  * @author Muguruza
  *
  */
 @SpringBootApplication
+@EnableConfigurationProperties(StorageProperties.class)
 @Configuration
 @EnableWebMvc
 //@ComponentScan(basePackages = "com.fd.admin")
@@ -38,6 +44,14 @@ public class AdminSpringBootApplication extends WebMvcConfigurerAdapter {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AdminSpringBootApplication.class, args);
+	}
+	
+	@Bean
+	CommandLineRunner init(StorageService storageService) {
+		return (args) -> {
+            storageService.deleteAll();
+            storageService.init();
+		};
 	}
 	
 	/**

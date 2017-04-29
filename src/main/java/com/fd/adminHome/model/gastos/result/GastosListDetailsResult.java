@@ -3,7 +3,7 @@ package com.fd.adminHome.model.gastos.result;
 import java.io.Serializable;
 import java.util.List;
 
-import com.fd.adminHome.model.gastos.entity.GastosListDetailsEntity;
+import com.fd.adminHome.model.gastos.entity.GastoEntity;
 
 /**
  * 
@@ -14,13 +14,13 @@ public class GastosListDetailsResult implements Serializable {
 	
 	private static final long serialVersionUID = -19168050722916427L;
 	
-	private List<GastosListDetailsEntity> gastosListDetailsEntity;
+	private List<GastoEntity> gastosListDetailsEntity;
 
-	public List<GastosListDetailsEntity> getGastosListDetailsEntity() {
+	public List<GastoEntity> getGastosListDetailsEntity() {
 		return gastosListDetailsEntity;
 	}
 
-	public void setGastosListDetailsEntity(List<GastosListDetailsEntity> gastosListDetailsEntity) {
+	public void setGastosListDetailsEntity(List<GastoEntity> gastosListDetailsEntity) {
 		this.gastosListDetailsEntity = gastosListDetailsEntity;
 	}
 

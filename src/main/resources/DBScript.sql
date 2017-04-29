@@ -53,12 +53,12 @@ create table objetos (id int(11) auto_increment, objeto blob,primary key (id));
 #Start Froy 20/Abr/2017 -------------------------------------------
 drop table if exists gastosDetails;
 create table gastosDetails(
-	rid bigint(11) not null,
+	rid bigint(11) not null auto_increment,
 	tipoGasto  varchar(15) not null,
     monto decimal(10,4) not null,
     descripcion varchar(9999) not null,
     pathComprobante varchar(500) not null,
-    photo longblob,
+    byteComprobante longblob,
     primary key (rid)
 )
 #End Froy 20/Abr/2017 -------------------------------------------
