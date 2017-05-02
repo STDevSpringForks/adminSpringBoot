@@ -58,7 +58,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 			session.save(personListDetailsEntity);
 			endSession(true);
 		}catch(Exception e){
-			e.printStackTrace();
+			LOGGER.error("savePersonListDetails: " , e);
 			endSession(false);
 		}
 		return true;

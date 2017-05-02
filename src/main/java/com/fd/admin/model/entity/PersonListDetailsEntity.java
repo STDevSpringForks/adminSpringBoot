@@ -1,5 +1,7 @@
 package com.fd.admin.model.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,9 +16,10 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "person")
-public class PersonListDetailsEntity {
+public class PersonListDetailsEntity implements Serializable {
 	
-    private int id;
+	private static final long serialVersionUID = -917983412426627369L;
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String gender;

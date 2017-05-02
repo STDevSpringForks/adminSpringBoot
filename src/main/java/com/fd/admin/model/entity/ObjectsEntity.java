@@ -1,5 +1,7 @@
 package com.fd.admin.model.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "objetos")
-public class ObjectsEntity {
+public class ObjectsEntity implements Serializable {
+
+	private static final long serialVersionUID = -2219691545855565664L;
 
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

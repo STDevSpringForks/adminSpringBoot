@@ -28,9 +28,9 @@ public class JDBCRepositoryImpl implements JDBCRepository {
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			LOGGER.info("Connecting to database " + jdbcUrl);
+			LOGGER.info("Connecting to database " , jdbcUrl);
 			myConn = DriverManager.getConnection(jdbcUrl, user, pass);
-			LOGGER.info("Connection successful!!" + myConn);
+			LOGGER.info("Connection successful!!" , myConn);
 		} catch (Exception exc) {
 			LOGGER.debug("Error in connection JDBC ", exc);
 		}

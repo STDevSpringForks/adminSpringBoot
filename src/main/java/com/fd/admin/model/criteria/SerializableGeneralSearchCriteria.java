@@ -24,8 +24,8 @@ public class SerializableGeneralSearchCriteria implements Serializable {
 	private String browser;
 	private transient String version;
 	private String user;
-	private LocalDate dateSearched;
-	private LocalTime timeSearched;
+	private transient LocalDate dateSearched;
+	private transient LocalTime timeSearched;
 	private Locale locale;
 	
 	public String getSearch() {

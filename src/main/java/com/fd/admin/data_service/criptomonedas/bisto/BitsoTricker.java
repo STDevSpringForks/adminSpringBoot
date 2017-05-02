@@ -15,7 +15,7 @@ public class BitsoTricker implements Serializable {
 	
 	private BigDecimal high;
 	private BigDecimal last;
-	private LocalDateTime created_at;
+	private transient LocalDateTime created_at;
 	private String book;
 	private BigDecimal volume;
 	private BigDecimal vwap;

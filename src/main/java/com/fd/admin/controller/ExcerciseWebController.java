@@ -86,7 +86,7 @@ public class ExcerciseWebController {
 
             model.addAttribute("msgResult", sb.toString());
 
-        } catch (Exception e) {
+        } catch (DefaultCheckedException e) {
             LOGGER.debug("RequestMapping: viewPalindrome", e);
             result.addError(new ObjectError("errorMsg", e.getMessage()));
         }
@@ -159,7 +159,7 @@ public class ExcerciseWebController {
     	return VIEW_JQUERY3;
     }
     
-    private void save(ByteArrayOutputStream byteArray) throws Exception {
+    private void save(ByteArrayOutputStream byteArray) throws DefaultCheckedException {
 
         // Create a session factory
         SessionFactory factoryObjectsEntity = new Configuration().configure("hibernate.cfg.xml")
@@ -187,7 +187,9 @@ public class ExcerciseWebController {
             // commit transaction
             LOGGER.info("Done...");
 
-        } finally {
+        }catch(Exception e){
+        	 throw new DefaultCheckedException(e.getMessage());
+        }finally {
         	factoryObjectsEntity.close();
         }
 

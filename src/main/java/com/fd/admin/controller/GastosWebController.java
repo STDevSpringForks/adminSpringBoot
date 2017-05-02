@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fd.admin.data_service.repository.impl.PersonRepositoryImpl;
 import com.fd.adminHome.data_service.gastos.service.GastosService;
 import com.fd.adminHome.data_service.gastos.service.StorageFileNotFoundException;
 import com.fd.adminHome.data_service.gastos.service.StorageService;
@@ -38,6 +41,8 @@ import com.fd.adminHome.model.gastos.entity.GastoEntity;
 @RequestMapping("/home/gastos")
 public class GastosWebController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(PersonRepositoryImpl.class);
+	
 	private final StorageService storageService;
 
     @Autowired
@@ -81,7 +86,7 @@ public class GastosWebController {
 		try{
 			gEntity.setByteComprobante(criteria.getFileComprobante().getBytes());
 		}catch(IOException ioe){
-			//Error en el comprobante
+			LOGGER.error("Error: ", ioe);
 			return ADD_GASTO;
 		}
 		
@@ -107,7 +112,7 @@ public class GastosWebController {
 
 	@GetMapping("/viewGastos")
 	public String retrieveGastosListDetails() {
-		GastosListDetailsSearchCriteria searchCriteria = new GastosListDetailsSearchCriteria();
+//		GastosListDetailsSearchCriteria searchCriteria = new GastosListDetailsSearchCriteria();
 		//GastosListDetailsResult result = gastosService.retrieveGastosListDetails(searchCriteria);
 
 		//System.out.println(result);

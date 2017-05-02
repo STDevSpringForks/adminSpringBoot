@@ -13,7 +13,6 @@ import com.fd.adminHome.model.gastos.entity.GastoEntity;
 public class GastosListDetailsResult implements Serializable {
 	
 	private static final long serialVersionUID = -19168050722916427L;
-	
 	private List<GastoEntity> gastosListDetailsEntity;
 
 	public List<GastoEntity> getGastosListDetailsEntity() {

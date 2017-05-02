@@ -32,13 +32,14 @@ public interface AdminUtils {
 	 * @return
 	 */
 	public static String eliminarAcentos(String palabra,String typeDelAccents){
+		String auxPalabra = palabra;
 		if ("Normalizer".equalsIgnoreCase(typeDelAccents)) {
-			palabra = Normalizer.normalize(palabra, Normalizer.Form.NFD);
-			palabra = palabra.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+			auxPalabra = Normalizer.normalize(auxPalabra, Normalizer.Form.NFD);
+			auxPalabra = auxPalabra.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
         } else {
-        	palabra = org.apache.commons.lang3.StringUtils.stripAccents(palabra);
+        	auxPalabra = org.apache.commons.lang3.StringUtils.stripAccents(auxPalabra);
         }
-		return palabra;
+		return auxPalabra;
 	}
 	
 	/**

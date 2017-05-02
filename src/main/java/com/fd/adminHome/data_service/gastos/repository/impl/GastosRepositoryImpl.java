@@ -73,7 +73,7 @@ public class GastosRepositoryImpl implements GastosRepository {
 			session.save(gEntity);
 			endSession(true);
 		}catch(Exception e){
-			e.printStackTrace();
+			LOGGER.error("saveGastosListDetails", e);
 			endSession(false);
 		}
 		return true;

@@ -16,7 +16,7 @@ public class FormAddGastoCriteria implements Serializable {
 	private String tipoGasto;
 	private String monto;
 	private String descripcion;
-	private MultipartFile fileComprobante;
+	private transient MultipartFile fileComprobante;
 	
 	public String getTipoGasto() {
 		return tipoGasto;

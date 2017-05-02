@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fd.admin.data_service.exception.DefaultCheckedException;
 import com.fd.admin.data_service.validator.PaymentValidator;
 import com.fd.admin.model.criteria.PaymentSearchCriteria;
 import com.fd.admin.model.entity.PaymentEntity;
@@ -90,7 +91,7 @@ public class PaymentWebController {
         return FORM_PAYMENT;
     }
     
-    private void save(PaymentSearchCriteria paymentSearchCriteria) throws Exception {
+    private void save(PaymentSearchCriteria paymentSearchCriteria) throws DefaultCheckedException {
 
         // Create a session factory
         SessionFactory factoryPaymentEntity = new Configuration().configure("hibernate.cfg.xml")
@@ -129,7 +130,9 @@ public class PaymentWebController {
             // commit transaction
             LOGGER.info("Done...");
 
-        } finally {
+        }catch(Exception e){
+        	throw new DefaultCheckedException(e.getMessage());
+        }finally {
         	factoryPaymentEntity.close();
         	factoryPromoCodesEntity.close();
         }
