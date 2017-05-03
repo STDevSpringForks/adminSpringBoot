@@ -102,5 +102,11 @@
        <put-attribute name="title" value="Add Gasto" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/home/gastos/addGasto.jsp" />  
    </definition>
+   
+   <!-- Error Page -->
+   <definition name="errors/error" extends="base-definition">  
+       <put-attribute name="title" value="Error" />  
+       <put-attribute name="body" value="/WEB-INF/views/error.jsp" />  
+   </definition>
       
 </tiles-definitions>
