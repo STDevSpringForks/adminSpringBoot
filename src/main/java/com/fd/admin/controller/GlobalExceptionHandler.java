@@ -12,10 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * http://docs.spring.io/spring/docs/4.0.4.RELEASE/spring-framework-reference/htmlsingle/#mvc-exceptionhandlers
+ * Spring’s @ControllerAdvice annotation is a specialized form of @Component 
+ * The most common use case is to provide exception handlers,
  * @author Muguruza
  *
  */
@@ -42,9 +46,22 @@ public class GlobalExceptionHandler {
 //	@ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR, reason="El tamaño del archivo excede el limite del tamaño configurado.")
 	@ExceptionHandler(MultipartException.class)
 	public String handleMultipartException(HttpServletRequest request, Exception ex,Model model){
+		
+		/* C:\Users\satoshi\AppData\Local\Temp\   logging.file=   */
+		System.out.println(System.getProperty("java.io.tmpdir")); 
+		
 		logger.error("GlobalExceptionHandler: MultipartException handler executed:: URL="+request.getRequestURL(),ex);
 		model.addAttribute("url",request.getRequestURL());
 		model.addAttribute("exception",ex);
 		return VIEW_ERROR;
 	}
+	
+	//commons-fileupload
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public String handleError2(MaxUploadSizeExceededException e, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("message", e.getCause().getMessage());
+        return "redirect:/uploadStatus";
+
+    }
+	
 }

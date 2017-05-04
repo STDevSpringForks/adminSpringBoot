@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fd.admin.data_service.repository.impl.PersonRepositoryImpl;
 import com.fd.adminHome.data_service.gastos.service.GastosService;
 import com.fd.adminHome.data_service.gastos.service.StorageFileNotFoundException;
 import com.fd.adminHome.data_service.gastos.service.StorageService;
@@ -33,7 +32,7 @@ import com.fd.adminHome.model.gastos.entity.FormAddGastoCriteria;
 import com.fd.adminHome.model.gastos.entity.GastoEntity;
 
 /**
- * 
+ * https://spring.io/guides/gs/uploading-files/
  * @author Muguruza
  *
  */
@@ -41,7 +40,7 @@ import com.fd.adminHome.model.gastos.entity.GastoEntity;
 @RequestMapping("/home/gastos")
 public class GastosWebController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(PersonRepositoryImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(GastosWebController.class);
 	
 	private final StorageService storageService;
 

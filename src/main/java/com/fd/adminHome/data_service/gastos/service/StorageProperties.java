@@ -8,7 +8,7 @@ public class StorageProperties {
     /**
      * Folder location for storing files
      */
-    private String location = "C:\\upload-dir\\gastos";
+    private String location = "C:\\adminSpringBoot\\upload-dir\\gastos";
 
     public String getLocation() {
         return location;
