@@ -1,0 +1,42 @@
+----------------------------------------------------------------------------------------
+											<<@RestController>>
+* Introducido en Spring MVC 4
+* Utilizado por convención,norma,estandar para denotar @Controller y @ResponseBody
+  @RestController elimina la necesidad de añadir @ResponseBody la anotación en todos los métodos
+  del controlador de forma individual.
+* Anotación que la he utilizado para llamar al servicio Proxy-RestController-Service de una aplicación a otra.
+----------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------
+											<<@RequestMapping>>
+* Usado para mapear una URL donde se puede especificar el tipo de HTTPRequest, POST/GET/PUT/DELETE											
+----------------------------------------------------------------------------------------			
+
+----------------------------------------------------------------------------------------
+											<<@RequestMethod>>
+* Una enumeración para especificar los HTTPRequest POST/GET/PUT/DELETE,etc...
+----------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------
+											<<@PathVariable>>
+* La anotación indica que el los parametros del método deben de formar parte de la URI 
+  @RequestMapping(value = "/laUriUnix{condicion}")
+  public @ResponseBody ElObjetoResponse laUriUnix(@PathVariable String condicion,Model model) 
+  {}
+  $.ajax({
+	type: "GET",
+	url: "laUriUnixBilling",
+	contentType: "application/json",
+	dataType: "json",
+----------------------------------------------------------------------------------------								
+			
+----------------------------------------------------------------------------------------
+											<<ResponseEntity>>
+* hereda de HttpEntity el cual, permite añadir un HttpStatus directamente en el reponse. 
+  ResponseEntity representa toda la respuesta del HTTP response.
+  Se puede añadir información al header como un estatus del header y el contenido del cuerpo respues osea un objeto. 
+----------------------------------------------------------------------------------------			
+
+											
+Source: 
+http://memorynotfound.com/spring-mvc-restful-web-service-crud-example/

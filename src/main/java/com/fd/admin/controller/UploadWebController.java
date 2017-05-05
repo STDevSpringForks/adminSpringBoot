@@ -28,11 +28,6 @@ public class UploadWebController {
 	// save uploaded file to this folder
     private static String UPLOADED_FOLDER = "F://temp//";
 
-    @GetMapping("/")
-    public String index() {
-        return "upload";
-    }
-
     @PostMapping("/upload")
     public String multiFileUpload(@ModelAttribute UploadForm form,
                                   RedirectAttributes redirectAttributes) {
