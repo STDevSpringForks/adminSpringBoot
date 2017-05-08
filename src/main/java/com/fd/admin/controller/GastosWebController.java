@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -118,6 +119,8 @@ public class GastosWebController {
 		GastosListDetailsSearchCriteria searchCriteria = new GastosListDetailsSearchCriteria();
 		GastosListDetailsResult result = gastosService.retrieveGastosListDetails(searchCriteria);
 		
+		//http://www.deadcoderising.com/java-8-no-more-loops/
+		
 		//Start Agrupar gastos por tipo de gasto.
 		Map<String,List<GastoEntity>> map = result.getGastosListDetailsEntity().stream().collect(Collectors.groupingBy(GastoEntity::getTipoGasto));
 		LOGGER.info(map.toString());
@@ -130,6 +133,11 @@ public class GastosWebController {
 		LOGGER.info(setTipoGasto.toString());
 		//End Set
 
+		Set<String> set = result.getGastosListDetailsEntity().stream()
+				.map(GastoEntity::getTipoGasto)
+				.collect(Collectors.toCollection(TreeSet::new));
+		LOGGER.info(set.toString());
+		
 		/*
 		http://stackoverflow.com/questions/30611870/how-i-can-get-list-from-some-class-properties-with-java-8-stream
 		List<String> friendNames = 
