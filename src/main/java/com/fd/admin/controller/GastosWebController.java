@@ -2,6 +2,9 @@ package com.fd.admin.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -30,6 +33,7 @@ import com.fd.adminHome.data_service.gastos.service.StorageService;
 import com.fd.adminHome.model.gastos.criteria.GastosListDetailsSearchCriteria;
 import com.fd.adminHome.model.gastos.entity.FormAddGastoCriteria;
 import com.fd.adminHome.model.gastos.entity.GastoEntity;
+import com.fd.adminHome.model.gastos.result.GastosListDetailsResult;
 
 /**
  * https://spring.io/guides/gs/uploading-files/
@@ -111,11 +115,29 @@ public class GastosWebController {
 
 	@GetMapping("/viewGastos")
 	public String retrieveGastosListDetails() {
-//		GastosListDetailsSearchCriteria searchCriteria = new GastosListDetailsSearchCriteria();
-		//GastosListDetailsResult result = gastosService.retrieveGastosListDetails(searchCriteria);
+		GastosListDetailsSearchCriteria searchCriteria = new GastosListDetailsSearchCriteria();
+		GastosListDetailsResult result = gastosService.retrieveGastosListDetails(searchCriteria);
+		
+		//Start Agrupar gastos por tipo de gasto.
+		Map<String,List<GastoEntity>> map = result.getGastosListDetailsEntity().stream().collect(Collectors.groupingBy(GastoEntity::getTipoGasto));
+		LOGGER.info(map.toString());
+		//End Agrupar gastos por tipo de gasto.
+		
+		//Start Set
+		List<String> listTipoGastos = result.getGastosListDetailsEntity().stream().map(GastoEntity::getTipoGasto).collect(Collectors.toList());
+		LOGGER.info(listTipoGastos.toString());
+		Set<String> setTipoGasto = listTipoGastos.stream().collect(Collectors.toSet());
+		LOGGER.info(setTipoGasto.toString());
+		//End Set
 
-		//System.out.println(result);
-
+		/*
+		http://stackoverflow.com/questions/30611870/how-i-can-get-list-from-some-class-properties-with-java-8-stream
+		List<String> friendNames = 
+			    personList.stream()
+			              .flatMap(e->e.getFriends().stream())
+			              .collect(Collectors.toList());
+		*/
+		
 		return VIEW_FINANCE;
 	}
 

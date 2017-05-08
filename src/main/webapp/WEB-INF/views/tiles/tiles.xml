@@ -108,5 +108,11 @@
        <put-attribute name="title" value="Error" />  
        <put-attribute name="body" value="/WEB-INF/views/error.jsp" />  
    </definition>
+   
+   <!-- Java 8 Page -->
+   <definition name="java8" extends="base-definition">  
+       <put-attribute name="title" value="Java8" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/utils/java8.jsp" />  
+   </definition>
       
 </tiles-definitions>

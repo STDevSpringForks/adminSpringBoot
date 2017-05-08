@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.hibernate.service.spi.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -51,6 +52,14 @@ public class GlobalExceptionHandler {
 		System.out.println(System.getProperty("java.io.tmpdir")); 
 		
 		logger.error("GlobalExceptionHandler: MultipartException handler executed:: URL="+request.getRequestURL(),ex);
+		model.addAttribute("url",request.getRequestURL());
+		model.addAttribute("exception",ex);
+		return VIEW_ERROR;
+	}
+	
+	@ExceptionHandler(ServiceException.class)
+	public String handleServiceException(HttpServletRequest request, Exception ex,Model model){
+		logger.error("ServiceExceptionHandler: ServiceException handler executed:: URL="+request.getRequestURL(),ex);
 		model.addAttribute("url",request.getRequestURL());
 		model.addAttribute("exception",ex);
 		return VIEW_ERROR;
