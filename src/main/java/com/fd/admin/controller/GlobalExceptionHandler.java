@@ -72,5 +72,13 @@ public class GlobalExceptionHandler {
         return "redirect:/uploadStatus";
 
     }
+    
+    @ExceptionHandler(Exception.class)
+	public String handleException(HttpServletRequest request, Exception ex,Model model){
+		logger.error("ExceptionnHandler: Exception handler executed:: URL="+request.getRequestURL(),ex);
+		model.addAttribute("url",request.getRequestURL());
+		model.addAttribute("exception",ex);
+		return VIEW_ERROR;
+	}
 	
 }

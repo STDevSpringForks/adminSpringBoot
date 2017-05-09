@@ -25,8 +25,10 @@
 				<div class="column">
 					<h4 class="ui header">Utils</h4>
 					<div class="ui link list">
-						<a href="${pageContext.request.contextPath}/twilio/viewTiwilioSMS" class="item"><span style="color: red;">(new) </span>Twilio</a>
+						<a href="${pageContext.request.contextPath}/twilio/viewTiwilioSMS" class="item">Twilio</a>
 						<a href="${pageContext.request.contextPath}/home/gastos/addGasto" class="item"><span style="color: red;">(new) </span>Añadir Gasto</a>
+						<a href="${pageContext.request.contextPath}/java8/javalambda1" class="item"><span style="color: red;">(new) </span>Java 8</a>
+						<a href="${pageContext.request.contextPath}/java8/javaMultiArray" class="item">Java 8 MultiArray</a>
 						<a class="item">...</a>
 					</div>
 				</div>

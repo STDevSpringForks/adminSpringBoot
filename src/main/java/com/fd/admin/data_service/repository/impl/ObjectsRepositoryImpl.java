@@ -46,8 +46,12 @@ public class ObjectsRepositoryImpl implements ObjectsRepository {
 				ObjectInputStream ois = new ObjectInputStream(blob.getBinaryStream());
 				SerializableGeneralSearchCriteria dato = (SerializableGeneralSearchCriteria) ois.readObject();
 				System.out.println(dato);
-				LOGGER.info(dato.toString());
+				if(dato != null){
+					LOGGER.info(dato.toString());
+				}
 			} 
+			rs.close();
+			ps.close();
 		} catch (Exception e) {
 			LOGGER.debug("Exception ",e);
 		}

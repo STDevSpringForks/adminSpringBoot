@@ -1,5 +1,6 @@
 package com.fd.adminHome.model.gastos.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
@@ -17,8 +18,10 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "gastosdetails")
-public class GastoEntity {
+public class GastoEntity implements Serializable {
 
+	private static final long serialVersionUID = 6942507280982369287L;
+	
 	private int rid;
 	private String tipoGasto;
 	private BigDecimal monto;
