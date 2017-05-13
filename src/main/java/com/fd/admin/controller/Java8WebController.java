@@ -3,6 +3,7 @@ package com.fd.admin.controller;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -72,16 +73,43 @@ public class Java8WebController {
 		LOGGER.info(Arrays.toString(multiArray2));
 		LOGGER.info(Arrays.toString(multiArray22));
 		System.out.println(multiArray2[1][2]);
-		System.out.println(multiArray2[1][10]);
 		
-		try{
-			System.out.println(a3[1][-1]);
-		}catch(ArrayIndexOutOfBoundsException aioobe){
-			LOGGER.info("Dejarlo pasar: " + aioobe);
-		}
+//		try{
+//			System.out.println(a3[1][-1]);
+//		}catch(ArrayIndexOutOfBoundsException aioobe){
+//			LOGGER.info("Dejarlo pasar: " + aioobe);
+//		}
+		
+		ArrayList<String> ejg = new ArrayList<>(); // line 4
+		ejg.add("One"); // line 5
+		ejg.add("Two"); // line 6
+		System.out.println(ejg.contains(new String("One"))); // line 7
+		System.out.println(ejg.indexOf("Two")); // line 8
+		ejg.clear(); // line 9
+		System.out.println(ejg); // line 10
+//		System.out.println(ejg.get(1)); // line 11
 		
 		
+		LocalDate paulBday = LocalDate.parse("2002‐07‐29");
+		String printDate = LocalDate.parse("2057‐08‐11")
+				.format(DateTimeFormatter.ISO_DATE_TIME);
+				System.out.println(printDate);
+				
+		String line = "ab";
+		
+		for (int i=0; i < line.length(); ++i, printMethod())
+			System.out.println(line.charAt(i));
+		
+//		for(;;)
+//			System.out.println(1);
+		
+//		empArrList.removeIf(e ‐> e.getName().startsWith("S"));
+				
 		return "java8";
+	}
+	
+	private static void printMethod() { 
+		System.out.println("Happy"); 
 	}
 	
 	/**
