@@ -103,6 +103,12 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/home/gastos/addGasto.jsp" />  
    </definition>
    
+   <!-- Gastos Page -->
+   <definition name="criptoCurrency/mainCripto" extends="base-definition">  
+       <put-attribute name="title" value="Add Gasto" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/home/gastos/addGasto.jsp" />  
+   </definition>
+   
    <!-- Error Page -->
    <definition name="errors/error" extends="base-definition">  
        <put-attribute name="title" value="Error" />  
@@ -113,6 +119,12 @@
    <definition name="java8" extends="base-definition">  
        <put-attribute name="title" value="Java8" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/utils/java8.jsp" />  
+   </definition>
+   
+   <!-- Estudiante Page -->
+   <definition name="escuela/estudiante" extends="base-definition">  
+       <put-attribute name="title" value="Java8" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/escuela/estudiante.jsp" />  
    </definition>
       
 </tiles-definitions>

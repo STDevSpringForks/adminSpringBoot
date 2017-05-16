@@ -77,3 +77,30 @@ VALUES
 'Refrendo anual de placas vehiculares 2017',
 '/adminHome/gastos/Automovil_1');
 #End Froy 20/Abr/2017 -------------------------------------------
+
+#Start Froy 13/May/2017 -----------------------------------------------
+drop table if exists exchanges;
+create table exchanges(
+	rid bigint(11) not null auto_increment,
+    name varchar(500) not null,
+    primary key (rid)
+);
+
+drop table if exists faucets;
+create table faucets(
+	rid bigint(11) not null auto_increment,
+    urlReferido varchar(500) not null,
+    faucetUser varchar(500) not null,
+    faucetPassword varchar(500) not null,
+    ridAddressCurrency bigint(11) not null,
+    primary key (rid)
+);
+
+drop table if exists addressCurrency;
+create table addressCurrency(
+	rid bigint(11) not null auto_increment,
+    address varchar(500) not null,
+    ridExchange bigint(11) not null,
+    primary key (rid)
+);
+#End Froy 13/May/2017 -----------------------------------------------

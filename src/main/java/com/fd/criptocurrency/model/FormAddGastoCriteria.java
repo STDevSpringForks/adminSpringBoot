@@ -1,4 +1,4 @@
-package com.fd.adminHome.model.gastos.entity;
+package com.fd.criptocurrency.model;
 
 import java.io.Serializable;
 
