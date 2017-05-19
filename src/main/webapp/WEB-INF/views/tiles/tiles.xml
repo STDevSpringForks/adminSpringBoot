@@ -114,5 +114,11 @@
        <put-attribute name="title" value="Java8" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/utils/java8.jsp" />  
    </definition>
+   
+   <!-- Streams Page -->
+   <definition name="streams" extends="base-definition">  
+       <put-attribute name="title" value="exStreams" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/streams/exStreams.jsp" />  
+   </definition>
       
 </tiles-definitions>

@@ -11,6 +11,7 @@
 						<a href="${pageContext.request.contextPath}/person/viewPerson" class="item"><span style="color: orange;">(wip) </span>Person</a>
 						<a href="${pageContext.request.contextPath}/contact/viewContact" class="item"><span style="color: orange;">(wip) </span>Contact Form</a>
 						<a href="${pageContext.request.contextPath}/modules/finance/viewFinance" class="item"><span style="color: orange;">(wip) </span>Finance</a>
+						<a href="${pageContext.request.contextPath}/streams/exStreams" class="item">exStreams</a>
 					</div>
 				</div>
 				<div class="column">
