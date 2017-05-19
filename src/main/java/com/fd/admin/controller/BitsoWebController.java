@@ -57,6 +57,19 @@
 //    	
 ////        System.out.println(AdminSpringConstants.meses[0][6]);
 ////        System.out.println(AdminSpringConstants.meses[1][6]);
+
+//			String json = Utils.sendGet("https://api.bitso.com/v3/ticker/");
+//			BitsoTicker obj = new Gson().fromJson(json, BitsoTicker.class);
+//			List<BitsoPayload> lst = obj.getPayload();
+//			BitsoPayload bitcoin = null;
+//			BitsoPayload ether = null;
+//			for (BitsoPayload bitsoPayload : lst) {
+//				if (bitsoPayload.getBook().toUpperCase().contains("BTC"))
+//					bitcoin = bitsoPayload;
+//				else
+//					ether = bitsoPayload;
+//			}
+
 //        
 //       try{
 //        

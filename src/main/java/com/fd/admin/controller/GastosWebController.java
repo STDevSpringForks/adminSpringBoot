@@ -32,9 +32,9 @@ import com.fd.adminHome.data_service.gastos.service.GastosService;
 import com.fd.adminHome.data_service.gastos.service.StorageFileNotFoundException;
 import com.fd.adminHome.data_service.gastos.service.StorageService;
 import com.fd.adminHome.model.gastos.criteria.GastosListDetailsSearchCriteria;
-import com.fd.adminHome.model.gastos.entity.FormAddGastoCriteria;
 import com.fd.adminHome.model.gastos.entity.GastoEntity;
 import com.fd.adminHome.model.gastos.result.GastosListDetailsResult;
+import com.fd.criptocurrency.model.FormAddGastoCriteria;
 
 /**
  * https://spring.io/guides/gs/uploading-files/

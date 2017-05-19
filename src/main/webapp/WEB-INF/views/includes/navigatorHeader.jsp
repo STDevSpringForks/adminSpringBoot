@@ -15,9 +15,9 @@
 					</div>
 				</div>
 				<div class="column">
-					<h4 class="ui header">Nothing</h4>
+					<h4 class="ui header">Ejemplos</h4>
 					<div class="ui link list">
-						<a class="item">Small</a>
+						<a href="${pageContext.request.contextPath}/escuela/estudiante" class="item">Estudiante</a>
 						<a class="item">Medium</a>
 						<a class="item">Large</a>
 						<a class="item">Plus Sizes</a>
