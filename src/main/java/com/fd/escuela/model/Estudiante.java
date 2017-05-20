@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Estudiante {
 	private ArrayList<Integer> scores;
 	private double average;
+	public static String ATRIBUTO_ESTATICO = "ESTATICO1";
 	
 //	public ArrayList<Integer> getScores() {
 //		return this.scores;

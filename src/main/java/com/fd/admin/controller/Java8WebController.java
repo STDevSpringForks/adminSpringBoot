@@ -5,7 +5,10 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
@@ -103,6 +106,7 @@ public class Java8WebController {
 //		for(;;)
 //			System.out.println(1);
 		
+		
 //		empArrList.removeIf(e ‐> e.getName().startsWith("S"));
 				
 		return "java8";
@@ -141,12 +145,44 @@ public class Java8WebController {
 	
 	@RequestMapping(value = "/javaListIterator",method = RequestMethod.GET)
 	public String javaListIterator(){
+		List<String> lista = new ArrayList<>();
+		lista.add("Alfredo");
+		lista.add("Lopez");
+		lista.add("Tarzo");
 		
-		//ListIterator remove
+		List<String> lista2 = lista;
+		
+	    Iterator<String> it = lista.listIterator();
+	    while(it.hasNext()){
+	    	if(it.next().equals("Lopez")){
+	    		it.remove();
+	    	}
+	    }
+	    System.out.println(lista);
+	    
+	    lista2.removeIf((x) -> x.equals("Lopez"));
+	    
+	    System.out.println(lista2);
 		
 		return "java8";
 	}
 	
 	
+	@RequestMapping(value = "/ordenarLista",method = RequestMethod.GET)
+	public String ordenarLista(){
+		List<String> listaString = new ArrayList<>();
+		listaString.add("Ricardo");
+		listaString.add("Alfredo");
+		listaString.add("Fernando");
+		listaString.add("Hilda");
+		
+		//Collections.sort(listaString,(o1,o2) -> o1.compareTo(o2));
+		Collections.sort(listaString,String::compareToIgnoreCase);
+		
+		System.out.println(listaString);
+		
+		return "java8";
+	}
 	
 }
+ 

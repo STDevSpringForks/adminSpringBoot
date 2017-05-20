@@ -18,7 +18,8 @@
 					<h4 class="ui header">Ejemplos</h4>
 					<div class="ui link list">
 						<a href="${pageContext.request.contextPath}/escuela/estudiante" class="item">Estudiante</a>
-						<a class="item">Medium</a>
+						<a href="${pageContext.request.contextPath}/escuela/areaTriangulo" class="item">Area Triangulo</a>
+						<a href="${pageContext.request.contextPath}/files/addTextToFile" class="item">RandomAccessFile</a>
 						<a class="item">Large</a>
 						<a class="item">Plus Sizes</a>
 					</div>
@@ -29,7 +30,9 @@
 						<a href="${pageContext.request.contextPath}/twilio/viewTiwilioSMS" class="item">Twilio</a>
 						<a href="${pageContext.request.contextPath}/home/gastos/addGasto" class="item"><span style="color: red;">(new) </span>Añadir Gasto</a>
 						<a href="${pageContext.request.contextPath}/java8/javalambda1" class="item"><span style="color: red;">(new) </span>Java 8</a>
+						<a href="${pageContext.request.contextPath}/java8/javaListIterator" class="item"><span style="color: red;">(new) </span>javaListIterator</a>
 						<a href="${pageContext.request.contextPath}/java8/javaMultiArray" class="item">Java 8 MultiArray</a>
+						<a href="${pageContext.request.contextPath}/java8/ordenarLista" class="item">Java 8 OrdenarLista</a>
 						<a class="item">...</a>
 					</div>
 				</div>
