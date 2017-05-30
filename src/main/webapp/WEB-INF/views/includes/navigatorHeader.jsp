@@ -33,6 +33,7 @@
 						<a href="${pageContext.request.contextPath}/java8/javaListIterator" class="item"><span style="color: red;">(new) </span>javaListIterator</a>
 						<a href="${pageContext.request.contextPath}/java8/javaMultiArray" class="item">Java 8 MultiArray</a>
 						<a href="${pageContext.request.contextPath}/java8/ordenarLista" class="item">Java 8 OrdenarLista</a>
+						<a href="${pageContext.request.contextPath}/java8/funcionesJava" class="item">funcionesJava</a>
 						<a class="item">...</a>
 					</div>
 				</div>

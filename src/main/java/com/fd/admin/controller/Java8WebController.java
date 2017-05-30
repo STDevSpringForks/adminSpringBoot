@@ -1,5 +1,6 @@
 package com.fd.admin.controller;
 
+import java.io.FileReader;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -10,7 +11,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import javax.script.Invocable;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +38,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/java8")
 public class Java8WebController {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(TwilioWebController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Java8WebController.class);
+	private ScriptEngineManager m;
+	private ScriptEngine e;
+	private Invocable invocador;
 
 	@RequestMapping(value = "/javalambda1",method = RequestMethod.GET)
 	public String javalambda1(){
@@ -182,6 +195,172 @@ public class Java8WebController {
 		System.out.println(listaString);
 		
 		return "java8";
+	}
+	
+	@RequestMapping(value = "/stream",method = RequestMethod.GET)
+	public String stream(){
+		probarStream();
+		probarParalelo();
+		return "java8";
+	}
+	
+	private void probarStream(){
+		List<Integer> numeros = new ArrayList<>();
+		numeros.stream().forEach(System.out::println);
+	}
+	
+	/**
+	 * Asincrono.
+	 */
+	private void probarParalelo(){
+		List<Integer> numeros = new ArrayList<>();
+		numeros.parallelStream().forEach(System.out::println);
+	}
+	
+	@RequestMapping(value = "/optional",method = RequestMethod.GET)
+	public String optional(){
+		probar();
+		orElse(null);
+		orElseThrow(null);
+		isPresent("s");
+		return "java8";
+	}
+	
+	private void probar(){
+		try{
+			Optional op = Optional.empty();
+			op.get();
+		}catch(Exception e){
+			System.out.println("No hay elemento");
+		}
+	}
+	
+	private void orElse(String valor){
+		try{
+			Optional<String> op = Optional.ofNullable(valor);
+			System.out.println(op.orElse("Predeterminado"));
+		}catch(Exception e){
+			System.out.println("No hay elemento");
+		}
+	}
+	
+	private void orElseThrow(String valor){
+		try{
+			Optional<String> op = Optional.ofNullable(valor);
+			System.out.println(op.orElseThrow(NumberFormatException::new));
+		}catch(Exception e){
+			System.out.println("No hay elemento");
+		}
+	}
+	
+	private void isPresent(String valor){
+		try{
+			Optional<String> op = Optional.ofNullable(valor);
+			System.out.println(op.isPresent());
+		}catch(Exception e){
+			System.out.println("No hay elemento");
+		}
+	}
+	
+	
+	@RequestMapping(value = "/map",method = RequestMethod.GET)
+	public String map(){
+		map_imprimir();
+		
+		Map<String,String> map = new HashMap<>();
+		map.put("1","uno");
+		map.put("2","dos");
+		map.put("3","tres");
+		
+		map.putIfAbsent("3","EL TRES");
+		map.computeIfPresent("4", (k,v) -> k+v);
+		map.getOrDefault("5","valor por defecto");
+		//recolectar
+		Map<String,String> mapAux = 
+				map.entrySet().stream()
+				.filter(e -> e.getValue().contains("2"))
+				.collect(Collectors.toMap(p-> p.getKey(),p -> p.getValue()));
+				
+		mapAux.entrySet().stream().forEach(System.out::println);		
+		
+		
+		return "java8";
+	}
+	
+	private void map_imprimir(){
+		Map<String,String> map = new HashMap<>();
+		map.put("1","uno");
+		map.put("2","dos");
+		map.put("3","tres");
+		map.entrySet().stream().forEach(System.out::println);
+	} 
+	
+	@RequestMapping(value = "/funcionesJava",method = RequestMethod.GET)
+	public String funcionesJava(){
+		System.out.println(this.saludo("Hola Pedro,").apply(" como estas? "));
+		
+		List<String> lista = new ArrayList<>();
+		lista.add("Mito");
+		lista.add("Code");
+		lista.add("MitoCode");
+		
+		//filtrar(lista, System.out::println, 5, null);
+		filtrar(lista, System.out::println, 0, "Code");
+		
+		m = new ScriptEngineManager();
+		e = m.getEngineByName("nashorn");
+		invocador = (Invocable)e;
+		
+		try {
+			implementarInterfaz();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		return "java8";
+	}
+	
+	private void llamarFunciones() throws Exception {
+		//e.eval("print('JS desde Java')");
+		e.eval(new FileReader("src/main/java/com/mitocode/nashorn/archivo.js"));
+		
+		String rpta = (String) invocador.invokeFunction("calcular", "2", "3");		
+		System.out.println(rpta);
+		
+		double rpta2 = (double) invocador.invokeFunction("calcular", 2, 3);
+		System.out.println(rpta2);
+	}
+	
+	private void implementarInterfaz() throws Exception {
+		e.eval(new FileReader("src/main/java/com/mitocode/nashorn/archivo.js"));
+		
+		Object implementacion = e.get("hiloImpl");
+		Runnable r = invocador.getInterface(implementacion, Runnable.class);				
+		
+		Thread th1 = new Thread(r);
+		th1.start();
+		
+		Thread th2 = new Thread(r);
+		th2.start();
+	}
+	
+	private Function<String,String> saludo(String nombrePersona){
+		return x -> nombrePersona + x;
+	}
+	
+	
+	public void filtrar(List<String> lista, Consumer<String> consumidor, int longitud, String cadena){
+		//lista.stream().filter(this.establecerLogicaFiltro(longitud)).forEach(consumidor);
+		lista.stream().filter(this.establecerLogicaFiltro(cadena)).forEach(consumidor);
+	}
+	
+	public Predicate<String> establecerLogicaFiltro(int longitud){
+		return texto -> texto.length() < longitud;
+	}
+	
+	public Predicate<String> establecerLogicaFiltro(String cadena){
+		return texto -> texto.contains(cadena);
 	}
 	
 }

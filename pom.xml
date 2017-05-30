@@ -205,6 +205,12 @@
 		<!-- End Subiendo archivos desde el form -->
 
 
+		<dependency>
+			<groupId>io.reactivex</groupId>
+			<artifactId>rxjava</artifactId>
+			<version>1.2.6</version>
+		</dependency>
+
 		<!-- End Muguruza -->
 
 	</dependencies>
