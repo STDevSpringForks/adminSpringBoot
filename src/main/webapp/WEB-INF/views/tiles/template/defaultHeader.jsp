@@ -12,12 +12,15 @@
 --%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.css" rel="stylesheet" type="text/css"/>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/my-test.css">
+<link href="${pageContext.request.contextPath}/resources/css/my-test.css" rel="stylesheet" type="text/css" >
 <script src="${pageContext.request.contextPath}/resources/js/simple-test.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/css/dataTables.jqueryui.min.css" rel="stylesheet" type="text/css" >
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/js/jquery.dataTables.min.js"></script>
 
 </head>
 <body>

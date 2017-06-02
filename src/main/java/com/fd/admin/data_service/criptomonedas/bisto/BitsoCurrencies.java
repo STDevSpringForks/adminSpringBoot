@@ -8,7 +8,8 @@ package com.fd.admin.data_service.criptomonedas.bisto;
 public enum BitsoCurrencies {
 	
 	btc_mxn("btc_mxn"),
-	eth_mxn("eth_mxn");
+	eth_mxn("eth_mxn"),
+	xrp_mxn("xrp_mxn");
 	
 	private String currency;
 	
