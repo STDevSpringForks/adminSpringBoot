@@ -24,19 +24,19 @@
 	</table>
 <div class="ui image label">
   <img src="${pageContext.request.contextPath}/resources/images/criptoCurrency/ethereum.png">
-  ${balanceETH}
+  ${balanceTotalETH}
 </div>
 <div class="ui image label">
   <img src="${pageContext.request.contextPath}/resources/images/criptoCurrency/ripple.png">
-  ${balanceXRP}
+  ${balanceTotalXRP}
 </div>
 <div class="ui image label">
   <img src="${pageContext.request.contextPath}/resources/images/criptoCurrency/bitcoin.png">
-  ${balanceBTC}
+  ${balanceTotalBTC}
 </div>
 <div class="ui image label">
   <img src="${pageContext.request.contextPath}/resources/images/criptoCurrency/mxn.jpg">
-  ${balanceMXN}
+  ${balanceTotalMXN}
 </div>
 
    
