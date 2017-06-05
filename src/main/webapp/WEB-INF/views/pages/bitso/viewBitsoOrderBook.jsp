@@ -2,7 +2,18 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<table id="example" class="ui celled table sortable" >
+<table id="orderBookResultCompra" class="ui celled table sortable" >
+    <thead>
+        <tr>
+            <th>BOOK</th>
+            <th>Precio de compra</th>
+            <th>Monto a comprar</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<table id="orderBookResultVenta" class="ui celled table sortable" >
     <thead>
         <tr>
             <th>BOOK</th>
@@ -18,8 +29,8 @@ $(document).ready(function() {
 	
 	/* https://datatables.net/forums/discussion/30540/fn-datatable-render-number-documentation */
 	
-	$('#example').DataTable({
-		data: ${orderBookResult},
+	$('#orderBookResultCompra').DataTable({
+		data: ${orderBookResultCompra},
 		order: [[ 1, "desc" ]],
 		columns: [
 			{ "data": "book" },
@@ -33,7 +44,21 @@ $(document).ready(function() {
         }
 	}).columns.adjust();
 	
-	$('.menu .item').tab();
+	$('#orderBookResultVenta').DataTable({
+		data: ${orderBookResultVenta},
+		order: [[ 1, "desc" ]],
+		columns: [
+			{ "data": "book" },
+			{ "data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '$ ') }, 
+			{ "data": "amount", render: $.fn.dataTable.render.number(',', '.', 10, '') },
+		],
+		"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+            if (aData.amount > 5.0){
+                $('td',nRow).css('background-color', '#CCCC99');
+            }
+        }
+	}).columns.adjust();
+	
 	
 });
 </script>

@@ -132,8 +132,10 @@ public class BitsoWebController {
         
     	OrderBookResult orderBookResult = bitsoService.obtenerOrdenDeCompras();
         Gson objGson = new GsonBuilder().setPrettyPrinting().create();
-        String json = objGson.toJson(orderBookResult.getBitsoPayloadOrderBook().getBids());
-        model.addAttribute("orderBookResult",json);
+        String jsonBids = objGson.toJson(orderBookResult.getBitsoPayloadOrderBook().getBids());
+        String jsonAsks = objGson.toJson(orderBookResult.getBitsoPayloadOrderBook().getAsks());
+        model.addAttribute("orderBookResultCompra",jsonBids);
+        model.addAttribute("orderBookResultVenta",jsonAsks);
         
     	
         return VIEW_BITSO_ORDER_BOOK;

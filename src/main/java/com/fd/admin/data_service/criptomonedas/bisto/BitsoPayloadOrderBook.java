@@ -15,6 +15,7 @@ public class BitsoPayloadOrderBook implements Serializable {
 	
 	private String updated_at;
 	private List<Bids> bids;
+	private List<Bids> asks;
 	
 	public BitsoPayloadOrderBook() {
 		this.bids = new ArrayList<>();
@@ -32,6 +33,13 @@ public class BitsoPayloadOrderBook implements Serializable {
 	public void setBids(List<Bids> bids) {
 		this.bids = bids;
 	}
+	public List<Bids> getAsks() {
+		return asks;
+	}
+	public void setAsks(List<Bids> asks) {
+		this.asks = asks;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -39,10 +47,11 @@ public class BitsoPayloadOrderBook implements Serializable {
 		builder.append(updated_at);
 		builder.append(", bids=");
 		builder.append(bids);
+		builder.append(", asks=");
+		builder.append(asks);
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
+
 
 }

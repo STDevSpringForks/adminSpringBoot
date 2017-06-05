@@ -1,8 +1,6 @@
 package com.fd.criptocurrency.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.fd.admin.data_service.criptomonedas.bisto.BitsoPayloadOrderBook;
 
