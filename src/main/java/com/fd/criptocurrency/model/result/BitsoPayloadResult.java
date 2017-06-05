@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.fd.admin.data_service.criptomonedas.bisto.BitsoPayload;
+import org.springframework.format.annotation.NumberFormat;
+
+import com.fd.admin.data_service.criptomonedas.bisto.BitsoPayloadTicker;
 
 /**
  * 
@@ -17,50 +19,49 @@ public class BitsoPayloadResult implements Serializable {
 	
 	private static final long serialVersionUID = 4706397058743533390L;
 	
-	private List<BitsoPayload> bitsoPayloadList;
-	private Map<String,BitsoPayload> books;
+	private List<BitsoPayloadTicker> bitsoPayloadList;
+	private Map<String,BitsoPayloadTicker> books;
 	
-	private BitsoPayload payloadETH_MXN;
-	private BitsoPayload payloadXRP_MXN;
-	private BitsoPayload payloadBTC_MXN;
+	private BitsoPayloadTicker payloadETH_MXN;
+	private BitsoPayloadTicker payloadXRP_MXN;
+	private BitsoPayloadTicker payloadBTC_MXN;
 
 	public BitsoPayloadResult(){
 		this.bitsoPayloadList = new ArrayList<>();
 		this.books = new HashMap<>();
-		this.payloadETH_MXN = new BitsoPayload();
-		this.payloadXRP_MXN = new BitsoPayload();
-		this.payloadBTC_MXN = new BitsoPayload();
+		this.payloadETH_MXN = new BitsoPayloadTicker();
+		this.payloadXRP_MXN = new BitsoPayloadTicker();
+		this.payloadBTC_MXN = new BitsoPayloadTicker();
 	}
 	
-	public List<BitsoPayload> getBitsoPayloadList() {
+	public List<BitsoPayloadTicker> getBitsoPayloadList() {
 		return bitsoPayloadList;
 	}
-	public void setBitsoPayloadList(List<BitsoPayload> bitsoPayloadList) {
+	public void setBitsoPayloadList(List<BitsoPayloadTicker> bitsoPayloadList) {
 		this.bitsoPayloadList = bitsoPayloadList;
 	}
-	public Map<String, BitsoPayload> getBooks() {
+	public Map<String, BitsoPayloadTicker> getBooks() {
 		return books;
 	}
-
-	public void setBooks(Map<String, BitsoPayload> books) {
+	public void setBooks(Map<String, BitsoPayloadTicker> books) {
 		this.books = books;
 	}
-	public BitsoPayload getPayloadETH_MXN() {
+	public BitsoPayloadTicker getPayloadETH_MXN() {
 		return payloadETH_MXN;
 	}
-	public void setPayloadETH_MXN(BitsoPayload payloadETH_MXN) {
+	public void setPayloadETH_MXN(BitsoPayloadTicker payloadETH_MXN) {
 		this.payloadETH_MXN = payloadETH_MXN;
 	}
-	public BitsoPayload getPayloadXRP_MXN() {
+	public BitsoPayloadTicker getPayloadXRP_MXN() {
 		return payloadXRP_MXN;
 	}
-	public void setPayloadXRP_MXN(BitsoPayload payloadXRP_MXN) {
+	public void setPayloadXRP_MXN(BitsoPayloadTicker payloadXRP_MXN) {
 		this.payloadXRP_MXN = payloadXRP_MXN;
 	}
-	public BitsoPayload getPayloadBTC_MXN() {
+	public BitsoPayloadTicker getPayloadBTC_MXN() {
 		return payloadBTC_MXN;
 	}
-	public void setPayloadBTC_MXN(BitsoPayload payloadBTC_MXN) {
+	public void setPayloadBTC_MXN(BitsoPayloadTicker payloadBTC_MXN) {
 		this.payloadBTC_MXN = payloadBTC_MXN;
 	}
 

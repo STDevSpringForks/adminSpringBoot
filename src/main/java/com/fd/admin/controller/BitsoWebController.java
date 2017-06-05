@@ -1,8 +1,6 @@
 package com.fd.admin.controller;
 
 import java.math.BigDecimal;
-import java.text.NumberFormat;
-import java.util.Locale;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -21,13 +19,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fd.admin.data_service.criptomonedas.bisto.BitsoCurrencies;
-import com.fd.admin.data_service.criptomonedas.bisto.BitsoPayload;
+import com.fd.admin.data_service.criptomonedas.bisto.BitsoPayloadTicker;
 import com.fd.criptocurrency.data_service.service.BitsoService;
+import com.fd.criptocurrency.data_service.utils.UtilsBigDecimal;
 import com.fd.criptocurrency.model.BalanceCriptoDivisas;
 import com.fd.criptocurrency.model.FormBitsoBalance;
+import com.fd.criptocurrency.model.OrderBookResult;
 import com.fd.criptocurrency.model.result.BitsoPayloadResult;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 
 
 /**
@@ -41,6 +42,7 @@ public class BitsoWebController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BitsoWebController.class);
     private static final String VIEW_BITSO = "bitso/viewBitso";
+    private static final String VIEW_BITSO_ORDER_BOOK = "bitso/viewBitsoOrderBook";
     
     @Autowired
     @Qualifier("bitsoServiceImpl")
@@ -53,43 +55,44 @@ public class BitsoWebController {
      */
     @GetMapping("/viewBitso")
     public String viewBitso(Model model) {
-        FormBitsoBalance formBitsoBalance = new FormBitsoBalance();
-        NumberFormat numberFormatter = NumberFormat.getNumberInstance(new Locale("ES","MX"));
         
+    	FormBitsoBalance formBitsoBalance = new FormBitsoBalance();
+        model.addAttribute("formBitsoBalance", formBitsoBalance);
+        
+        BalanceCriptoDivisas balanceCriptoDivisasInicial = bitsoService.obtenerBalanceDivisasInicial();
+        model.addAttribute("inversionInicialETH",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasInicial.getBalanceETH_MXN()));
+    	model.addAttribute("inversionInicialXRP",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasInicial.getBalanceXRP_MXN()));
+    	model.addAttribute("inversionInicialBTC",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasInicial.getBalanceBTC_MXN()));
+    	model.addAttribute("inversionInicialMXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasInicial.getBalanceMXN_MXN()));
+    	model.addAttribute("inversionInicialTotalMXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasInicial.getBalanceTOTAL_MXN()));
         
         BitsoPayloadResult bitsoPayloadResult = bitsoService.getPayload();
-        BalanceCriptoDivisas balanceCriptoDivisas = bitsoService.obtenerBalanceDivisas(bitsoPayloadResult);
-        BalanceCriptoDivisas balanceCriptoDivisasInicial = bitsoService.obtenerBalanceDivisasInicial();
-        BalanceCriptoDivisas balanceCriptoDivisasGanacia = bitsoService.obtenerBalanceDivisasGanancia(balanceCriptoDivisas,balanceCriptoDivisasInicial);
-        
-        model.addAttribute("balanceTotalETH",balanceCriptoDivisas.getBalanceETH());
-    	model.addAttribute("balanceTotalXRP",balanceCriptoDivisas.getBalanceXRP());
-    	model.addAttribute("balanceTotalBTC",balanceCriptoDivisas.getBalanceBTC());
-    	model.addAttribute("balanceTotalMXN",balanceCriptoDivisas.getBalanceMXN());
-    	
-    	model.addAttribute("balanceTotalETH_MXN",numberFormatter.format(balanceCriptoDivisas.getBalanceETH_MXN()));
-    	model.addAttribute("balanceTotalXRP_MXN",numberFormatter.format(balanceCriptoDivisas.getBalanceXRP_MXN()));
-    	model.addAttribute("balanceTotalBTC_MXN",numberFormatter.format(balanceCriptoDivisas.getBalanceBTC_MXN()));
-    	model.addAttribute("balanceTotalMXN_MXN",numberFormatter.format(balanceCriptoDivisas.getBalanceMXN_MXN()));
-    	model.addAttribute("balanceTotal_MXN",numberFormatter.format(balanceCriptoDivisas.getBalanceTOTAL_MXN()));
-        
-    	model.addAttribute("inversionInicialETH",numberFormatter.format(balanceCriptoDivisasInicial.getBalanceETH_MXN()));
-    	model.addAttribute("inversionInicialXRP",numberFormatter.format(balanceCriptoDivisasInicial.getBalanceXRP_MXN()));
-    	model.addAttribute("inversionInicialBTC",numberFormatter.format(balanceCriptoDivisasInicial.getBalanceBTC_MXN()));
-    	model.addAttribute("inversionInicialMXN",numberFormatter.format(balanceCriptoDivisasInicial.getBalanceMXN_MXN()));
-    	model.addAttribute("inversionInicialTotalMXN",numberFormatter.format(balanceCriptoDivisasInicial.getBalanceTOTAL_MXN()));
-    	
-    	model.addAttribute("gananciaTotal_ETH",numberFormatter.format(balanceCriptoDivisasGanacia.getBalanceETH_MXN()));
-    	model.addAttribute("gananciaTotal_XRP",numberFormatter.format(balanceCriptoDivisasGanacia.getBalanceXRP_MXN()));
-    	model.addAttribute("gananciaTotal_BTC",numberFormatter.format(balanceCriptoDivisasGanacia.getBalanceBTC_MXN()));
-    	model.addAttribute("gananciaTotal_MXN",numberFormatter.format(balanceCriptoDivisasGanacia.getBalanceMXN_MXN()));
-    	model.addAttribute("gananciaTotalMXN_MXN",numberFormatter.format(balanceCriptoDivisasGanacia.getBalanceTOTAL_MXN()));
-    	
         Gson objGson = new GsonBuilder().setPrettyPrinting().create();
         String json = objGson.toJson(bitsoPayloadResult.getBitsoPayloadList());
         model.addAttribute("bitsoPayloadList",json);
         
-        model.addAttribute("formBitsoBalance", formBitsoBalance);
+        BalanceCriptoDivisas balanceCriptoDivisas = bitsoService.obtenerBalanceDivisas(bitsoPayloadResult);
+        model.addAttribute("balanceTotalETH",balanceCriptoDivisas.getBalanceETH());
+    	model.addAttribute("balanceTotalXRP",balanceCriptoDivisas.getBalanceXRP());
+    	model.addAttribute("balanceTotalBTC",balanceCriptoDivisas.getBalanceBTC());
+    	model.addAttribute("balanceTotalMXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisas.getBalanceMXN()));
+        
+    	model.addAttribute("balanceTotalETH_MXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisas.getBalanceETH_MXN()));
+    	model.addAttribute("balanceTotalXRP_MXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisas.getBalanceXRP_MXN()));
+    	model.addAttribute("balanceTotalBTC_MXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisas.getBalanceBTC_MXN()));
+    	model.addAttribute("balanceTotalMXN_MXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisas.getBalanceMXN_MXN()));
+    	model.addAttribute("balanceTotal_MXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisas.getBalanceTOTAL_MXN()));
+    	
+    	model.addAttribute("comisionTOTAL_MXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisas.getComisionTOTAL_MXN()));
+    	
+        BalanceCriptoDivisas balanceCriptoDivisasGanacia = bitsoService.obtenerBalanceDivisasGanancia(balanceCriptoDivisas,balanceCriptoDivisasInicial);
+        
+    	model.addAttribute("gananciaTotal_ETH",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasGanacia.getBalanceETH_MXN()));
+    	model.addAttribute("gananciaTotal_XRP",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasGanacia.getBalanceXRP_MXN()));
+    	model.addAttribute("gananciaTotal_BTC",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasGanacia.getBalanceBTC_MXN()));
+    	model.addAttribute("gananciaTotal_MXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasGanacia.getBalanceMXN_MXN()));
+    	model.addAttribute("gananciaTotalMXN_MXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasGanacia.getBalanceTOTAL_MXN()));
+    	
         return VIEW_BITSO;
     }
     
@@ -115,14 +118,26 @@ public class BitsoWebController {
     	BitsoPayloadResult bitsoPayloadResult = bitsoService.getPayload();
     	
     	//Agrupando por books
-    	Map<String,BitsoPayload> books = bitsoPayloadResult.getBitsoPayloadList().stream().collect(Collectors.toMap(BitsoPayload::getBook,Function.identity()));
+    	Map<String,BitsoPayloadTicker> books = bitsoPayloadResult.getBitsoPayloadList().stream().collect(Collectors.toMap(BitsoPayloadTicker::getBook,Function.identity()));
     	
-    	BitsoPayload payloadETH = books.get(BitsoCurrencies.eth_mxn.getCurrency());
+    	BitsoPayloadTicker payloadETH = books.get(BitsoCurrencies.eth_mxn.getCurrency());
     	
     	
         return VIEW_BITSO;
     }
     
+    
+    @GetMapping("/viewBitsoOrderBook")
+    public String viewBitsoOrderBook(Model model) {
+        
+    	OrderBookResult orderBookResult = bitsoService.obtenerOrdenDeCompras();
+        Gson objGson = new GsonBuilder().setPrettyPrinting().create();
+        String json = objGson.toJson(orderBookResult.getBitsoPayloadOrderBook().getBids());
+        model.addAttribute("orderBookResult",json);
+        
+    	
+        return VIEW_BITSO_ORDER_BOOK;
+    }
     
 //    Map<String,BitsoTricker> mapBitsoTricker = new HashMap<>(); 
 //	/*

@@ -1,6 +1,7 @@
 package com.fd.criptocurrency.data_service.service;
 
 import com.fd.criptocurrency.model.BalanceCriptoDivisas;
+import com.fd.criptocurrency.model.OrderBookResult;
 import com.fd.criptocurrency.model.result.BitsoPayloadResult;
 
 /**
@@ -33,5 +34,11 @@ public interface BitsoService {
 	 * @return
 	 */
 	public BalanceCriptoDivisas obtenerBalanceDivisasGanancia(BalanceCriptoDivisas balance,BalanceCriptoDivisas balanceInicial);
+	
+	/**
+	 * Obtener el listado de las ordenes de compra.
+	 * @return
+	 */
+	public OrderBookResult obtenerOrdenDeCompras();
 	
 }

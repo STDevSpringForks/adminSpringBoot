@@ -1,6 +1,5 @@
 package com.fd.criptocurrency.data_service.utils;
 
-import static com.fd.admin.data_service.criptomonedas.bisto.BitsoConstants.BITSO_URL_TICKER;
 import static com.fd.admin.data_service.utils.AdminSpringConstants.APPLICATION_JSON;
 import static com.fd.admin.data_service.utils.AdminSpringConstants.CONTENT_TYPE;
 
@@ -39,12 +38,12 @@ public class Utils {
 	        	jsonTricker = Json.createReader(response.getEntity().getContent()).readObject();
 	        }catch(JsonParsingException jp){
 	        	//El padre es RuntimeException, por lo cual previamente el desarrollador debio de considerar que esto no ocurra.
-	        	System.out.println("ERROR AL TRATAR DE OBTENER EL JSON DE " + BITSO_URL_TICKER);
+	        	System.out.println("ERROR AL TRATAR DE OBTENER EL JSON DE " + urlJSON);
 	        	jp.printStackTrace();
 	        }
 		}
         catch(Exception e){
-        	System.out.println("ERROR AL TRATAR DE OBTENER EL JSON DE " + BITSO_URL_TICKER);
+        	System.out.println("ERROR AL TRATAR DE OBTENER EL JSON DE " + urlJSON);
         	e.printStackTrace();
         }
 		

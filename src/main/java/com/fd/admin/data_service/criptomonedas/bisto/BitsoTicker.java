@@ -14,7 +14,7 @@ public class BitsoTicker implements Serializable {
 	private static final long serialVersionUID = 1282407494420026551L;
 	private boolean success;
 	
-	private List<BitsoPayload> payload;
+	private List<BitsoPayloadTicker> payload;
 	
 	public BitsoTicker(){
 		payload = new ArrayList<>();
@@ -28,11 +28,11 @@ public class BitsoTicker implements Serializable {
 		this.success = success;
 	}
 
-	public List<BitsoPayload> getPayload() {
+	public List<BitsoPayloadTicker> getPayload() {
 		return payload;
 	}
 
-	public void setPayload(List<BitsoPayload> payload) {
+	public void setPayload(List<BitsoPayloadTicker> payload) {
 		this.payload = payload;
 	}
 

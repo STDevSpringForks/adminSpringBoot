@@ -1,7 +1,10 @@
 package com.fd.criptocurrency.data_service.utils;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Objects;
 
 import org.slf4j.Logger;
@@ -39,6 +42,12 @@ public class UtilsBigDecimal {
 	    return Arrays.stream(addends)
 	            .filter(Objects::nonNull)
 	            .reduce(BigDecimal.ZERO, BigDecimal::add);
+	}
+	
+	
+	public static String printDecimalFormatLocale(BigDecimal bigDecimal){
+		DecimalFormat df = new DecimalFormat("$ #,###,##0.0000 MXN",new DecimalFormatSymbols(new Locale("es_MX")));
+		return df.format(bigDecimal);
 	}
 	
 }

@@ -97,6 +97,12 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/bitso/viewBitso.jsp" />  
    </definition>
    
+   <!-- Bitso Page -->
+   <definition name="bitso/viewBitsoOrderBook" extends="base-definition">  
+       <put-attribute name="title" value="View Bitso Order Book" />
+       <put-attribute name="body" value="/WEB-INF/views/pages/bitso/viewBitsoOrderBook.jsp" />  
+   </definition>
+   
    <!-- Gastos Page -->
    <definition name="home/gastos/addGasto" extends="base-definition">  
        <put-attribute name="title" value="Add Gasto" />  

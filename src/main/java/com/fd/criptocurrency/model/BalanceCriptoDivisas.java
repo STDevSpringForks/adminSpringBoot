@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.format.annotation.NumberFormat;
+
 /**
  * 
  * @author Muguruza
@@ -24,8 +26,10 @@ public class BalanceCriptoDivisas implements Serializable {
 	private BigDecimal balanceXRP_MXN = BigDecimal.ZERO;
 	private BigDecimal balanceBTC_MXN = BigDecimal.ZERO;
 	private BigDecimal balanceMXN_MXN = BigDecimal.ZERO;
-
+	
 	private BigDecimal balanceTOTAL_MXN = BigDecimal.ZERO;
+	
+	private BigDecimal comisionTOTAL_MXN = BigDecimal.ZERO;
 	
 	public BalanceCriptoDivisas() {
 		this.balancePerson = new ArrayList<>();
@@ -118,6 +122,14 @@ public class BalanceCriptoDivisas implements Serializable {
 		this.balanceTOTAL_MXN = balanceTOTAL_MXN;
 	}
 
+	public BigDecimal getComisionTOTAL_MXN() {
+		return comisionTOTAL_MXN;
+	}
+
+	public void setComisionTOTAL_MXN(BigDecimal comisionTOTAL_MXN) {
+		this.comisionTOTAL_MXN = comisionTOTAL_MXN;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -141,6 +153,8 @@ public class BalanceCriptoDivisas implements Serializable {
 		builder.append(balanceMXN_MXN);
 		builder.append(", balanceTOTAL_MXN=");
 		builder.append(balanceTOTAL_MXN);
+		builder.append(", comisionTOTAL_MXN=");
+		builder.append(comisionTOTAL_MXN);
 		builder.append("]");
 		return builder.toString();
 	}

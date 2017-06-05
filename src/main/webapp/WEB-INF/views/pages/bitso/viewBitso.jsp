@@ -2,46 +2,38 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<div class="ui top attached tabular menu">
-    <a class="active item" data-tab="first">Balance Total &nbsp; <span class="ui teal tag label" >${balanceTotal_MXN}</span></a>
-    <a class="item" data-tab="second">Inversión Inicial &nbsp; <span class="ui teal  tag label" >${inversionInicialTotalMXN}</span></a>
-    <a class="item" data-tab="third">Ganancia &nbsp; <span class="ui teal  tag label">${gananciaTotalMXN_MXN}</span></a>
-</div>
-<div class="ui bottom attached active tab segment" data-tab="first">
- <table class="ui sortable celled table">
-		<tr>
-			<th>ETH</th>
-			<th>XRP</th>
-			<th>BTC</th>
-			<th>MXN</th>
-		</tr>
-	    <tr>
-			<td class="positive" style="text-align: right;" >${balanceTotalETH_MXN}</td>
-			<td class="negative" style="text-align: right;" >${balanceTotalXRP_MXN}</td>
-			<td class="positive" style="text-align: right;" >${balanceTotalBTC_MXN}</td>
-			<td class="positive" style="text-align: right;" >${balanceTotalMXN_MXN}</td>
-		</tr>
-	</table>
 <div class="ui image label">
-  <img src="${pageContext.request.contextPath}/resources/images/criptoCurrency/ethereum.png">
-  ${balanceTotalETH}
+	<img src="${pageContext.request.contextPath}/resources/images/criptoCurrency/ethereum.png">
+	${balanceTotalETH}
 </div>
 <div class="ui image label">
   <img src="${pageContext.request.contextPath}/resources/images/criptoCurrency/ripple.png">
-  ${balanceTotalXRP}
+${balanceTotalXRP}
 </div>
 <div class="ui image label">
   <img src="${pageContext.request.contextPath}/resources/images/criptoCurrency/bitcoin.png">
-  ${balanceTotalBTC}
+${balanceTotalBTC}
 </div>
 <div class="ui image label">
   <img src="${pageContext.request.contextPath}/resources/images/criptoCurrency/mxn.jpg">
-  ${balanceTotalMXN}
+${balanceTotalMXN}
+</div>
+<div class="ui image label">
+   Comisión TOTAL al finalizar los trade: &nbsp;&nbsp; <b>${comisionTOTAL_MXN}</b>
 </div>
 
-   
- </div>
-<div class="ui bottom attached tab segment" data-tab="second">
+<div class="ui top attached tabular menu">
+    <a class="active item" data-tab="first">Inversión Inicial &nbsp; 
+    	<span class="ui teal tag label" >&nbsp;&nbsp;${inversionInicialTotalMXN}</span>
+    </a>
+    <a class="item" data-tab="second">Ganancia &nbsp; 
+    	<span class="ui teal  tag label">&nbsp;&nbsp;${gananciaTotalMXN_MXN}</span>
+    </a>
+    <a class="item" data-tab="third">Balance Total &nbsp; 
+    	<span class="ui teal tag label" >&nbsp;&nbsp;${balanceTotal_MXN}</span>
+    </a>
+</div>
+<div class="ui bottom attached active tab segment" data-tab="first">
 <table class="ui sortable celled table">
 		<tr>
 			<th>ETH</th>
@@ -57,7 +49,7 @@
 		</tr>
 	</table>
   </div>
-<div class="ui bottom attached tab segment" data-tab="third">
+<div class="ui bottom attached tab segment" data-tab="second">
 	<table class="ui sortable celled table">
 		<tr>
 			<th>ETH</th>
@@ -70,6 +62,22 @@
 			<td class="negative" style="text-align: right;" >${gananciaTotal_XRP}</td>
 			<td class="positive" style="text-align: right;" >${gananciaTotal_BTC}</td>
 			<td class="positive" style="text-align: right;" >${gananciaTotal_MXN}</td>
+		</tr>
+	</table>
+</div>
+<div class="ui bottom attached tab segment" data-tab="third">
+	<table class="ui sortable celled table">
+		<tr>
+			<th>ETH</th>
+			<th>XRP</th>
+			<th>BTC</th>
+			<th>MXN</th>
+		</tr>
+	    <tr>
+			<td class="positive" style="text-align: right;" >${balanceTotalETH_MXN}</td>
+			<td class="negative" style="text-align: right;" >${balanceTotalXRP_MXN}</td>
+			<td class="positive" style="text-align: right;" >${balanceTotalBTC_MXN}</td>
+			<td class="positive" style="text-align: right;" >${balanceTotalMXN_MXN}</td>
 		</tr>
 	</table>
 </div>
@@ -120,15 +128,28 @@
 <script>
 $(document).ready(function() {
 	
+	/* https://datatables.net/forums/discussion/30540/fn-datatable-render-number-documentation */
+	
 	$('#example').DataTable({
-		"data": ${bitsoPayloadList},		
-		"columns": [
+		data: ${bitsoPayloadList},
+		order: [[ 1, "desc" ]],
+		columns: [
 			{ "data": "book" },
-			{ "data": "ask" }, 
-			{ "data": "bid"},
-			{ "data": "high" }, 
-			{ "data": "low" }
+			{ "data": "ask", render: $.fn.dataTable.render.number(',', '.', 2, '$ ') }, 
+			{ "data": "bid", render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
+			{ "data": "high", render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
+			{ "data": "low", render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
+// 			{ "data": null, 
+//                 render: function(data, type, row){
+//              	   return '$ ' + data.low;
+//                 } 
+//              }
 		],
+		"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+            if (aData.book.includes("mxn")){
+                $('td',nRow).css('background-color', '#CCCC99');
+            }
+        }
 	}).columns.adjust();
 	
 	$('.menu .item').tab();

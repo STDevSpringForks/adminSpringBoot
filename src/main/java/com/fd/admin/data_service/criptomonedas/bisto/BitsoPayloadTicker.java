@@ -7,11 +7,10 @@ import java.io.Serializable;
  * @author Muguruza
  *
  */
-public class BitsoPayload implements Serializable {
-	/**
-	 * 
-	 */
+public class BitsoPayloadTicker implements Serializable {
+	
 	private static final long serialVersionUID = 3463390799122555749L;
+	
 	private String high;
 	private String last;
 	private String created_at;

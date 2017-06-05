@@ -1,9 +1,9 @@
 package com.fd.criptocurrency.data_service.service.impl;
 
+import static com.fd.admin.data_service.criptomonedas.bisto.BitsoConstants.BITSO_URL_ORDER_BOOK_ETH_MXN;
 import static com.fd.admin.data_service.criptomonedas.bisto.BitsoConstants.BITSO_URL_TICKER;
 
 import java.math.BigDecimal;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,14 +14,17 @@ import javax.json.JsonObject;
 
 import org.springframework.stereotype.Service;
 
+import com.fd.admin.data_service.criptomonedas.bisto.BitsoConstants;
 import com.fd.admin.data_service.criptomonedas.bisto.BitsoCurrencies;
-import com.fd.admin.data_service.criptomonedas.bisto.BitsoPayload;
+import com.fd.admin.data_service.criptomonedas.bisto.BitsoPayloadTicker;
 import com.fd.admin.data_service.criptomonedas.bisto.BitsoTicker;
 import com.fd.criptocurrency.data_service.service.BitsoService;
 import com.fd.criptocurrency.data_service.utils.Utils;
 import com.fd.criptocurrency.data_service.utils.UtilsBigDecimal;
 import com.fd.criptocurrency.model.BalanceCriptoDivisas;
 import com.fd.criptocurrency.model.BalancePerson;
+import com.fd.criptocurrency.model.OrderBook;
+import com.fd.criptocurrency.model.OrderBookResult;
 import com.fd.criptocurrency.model.result.BitsoPayloadResult;
 import com.google.gson.Gson;
 
@@ -43,10 +46,11 @@ public class BitsoServiceImpl implements BitsoService {
 		if (jsonTricker.getBoolean("success", false)) {
 			bitsoTicker = new Gson().fromJson(jsonTricker.toString(), BitsoTicker.class);
 		}
-		bitsoPayloadResult.setBitsoPayloadList(bitsoTicker.getPayload());/* Agrupando por books */
+		
+		bitsoPayloadResult.setBitsoPayloadList(bitsoTicker.getPayload());
     	
 		/* Agrupando por books */
-		Map<String,BitsoPayload> books = bitsoPayloadResult.getBitsoPayloadList().stream().collect(Collectors.toMap(BitsoPayload::getBook,Function.identity()));
+		Map<String,BitsoPayloadTicker> books = bitsoPayloadResult.getBitsoPayloadList().stream().collect(Collectors.toMap(BitsoPayloadTicker::getBook,Function.identity()));
 		bitsoPayloadResult.setBooks(books);
 		
 		bitsoPayloadResult.setPayloadETH_MXN(books.get(BitsoCurrencies.eth_mxn.getCurrency()));
@@ -76,8 +80,10 @@ public class BitsoServiceImpl implements BitsoService {
         
         BalancePerson personBalanceLily = new BalancePerson();
         personBalanceLily.setBalanceBTC("0.00000585");
-        personBalanceLily.setBalanceETH("21.00785276");
-        personBalanceLily.setBalanceMXN("23140.03");
+//        personBalanceLily.setBalanceETH("21.00785276");
+//        personBalanceLily.setBalanceMXN("23140.03");
+        personBalanceLily.setBalanceETH("20.70785276");
+        personBalanceLily.setBalanceMXN("24491.36");
         personBalanceLily.setBalanceXRP("0.9828");
         
         List<BalancePerson> balancePersonList = new ArrayList<>();
@@ -93,19 +99,30 @@ public class BitsoServiceImpl implements BitsoService {
         balanceCriptoDivisas.setBalanceBTC(UtilsBigDecimal.add(personBalanceFroy.getBalanceBTC(),personBalanceOfe.getBalanceBTC(),personBalanceLily.getBalanceBTC()));
         balanceCriptoDivisas.setBalanceMXN(UtilsBigDecimal.add(personBalanceFroy.getBalanceMXN(),personBalanceOfe.getBalanceMXN(),personBalanceLily.getBalanceMXN()));
         
-        
-    	BitsoPayload payloadETH_MXN = bitsoPayloadResult.getPayloadETH_MXN();
-    	BitsoPayload payloadXRP_MXN = bitsoPayloadResult.getPayloadXRP_MXN();
-    	BitsoPayload payloadBTC_MXN = bitsoPayloadResult.getPayloadBTC_MXN();
+    	BitsoPayloadTicker payloadETH_MXN = bitsoPayloadResult.getPayloadETH_MXN();
+    	BitsoPayloadTicker payloadXRP_MXN = bitsoPayloadResult.getPayloadXRP_MXN();
+    	BitsoPayloadTicker payloadBTC_MXN = bitsoPayloadResult.getPayloadBTC_MXN();
     	
     	/* Start Balance Total */
-    	balanceCriptoDivisas.setBalanceETH_MXN(balanceCriptoDivisas.getBalanceETH().multiply(new BigDecimal(payloadETH_MXN.getAsk())));
-    	balanceCriptoDivisas.setBalanceXRP_MXN(balanceCriptoDivisas.getBalanceXRP().multiply(new BigDecimal(payloadXRP_MXN.getAsk())));
-    	balanceCriptoDivisas.setBalanceBTC_MXN(balanceCriptoDivisas.getBalanceBTC().multiply(new BigDecimal(payloadBTC_MXN.getAsk())));
+    	BigDecimal bETH = balanceCriptoDivisas.getBalanceETH().multiply(new BigDecimal(payloadETH_MXN.getAsk()));
+    	BigDecimal comisionTradeETH = bETH.multiply(BitsoConstants.COMISION_TRADE);
+    	balanceCriptoDivisas.setBalanceETH_MXN(bETH.subtract(comisionTradeETH));
+    	
+    	BigDecimal bXRP = balanceCriptoDivisas.getBalanceXRP().multiply(new BigDecimal(payloadXRP_MXN.getAsk()));
+    	BigDecimal comisionTradeXRP = bXRP.multiply(BitsoConstants.COMISION_TRADE);
+    	balanceCriptoDivisas.setBalanceXRP_MXN(bXRP.subtract(comisionTradeXRP));
+    	
+    	BigDecimal bBTC = balanceCriptoDivisas.getBalanceBTC().multiply(new BigDecimal(payloadBTC_MXN.getAsk()));
+    	BigDecimal comisionTradeBTC = bBTC.multiply(BitsoConstants.COMISION_TRADE);
+    	balanceCriptoDivisas.setBalanceBTC_MXN(bBTC.subtract(comisionTradeBTC));
+    	
     	balanceCriptoDivisas.setBalanceMXN_MXN(balanceCriptoDivisas.getBalanceMXN().multiply(new BigDecimal("1")));
     	
     	BigDecimal balanceTOTAL_MXN = UtilsBigDecimal.add(balanceCriptoDivisas.getBalanceETH_MXN(),balanceCriptoDivisas.getBalanceXRP_MXN(),balanceCriptoDivisas.getBalanceBTC_MXN(),balanceCriptoDivisas.getBalanceMXN_MXN());
     	balanceCriptoDivisas.setBalanceTOTAL_MXN(balanceTOTAL_MXN);
+    	
+    	BigDecimal sumaDeComisiones = UtilsBigDecimal.add(comisionTradeETH,comisionTradeXRP,comisionTradeBTC);
+    	balanceCriptoDivisas.setComisionTOTAL_MXN(sumaDeComisiones);
     	
         return balanceCriptoDivisas;
 	}
@@ -140,6 +157,23 @@ public class BitsoServiceImpl implements BitsoService {
 		balanceCriptoDivisas.setBalanceTOTAL_MXN(balance.getBalanceTOTAL_MXN().subtract(balanceInicial.getBalanceTOTAL_MXN()));
 		
 		return balanceCriptoDivisas;
+	}
+
+	@Override
+	public OrderBookResult obtenerOrdenDeCompras() {
+		OrderBookResult orderBookResult = new OrderBookResult();
+		OrderBook orderBook = new OrderBook();
+
+		JsonObject jsonTricker = Utils.readUrlJSON(BITSO_URL_ORDER_BOOK_ETH_MXN);
+
+		/* Obtener el valor booleano del atributo success, si este no se encuentra en el JSON obtener false por default. */
+		if (jsonTricker.getBoolean("success", false)) {
+			orderBook = new Gson().fromJson(jsonTricker.toString(), OrderBook.class);
+		}
+		
+		orderBookResult.setBitsoPayloadOrderBook(orderBook.getPayload());
+		
+		return orderBookResult;
 	}
 
 }
