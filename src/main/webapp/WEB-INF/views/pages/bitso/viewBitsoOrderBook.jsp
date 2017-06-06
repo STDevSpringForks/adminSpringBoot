@@ -17,7 +17,7 @@
     <thead>
         <tr>
             <th>BOOK</th>
-            <th>Precio de compra</th>
+            <th>Precio de Venta</th>
             <th>Monto a comprar</th>
         </tr>
     </thead>
@@ -31,7 +31,7 @@ $(document).ready(function() {
 	
 	$('#orderBookResultCompra').DataTable({
 		data: ${orderBookResultCompra},
-		order: [[ 1, "desc" ]],
+		order: [[ 1, "asc" ]],
 		columns: [
 			{ "data": "book" },
 			{ "data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '$ ') }, 
@@ -39,14 +39,14 @@ $(document).ready(function() {
 		],
 		"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
             if (aData.amount > 5.0){
-                $('td',nRow).css('background-color', '#CCCC99');
+                $('td',nRow).css('background-color', '#7BC0F3');
             }
         }
 	}).columns.adjust();
 	
 	$('#orderBookResultVenta').DataTable({
 		data: ${orderBookResultVenta},
-		order: [[ 1, "desc" ]],
+		order: [[ 1, "asc" ]],
 		columns: [
 			{ "data": "book" },
 			{ "data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '$ ') }, 
@@ -54,7 +54,7 @@ $(document).ready(function() {
 		],
 		"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
             if (aData.amount > 5.0){
-                $('td',nRow).css('background-color', '#CCCC99');
+                $('td',nRow).css('background-color', '#7BC0F3');
             }
         }
 	}).columns.adjust();

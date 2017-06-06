@@ -147,7 +147,7 @@ $(document).ready(function() {
 		],
 		"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
             if (aData.book.includes("mxn")){
-                $('td',nRow).css('background-color', '#CCCC99');
+                $('td',nRow).css('background-color', '#7BC0F3');
             }
         }
 	}).columns.adjust();
