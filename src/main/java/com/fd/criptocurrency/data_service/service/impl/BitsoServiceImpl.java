@@ -80,10 +80,12 @@ public class BitsoServiceImpl implements BitsoService {
         
         BalancePerson personBalanceLily = new BalancePerson();
         personBalanceLily.setBalanceBTC("0.00000585");
-        personBalanceLily.setBalanceETH("21.00785276");
-        personBalanceLily.setBalanceMXN("23140.03");
-        personBalanceLily.setBalanceETH("20.70785276");
-        personBalanceLily.setBalanceMXN("24491.36");
+//        personBalanceLily.setBalanceETH("21.00785276");
+//        personBalanceLily.setBalanceMXN("23140.03");
+//        personBalanceLily.setBalanceETH("20.70785276");
+//        personBalanceLily.setBalanceMXN("24491.36");
+        personBalanceLily.setBalanceETH("23.79873696");
+        personBalanceLily.setBalanceMXN("9189.57");
         personBalanceLily.setBalanceXRP("0.9828");
         
         List<BalancePerson> balancePersonList = new ArrayList<>();
