@@ -37,6 +37,7 @@ import com.google.gson.Gson;
 public class BitsoServiceImpl implements BitsoService {
 
 	public BitsoPayloadResult getPayload() {
+		
 		BitsoPayloadResult bitsoPayloadResult = new BitsoPayloadResult();
 		BitsoTicker bitsoTicker = new BitsoTicker();
 
@@ -68,8 +69,8 @@ public class BitsoServiceImpl implements BitsoService {
 		/* Start Balance manual, obtener la suma del balance por cada divisa desde Hibernate */
         BalancePerson personBalanceFroy = new BalancePerson();
         personBalanceFroy.setBalanceBTC("0.00001286");
-        personBalanceFroy.setBalanceETH("0.05120912");
-        personBalanceFroy.setBalanceMXN("9.29");
+        personBalanceFroy.setBalanceETH("0.05433122");
+        personBalanceFroy.setBalanceMXN("10.65");
         personBalanceFroy.setBalanceXRP("0.0");
         
         BalancePerson personBalanceOfe = new BalancePerson();
@@ -84,8 +85,12 @@ public class BitsoServiceImpl implements BitsoService {
 //        personBalanceLily.setBalanceMXN("23140.03");
 //        personBalanceLily.setBalanceETH("20.70785276");
 //        personBalanceLily.setBalanceMXN("24491.36");
-        personBalanceLily.setBalanceETH("23.79873696");
-        personBalanceLily.setBalanceMXN("9189.57");
+//        personBalanceLily.setBalanceETH("23.79873696");
+//        personBalanceLily.setBalanceMXN("9189.57");
+//        personBalanceLily.setBalanceETH("25.38887376");
+//        personBalanceLily.setBalanceMXN("1351.32");
+        personBalanceLily.setBalanceETH("25.48464388");
+        personBalanceLily.setBalanceMXN("885.57");
         personBalanceLily.setBalanceXRP("0.9828");
         
         List<BalancePerson> balancePersonList = new ArrayList<>();
@@ -132,13 +137,14 @@ public class BitsoServiceImpl implements BitsoService {
 	@Override
 	public BalanceCriptoDivisas obtenerBalanceDivisasInicial() {
 		
+		
 		BalanceCriptoDivisas balanceCriptoDivisas = new BalanceCriptoDivisas();
 		
 		 /* Start Mi Inversion Inicial */
-		balanceCriptoDivisas.setBalanceETH_MXN(new BigDecimal("55137.96"));
+		balanceCriptoDivisas.setBalanceETH_MXN(new BigDecimal("77392.42"));
 		balanceCriptoDivisas.setBalanceXRP_MXN(new BigDecimal("10000"));
 		balanceCriptoDivisas.setBalanceBTC_MXN(new BigDecimal("0.0"));
-		balanceCriptoDivisas.setBalanceMXN_MXN(new BigDecimal("23140.03"));
+		balanceCriptoDivisas.setBalanceMXN_MXN(new BigDecimal("885.57"));
 		
 		balanceCriptoDivisas.setBalanceTOTAL_MXN(UtilsBigDecimal.add(balanceCriptoDivisas.getBalanceETH_MXN(),balanceCriptoDivisas.getBalanceXRP_MXN(),balanceCriptoDivisas.getBalanceBTC_MXN(),balanceCriptoDivisas.getBalanceMXN_MXN()));
     	

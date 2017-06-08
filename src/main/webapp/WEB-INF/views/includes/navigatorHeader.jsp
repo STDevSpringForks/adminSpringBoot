@@ -48,6 +48,7 @@
 						<a href="${pageContext.request.contextPath}/exercises/viewJQuery3" class="item"><span style="color: orange;">(wip) </span>JQuery3</a>
 						<a href="${pageContext.request.contextPath}/bitso/viewBitso" class="item"><span style="color: orange;">(wip) </span>Bitso</a>
 						<a href="${pageContext.request.contextPath}/bitso/viewBitsoOrderBook" class="item">Bitso Order Book</a>
+						<a href="${pageContext.request.contextPath}/ejerciciosProgramacion/viewEjercicios" class="item">Ejercicios Programción</a>
 					</div>
 				</div>
 			</div>
