@@ -17,4 +17,11 @@ public interface ProjectEulerService {
 	 * @return
 	 */
 	public long sumaDeMultiplos(int limiteDeSerie,List<Integer> multiplosDe);
+	
+	/**
+	 * Obtener la suma de todos los numeros de una serie fibonacci hasta uno menos del limiteDeSerie.
+	 * @param limiteDeSerie
+	 * @return
+	 */
+	public long sumaFibonacci(long limiteDeSerie);
 }

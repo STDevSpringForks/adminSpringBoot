@@ -41,6 +41,9 @@ public class EjerciciosProgramacionWebController {
     	long sumaDeMultiplos = projectEulerService.sumaDeMultiplos(1000,multiplosDe);
     	System.out.println(sumaDeMultiplos);
     	
+    	long sumaFibonacci = projectEulerService.sumaFibonacci(4_000_000);
+    	System.out.println(sumaFibonacci);
+    	
         return VIEW_EJERCICIOS;
     }
     
