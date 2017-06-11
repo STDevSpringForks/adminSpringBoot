@@ -69,7 +69,7 @@ public class BitsoServiceImpl implements BitsoService {
 		/* Start Balance manual, obtener la suma del balance por cada divisa desde Hibernate */
         BalancePerson personBalanceFroy = new BalancePerson();
         personBalanceFroy.setBalanceBTC("0.00001286");
-        personBalanceFroy.setBalanceETH("0.05433122");
+        personBalanceFroy.setBalanceETH("0.05603414");
         personBalanceFroy.setBalanceMXN("10.65");
         personBalanceFroy.setBalanceXRP("0.0");
         
