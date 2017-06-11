@@ -1,8 +1,5 @@
 package com.fd.admin.controller;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -35,14 +32,19 @@ public class EjerciciosProgramacionWebController {
      * @return
      */
     @GetMapping("/viewEjercicios")
-    public String viewBitso(Model model) {
+    public String viewEjercicios(Model model) {
         
+    	/*
     	List<Integer> multiplosDe = Arrays.asList(3,5);
     	long sumaDeMultiplos = projectEulerService.sumaDeMultiplos(1000,multiplosDe);
     	System.out.println(sumaDeMultiplos);
     	
     	long sumaFibonacci = projectEulerService.sumaFibonacci(4_000_000);
     	System.out.println(sumaFibonacci);
+    	*/
+    	
+    	System.out.println(projectEulerService.getlargestPrimeFactor(600_851_475_143l));
+    	
     	
         return VIEW_EJERCICIOS;
     }

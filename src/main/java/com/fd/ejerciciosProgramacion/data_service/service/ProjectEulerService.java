@@ -24,4 +24,27 @@ public interface ProjectEulerService {
 	 * @return
 	 */
 	public long sumaFibonacci(long limiteDeSerie);
+
+	/**
+	 * Obetener el factor primo más grande de un número pasado como parametro.
+	 * @param numero
+	 * @return
+	 */
+	public long getlargestPrimeFactor(long numero);
+	
+	/**
+	 * Obtener true si el número pasado como parametro es primo.
+	 * @param numero
+	 * @return
+	 */
+	public boolean isPrime(long numero);
+	
+	/**
+	 * Obtener una lista de los números multiplos de un determinado número.
+	 * Mejorar para un limite de serie muy grande.
+	 * @param limiteDeSerie
+	 * @return
+	 */
+	public List<Long> multiplosDeUnNumero(long limiteDeSerie);
+	
 }

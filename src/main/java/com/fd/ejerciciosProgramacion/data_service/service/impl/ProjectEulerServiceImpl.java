@@ -16,7 +16,6 @@ import com.fd.ejerciciosProgramacion.data_service.service.ProjectEulerService;
  */
 @Service("projectEulerServiceImpl")
 public class ProjectEulerServiceImpl implements ProjectEulerService {
-
 	@Override
 	public long sumaDeMultiplos(int limiteDeSerie,List<Integer> multiplosDe) {
 		int suma = 0;
@@ -48,4 +47,40 @@ public class ProjectEulerServiceImpl implements ProjectEulerService {
     
 		return sumaTotal;
 	}
+
+	@Override
+	public long getlargestPrimeFactor(long numero) {
+		for(long a = 2;a < numero;a++){
+			if( (numero % a) == 0){
+				long largest = numero / a;
+				if(isPrime(largest)){
+					return largest;
+				}
+			}
+		}
+		return numero;
+	}
+	
+	@Override
+	public boolean isPrime(long numero) {
+		for(long a = 2;a < numero;a++){
+			if( (numero % a) == 0){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public List<Long> multiplosDeUnNumero(long limiteDeSerie) {
+		List<Long> listaDeNumerosPrimos = new ArrayList<>();
+		for(long a = 2;a < limiteDeSerie;a++){
+			if( (limiteDeSerie % a) == 0){
+				listaDeNumerosPrimos.add(a);
+			}
+		}
+		return listaDeNumerosPrimos;
+	}
+	
+	
 }
