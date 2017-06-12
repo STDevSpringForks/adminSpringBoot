@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 import javax.json.JsonObject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.fd.admin.data_service.criptomonedas.bisto.BitsoConstants;
@@ -23,6 +24,7 @@ import com.fd.criptocurrency.data_service.utils.Utils;
 import com.fd.criptocurrency.data_service.utils.UtilsBigDecimal;
 import com.fd.criptocurrency.model.BalanceCriptoDivisas;
 import com.fd.criptocurrency.model.BalancePerson;
+import com.fd.criptocurrency.model.FormBitsoBalance;
 import com.fd.criptocurrency.model.OrderBook;
 import com.fd.criptocurrency.model.OrderBookResult;
 import com.fd.criptocurrency.model.result.BitsoPayloadResult;
@@ -60,9 +62,13 @@ public class BitsoServiceImpl implements BitsoService {
 
 		return bitsoPayloadResult;
 	}
+	
+	public BalanceCriptoDivisas obtenerBalanceDivisas(BitsoPayloadResult bitsoPayloadResult){
+		return obtenerBalanceDivisas(bitsoPayloadResult,null);
+	}
 
 	@Override
-	public BalanceCriptoDivisas obtenerBalanceDivisas(BitsoPayloadResult bitsoPayloadResult) {
+	public BalanceCriptoDivisas obtenerBalanceDivisas(BitsoPayloadResult bitsoPayloadResult,FormBitsoBalance formBitsoBalance) {
 		
 		BalanceCriptoDivisas balanceCriptoDivisas = new BalanceCriptoDivisas();
 		
@@ -111,7 +117,12 @@ public class BitsoServiceImpl implements BitsoService {
     	BitsoPayloadTicker payloadBTC_MXN = bitsoPayloadResult.getPayloadBTC_MXN();
     	
     	/* Start Balance Total */
-    	BigDecimal bETH = balanceCriptoDivisas.getBalanceETH().multiply(new BigDecimal(payloadETH_MXN.getAsk()));
+    	BigDecimal bETH;
+    	if(formBitsoBalance != null && StringUtils.isNotBlank(formBitsoBalance.getPrecioEspeculativoETH())){
+    		bETH = balanceCriptoDivisas.getBalanceETH().multiply(new BigDecimal(UtilsBigDecimal.cleanBigDecimal(formBitsoBalance.getPrecioEspeculativoETH())));
+    	}else{
+    		bETH = balanceCriptoDivisas.getBalanceETH().multiply(new BigDecimal(payloadETH_MXN.getAsk()));
+    	}
     	BigDecimal comisionTradeETH = bETH.multiply(BitsoConstants.COMISION_TRADE);
     	balanceCriptoDivisas.setBalanceETH_MXN(bETH.subtract(comisionTradeETH));
     	

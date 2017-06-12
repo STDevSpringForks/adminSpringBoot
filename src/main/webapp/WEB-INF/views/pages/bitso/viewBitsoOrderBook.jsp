@@ -31,7 +31,7 @@ $(document).ready(function() {
 	
 	$('#orderBookResultCompra').DataTable({
 		data: ${orderBookResultCompra},
-		order: [[ 1, "asc" ]],
+		order: [[ 1, "desc" ]],
 		columns: [
 			{ "data": "book" },
 			{ "data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '$ ') }, 

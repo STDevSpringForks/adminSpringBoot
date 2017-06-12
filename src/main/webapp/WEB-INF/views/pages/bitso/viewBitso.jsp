@@ -95,35 +95,20 @@ ${balanceTotalMXN}
     <tbody></tbody>
 </table>
 
-<%-- 
 <div class="ui form">
 	<form:form id="formBitso" action="viewBitso" method="post" modelAttribute="formBitsoBalance">
 		<div class="ten wide field">
 			<p class="msgResult">${msgResult}</p>
 			<form:errors path="*" cssClass="errorDiv" element="div"/>
 			<div class="field">
-				<label for="balanceETH">Balance ETH</label>
 				<div class="ui labeled input">
-				  <form:input path="balanceETH" />
-				</div>
-			</div>
-			<div class="field">
-				<label for="balanceXRP">Balance XRP</label>
-				<div class="ui labeled input">
-				  <form:input path="balanceXRP" />
-				</div>
-			</div>
-			<div class="field">
-				<label for="balanceBTC">Balance BTC</label>
-				<div class="ui labeled input">
-				  <form:input path="balanceBTC" />
+				  <form:input path="precioEspeculativoETH" placeholder="Especular precio ETH en MXN" />
 				</div>
 			</div>
 			<input class="ui basic blue button" type="submit" value="Submit" />
 		</div>
 	</form:form>
 </div>
---%>
 
 <script>
 $(document).ready(function() {

@@ -15,6 +15,10 @@ public class FormBitsoBalance implements Serializable{
 	private String balanceXRP;
 	private String balanceBTC;
 	
+	private String precioEspeculativoETH;
+	private String precioEspeculativoXRP;
+	private String precioEspeculativoBTC;
+	
 	public String getBalanceETH() {
 		return balanceETH;
 	}
@@ -33,6 +37,24 @@ public class FormBitsoBalance implements Serializable{
 	public void setBalanceBTC(String balanceBTC) {
 		this.balanceBTC = balanceBTC;
 	}
+	public String getPrecioEspeculativoETH() {
+		return precioEspeculativoETH;
+	}
+	public void setPrecioEspeculativoETH(String precioEspeculativoETH) {
+		this.precioEspeculativoETH = precioEspeculativoETH;
+	}
+	public String getPrecioEspeculativoXRP() {
+		return precioEspeculativoXRP;
+	}
+	public void setPrecioEspeculativoXRP(String precioEspeculativoXRP) {
+		this.precioEspeculativoXRP = precioEspeculativoXRP;
+	}
+	public String getPrecioEspeculativoBTC() {
+		return precioEspeculativoBTC;
+	}
+	public void setPrecioEspeculativoBTC(String precioEspeculativoBTC) {
+		this.precioEspeculativoBTC = precioEspeculativoBTC;
+	}
 	
 	@Override
 	public String toString() {
@@ -43,7 +65,14 @@ public class FormBitsoBalance implements Serializable{
 		builder.append(balanceXRP);
 		builder.append(", balanceBTC=");
 		builder.append(balanceBTC);
+		builder.append(", precioEspeculativoETH=");
+		builder.append(precioEspeculativoETH);
+		builder.append(", precioEspeculativoXRP=");
+		builder.append(precioEspeculativoXRP);
+		builder.append(", precioEspeculativoBTC=");
+		builder.append(precioEspeculativoBTC);
 		builder.append("]");
 		return builder.toString();
 	}
+	
 }

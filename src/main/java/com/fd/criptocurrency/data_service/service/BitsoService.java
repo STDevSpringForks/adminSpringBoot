@@ -1,6 +1,7 @@
 package com.fd.criptocurrency.data_service.service;
 
 import com.fd.criptocurrency.model.BalanceCriptoDivisas;
+import com.fd.criptocurrency.model.FormBitsoBalance;
 import com.fd.criptocurrency.model.OrderBookResult;
 import com.fd.criptocurrency.model.result.BitsoPayloadResult;
 
@@ -22,6 +23,13 @@ public interface BitsoService {
 	 * @return
 	 */
 	public BalanceCriptoDivisas obtenerBalanceDivisas(BitsoPayloadResult bitsoPayloadResult);
+	
+	/**
+	 * Obtener el balance de las CriptoDivisas, especulando un precio enviado por parametro.
+	 * @param bitsoPayloadResult
+	 * @return
+	 */
+	public BalanceCriptoDivisas obtenerBalanceDivisas(BitsoPayloadResult bitsoPayloadResult,FormBitsoBalance formBitsoBalance);
 	
 	/**
 	 * Obtener el balance Inicial.
