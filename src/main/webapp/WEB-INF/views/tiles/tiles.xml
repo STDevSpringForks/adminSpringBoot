@@ -103,10 +103,22 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/bitso/viewBitso.jsp" />  
    </definition>
    
-   <!-- Bitso Page -->
+   <!-- Bitso Order Book Page -->
    <definition name="bitso/viewBitsoOrderBook" extends="base-definition">  
        <put-attribute name="title" value="View Bitso Order Book" />
        <put-attribute name="body" value="/WEB-INF/views/pages/bitso/viewBitsoOrderBook.jsp" />  
+   </definition>
+   
+   <!-- Bitso Cristobal Page -->
+   <definition name="bitso/viewBitsoCristobal" extends="base-definition">  
+       <put-attribute name="title" value="View Bitso Cristobal" />
+       <put-attribute name="body" value="/WEB-INF/views/pages/bitso/viewBitsoCristobal.jsp" />  
+   </definition>
+   
+   <!-- Bitso Compra Page -->
+   <definition name="bitso/viewBitsoCompral" extends="base-definition">  
+       <put-attribute name="title" value="View Bitso Compra" />
+       <put-attribute name="body" value="/WEB-INF/views/pages/bitso/viewBitsoCompra.jsp" />  
    </definition>
    
    <!-- Gastos Page -->

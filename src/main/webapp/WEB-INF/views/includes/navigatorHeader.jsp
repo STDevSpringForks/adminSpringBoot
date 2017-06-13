@@ -46,9 +46,15 @@
 						<a href="${pageContext.request.contextPath}/reports/viewJasperReport" class="item"><span style="color: red;">(new) </span>Jasper Repors</a>
 						<a href="${pageContext.request.contextPath}/email/viewSendEmailTest" class="item"><span style="color: orange;">(wip) </span>Send Email</a>
 						<a href="${pageContext.request.contextPath}/exercises/viewJQuery3" class="item"><span style="color: orange;">(wip) </span>JQuery3</a>
-						<a href="${pageContext.request.contextPath}/bitso/viewBitso" class="item"><span style="color: orange;">(wip) </span>Bitso</a>
-						<a href="${pageContext.request.contextPath}/bitso/viewBitsoOrderBook" class="item">Bitso Order Book</a>
 						<a href="${pageContext.request.contextPath}/ejerciciosProgramacion/viewEjercicios" class="item">Ejercicios Programción</a>
+					</div>
+				</div>
+				<div class="column">
+					<h4 class="ui header">Bitso</h4>
+					<div class="ui link list">
+						<a href="${pageContext.request.contextPath}/bitso/viewBitso" class="item">Bitso</a>
+						<a href="${pageContext.request.contextPath}/bitso/viewBitsoOrderBook" class="item">Bitso Order Book</a>
+						<a href="${pageContext.request.contextPath}/bitso/viewBitsoCristobal" class="item">Bitso Cristobal</a>
 					</div>
 				</div>
 			</div>
