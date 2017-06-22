@@ -55,6 +55,7 @@
 						<a href="${pageContext.request.contextPath}/bitso/viewBitso" class="item">Bitso</a>
 						<a href="${pageContext.request.contextPath}/bitso/viewBitsoOrderBook" class="item">Bitso Order Book</a>
 						<a href="${pageContext.request.contextPath}/bitso/viewBitsoCristobal" class="item">Bitso Cristobal</a>
+						<a href="${pageContext.request.contextPath}/ethereum/viewEthereum" class="item">Ethereum</a>
 					</div>
 				</div>
 			</div>

@@ -204,7 +204,6 @@
 		</dependency>
 		<!-- End Subiendo archivos desde el form -->
 
-
 		<dependency>
 			<groupId>io.reactivex</groupId>
 			<artifactId>rxjava</artifactId>
@@ -217,8 +216,14 @@
 		    <artifactId>appengine-api-labs</artifactId>
 		    <version>1.9.53</version>
 		</dependency>
-				
-
+		
+		<!-- https://mvnrepository.com/artifact/org.web3j/core -->
+		<dependency>
+		    <groupId>org.web3j</groupId>
+		    <artifactId>core</artifactId>
+		    <version>2.2.2</version>
+		</dependency>
+		
 		<!-- End Muguruza -->
 
 	</dependencies>

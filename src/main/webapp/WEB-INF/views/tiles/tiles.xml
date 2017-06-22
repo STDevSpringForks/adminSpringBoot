@@ -145,8 +145,6 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/utils/java8.jsp" />  
    </definition>
    
-   
-   
    <!-- Estudiante Page -->
    <definition name="escuela/estudiante" extends="base-definition">  
        <put-attribute name="title" value="Java8" />  
@@ -163,6 +161,12 @@
    <definition name="escuela/estudiante" extends="base-definition">  
        <put-attribute name="title" value="Java8" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/escuela/estudiante.jsp" />  
+   </definition>
+   
+   <!-- Ethereum Page -->
+   <definition name="ethereum/viewEthereum" extends="base-definition">  
+       <put-attribute name="title" value="Ethererum" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/ethereum/viewEthereum.jsp" />  
    </definition>
       
 </tiles-definitions>
