@@ -8,4 +8,5 @@ package com.fd.admin.ethereum.data_service.service;
  */
 public interface EthereumService {
 	public void ethereumWeb3jTest();
+	public String sendingEther();
 }
