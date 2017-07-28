@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping package="com.fd.admin.model.internet.entity">
+	<class name="InternetPages" table="InternetPages">
+		<id name="idInternetPages" column="idInternetPages">
+			<generator class="native"/> 
+		</id>
+		<property name="urlPage" type="String" column="urlPage"/> 
+	</class>	
+</hibernate-mapping>
+<!-- 
+Si el nombre de la tabla o los nombres de las columnas no corresponden con Tabla-ObjetoJava
+Aquí se hace un mapping indicando que;
+	 objeto -> tabla
+	 atributos -> columna
+
+	 Indica que el id se generará solo. generator class="native"
+	 type: tipo de variable en Java type="String"
+ -->

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fd.admin.data_service.repository.PersonRepository;
 import com.fd.admin.model.criteria.PersonListDetailsSearchCriteria;
-import com.fd.admin.model.entity.PersonListDetailsEntity;
+import com.fd.admin.model.entity.Person;
 import com.fd.admin.model.result.PersonListDetailsResult;
 
 /**
@@ -37,7 +37,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 		initSession();
 		
 		// Query personDetails
-		List<PersonListDetailsEntity> personListDetailsEntity = session.createQuery("from PersonListDetailsEntity ",PersonListDetailsEntity.class).getResultList();
+		List<Person> personListDetailsEntity = session.createQuery("from PersonListDetailsEntity ",Person.class).getResultList();
 		displayPersonListDetailsEntity(personListDetailsEntity);
 
 		endSession(true);
@@ -45,14 +45,14 @@ public class PersonRepositoryImpl implements PersonRepository {
 		return personListDetailsResult;
 	}
 
-	private void displayPersonListDetailsEntity(List<PersonListDetailsEntity> personListDetailsEntity) {
-		for (PersonListDetailsEntity personListDetailsEntity2 : personListDetailsEntity) {
+	private void displayPersonListDetailsEntity(List<Person> personListDetailsEntity) {
+		for (Person personListDetailsEntity2 : personListDetailsEntity) {
 			System.out.println(personListDetailsEntity2);
 		}
 	}
 
 	@Override
-	public boolean savePersonListDetails(PersonListDetailsEntity personListDetailsEntity) {
+	public boolean savePersonListDetails(Person personListDetailsEntity) {
 		initSession();
 		try {
 			session.save(personListDetailsEntity);
@@ -69,7 +69,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 		serviceRegistry	= new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties()).build();
 		
-		SessionFactory sessionFactory = configuration.addAnnotatedClass(PersonListDetailsEntity.class).buildSessionFactory(serviceRegistry);
+		SessionFactory sessionFactory = configuration.addAnnotatedClass(Person.class).buildSessionFactory(serviceRegistry);
 		
 		session = sessionFactory.openSession();
 		session.beginTransaction();

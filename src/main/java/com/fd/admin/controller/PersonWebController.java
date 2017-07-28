@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.fd.admin.data_service.validator.PersonValidator;
 import com.fd.admin.data_service_api.PersonService;
 import com.fd.admin.model.criteria.PersonListDetailsSearchCriteria;
-import com.fd.admin.model.entity.PersonListDetailsEntity;
+import com.fd.admin.model.entity.Person;
 import com.fd.admin.model.result.PersonListDetailsResult;
 
 /**
@@ -43,7 +43,7 @@ public class PersonWebController {
      */
     @GetMapping("/viewPerson")
     public String formPayment(Model model) {
-    	PersonListDetailsEntity personListDetailsEntity = new PersonListDetailsEntity();
+    	Person personListDetailsEntity = new Person();
         model.addAttribute("personListDetailsEntity", personListDetailsEntity);
         
         PersonListDetailsSearchCriteria searchCriteria = new PersonListDetailsSearchCriteria();
@@ -61,7 +61,7 @@ public class PersonWebController {
      * @return
      */
     @PostMapping("/viewPerson")
-    public String sendSMS(@ModelAttribute("personListDetailsEntity") PersonListDetailsEntity personListDetailsEntity, BindingResult result, Model model) {
+    public String sendSMS(@ModelAttribute("personListDetailsEntity") Person personListDetailsEntity, BindingResult result, Model model) {
         
         try {
         	personValidator.validate(personListDetailsEntity, result);

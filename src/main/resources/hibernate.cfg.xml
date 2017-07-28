@@ -16,17 +16,28 @@
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>
 
-        <!-- Select our SQL dialect -->
+        <!-- 
+        	Select our SQL dialect
+        	http://www.tutorialspoint.com/hibernate/hibernate_configuration.htm 
+        -->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
-        <!-- Echo the SQL to stdout -->
+        <!-- Mostrar en consola las operaciones de SQL -->
         <property name="show_sql">true</property>
 
 		<!-- Set the current session context -->
 		<property name="current_session_context_class">thread</property>
 		
-		<mapping class="com.fd.admin.model.entity.PersonListDetailsEntity"/>
+		<!-- Usar mapping en base a XML. -->
+		<mapping resource="com/fd/admin/model/internet/entity/InternetEmailAccounts.hbm.xml"/>
+		
+		<!-- Usar mapping en base a anotaciones. -->
+		<mapping class="com.fd.admin.model.internet.entity.InternetPages"/>
+		<mapping class="com.fd.admin.model.entity.Person"/>
+		<mapping class="com.fd.admin.model.entity.Prestamo"/>
+		<mapping class="com.fd.admin.model.entity.Tarea"/>
 		<mapping class="com.fd.adminHome.model.gastos.entity.GastoEntity"/>
+		<mapping class="com.fd.admin.model.GeocoderRequest"/>
 		
 <!-- http://www.journaldev.com/2924/hibernate-one-to-many-mapping-annotation -->
 <!--		<mapping class="com.fd.admin.model.entity.PersonListDetailsEntity"/> -->

@@ -1,5 +1,26 @@
 package com.fd.admin.controller;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
+import java.net.URLEncoder;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.IntStream;
+
+import javax.persistence.Query;
+import javax.persistence.Tuple;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Root;
+
+import org.apache.commons.lang3.StringUtils;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +32,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
 
+import com.fd.admin.data_service.utils.HibernateUtil;
+import com.fd.admin.data_service_api.GoogleMapService;
+import com.fd.admin.model.GeocoderRequest;
+import com.fd.admin.model.GeocoderRequestParams;
+import com.fd.admin.model.entity.Person;
+import com.fd.admin.model.entity.Prestamo;
+import com.fd.admin.model.entity.Tarea;
+import com.fd.admin.model.internet.entity.InternetEmailAccounts;
+import com.fd.admin.model.internet.entity.InternetPages;
 import com.fd.criptocurrency.data_service.service.BitsoService;
 import com.fd.criptocurrency.data_service.utils.UtilsBigDecimal;
 import com.fd.criptocurrency.model.BalanceCriptoDivisas;
@@ -20,6 +52,10 @@ import com.fd.criptocurrency.model.OrderBookResult;
 import com.fd.criptocurrency.model.result.BitsoPayloadResult;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.GeocodingResult;
 
 
 
@@ -40,6 +76,11 @@ public class BitsoWebController {
     @Autowired
     @Qualifier("bitsoServiceImpl")
     private BitsoService bitsoService;
+    
+    @Autowired
+    @Qualifier("googleMapServiceImpl")
+    private GoogleMapService googleMapService;
+     
     
     /**
      * 
@@ -84,6 +125,73 @@ public class BitsoWebController {
     	model.addAttribute("gananciaTotal_BTC",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasGanacia.getBalanceBTC_MXN()));
     	model.addAttribute("gananciaTotal_MXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasGanacia.getBalanceMXN_MXN()));
     	model.addAttribute("gananciaTotalMXN_MXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasGanacia.getBalanceTOTAL_MXN()));
+    	
+    	//-----------------------------------------------------
+    	
+    	
+    	/* Exampe: https://www.petrikainulainen.net/programming/spring-framework/spring-batch-tutorial-reading-information-from-a-database/ */
+    	
+    	
+    	/*  Insertar forEach 
+    	Session session = HibernateUtil.getSessionfactory().openSession();
+    	Transaction tx = null;
+    	try{
+    		tx = session.beginTransaction();
+    		
+    		IntStream.range(0,1000).forEach(
+    				nbr -> {
+    					System.out.println("Contador ->-- : " + nbr);
+    					GeocoderRequest geocoderRequest = new GeocoderRequest("4763 HIGHWAY 107 S","","PLAUCHEVILLE","LA","71362","AVOYELLES");
+    					session.save(geocoderRequest);
+    				}
+    		);
+        	
+    		tx.commit();
+    	}catch(Exception ex){
+    		
+    		if(tx != null){
+    			tx.rollback();
+    		}
+    		ex.printStackTrace();
+    	}
+    	finally{
+    		session.close();
+    	}
+    	*/
+    	
+    	
+    	GeocoderRequestParams geocoderRequestParams = new GeocoderRequestParams();
+    	Session session = HibernateUtil.getSessionfactory().openSession();
+    	Transaction tx = null;
+    	try{
+    		tx = session.beginTransaction();
+    		
+    		
+    		CriteriaBuilder builder = session.getCriteriaBuilder();
+
+        	CriteriaQuery<GeocoderRequest> criteria = builder.createQuery( GeocoderRequest.class );
+        	Root<GeocoderRequest> root = criteria.from(GeocoderRequest.class);
+        	criteria.select(root);
+        	List<GeocoderRequest> geocoderRequestList = session.createQuery( criteria ).getResultList();
+        	geocoderRequestParams.setGeocoderRequestList(geocoderRequestList);
+    		
+        	
+    		tx.commit();
+    	}catch(Exception ex){
+    		
+    		if(tx != null){
+    			tx.rollback();
+    		}
+    		ex.printStackTrace();
+    	}
+    	finally{
+    		session.close();
+    	}
+    	
+    	
+    	googleMapService.retrieveGeocoding(geocoderRequestParams);
+    
+    	
     	
         return VIEW_BITSO;
     }
@@ -278,5 +386,9 @@ public class BitsoWebController {
 //	BigDecimal _subTotal = ethBT.getBid().multiply(eth);
 //	BigDecimal _comision = _subTotal.multiply(comision);
 //	BigDecimal _total = _subTotal.subtract(_comision); 
+    
+    
+	
+    
     
 }

@@ -34,7 +34,6 @@ import com.fd.adminHome.data_service.gastos.service.StorageService;
 @EnableConfigurationProperties(StorageProperties.class)
 @Configuration
 @EnableWebMvc
-//@ComponentScan(basePackages = "com.fd.admin")
 @ComponentScan(basePackages = "com.fd")
 public class AdminSpringBootApplication extends WebMvcConfigurerAdapter {
 											      
@@ -42,6 +41,10 @@ public class AdminSpringBootApplication extends WebMvcConfigurerAdapter {
 	private static final String RESOURCES_LOCATION = "/resources/";
 	private static final String RESOURCES_HANDLER = RESOURCES_LOCATION + "**";
 
+	/**
+	 * Método inicial.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(AdminSpringBootApplication.class, args);
 	}

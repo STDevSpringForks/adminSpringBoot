@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fd.admin.model.entity.PersonListDetailsEntity;
+import com.fd.admin.model.entity.Person;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -37,19 +37,19 @@ public class JasperReportWebController {
         String sourceFileName = "C://tools/testReport.jasper";
         String printFileName = null;
 
-        PersonListDetailsEntity person = new PersonListDetailsEntity();
+        Person person = new Person();
         person.setEmail("javier.hernandez@company.com");
         person.setFirstName("Javier");
         person.setGender("M");
         person.setLastName("Hernandez");
 
-        PersonListDetailsEntity person2 = new PersonListDetailsEntity();
+        Person person2 = new Person();
         person2.setEmail("rosa.salvaje@company.com");
         person2.setFirstName("Rosa");
         person2.setGender("F");
         person2.setLastName("Salvaje");
 
-        List<PersonListDetailsEntity> dataList = new ArrayList<PersonListDetailsEntity>();
+        List<Person> dataList = new ArrayList<Person>();
         dataList.add(person);
         dataList.add(person2);
 

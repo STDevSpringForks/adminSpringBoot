@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.fd.admin.data_service.repository.PersonRepository;
 import com.fd.admin.data_service_api.PersonService;
 import com.fd.admin.model.criteria.PersonListDetailsSearchCriteria;
-import com.fd.admin.model.entity.PersonListDetailsEntity;
+import com.fd.admin.model.entity.Person;
 import com.fd.admin.model.result.PersonListDetailsResult;
 
 /**
@@ -26,7 +26,7 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public boolean savePersonListDetails(PersonListDetailsEntity personListDetailsEntity) {
+	public boolean savePersonListDetails(Person personListDetailsEntity) {
 		return personRepository.savePersonListDetails(personListDetailsEntity);
 	}
 

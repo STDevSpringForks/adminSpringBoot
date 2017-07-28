@@ -1,7 +1,7 @@
 package com.fd.admin.data_service_api;
 
 import com.fd.admin.model.criteria.PersonListDetailsSearchCriteria;
-import com.fd.admin.model.entity.PersonListDetailsEntity;
+import com.fd.admin.model.entity.Person;
 import com.fd.admin.model.result.PersonListDetailsResult;
 
 /**
@@ -22,5 +22,5 @@ public interface PersonService {
 	 * @param personListDetailsEntity
 	 * @return
 	 */
-	boolean savePersonListDetails(PersonListDetailsEntity personListDetailsEntity);
+	boolean savePersonListDetails(Person personListDetailsEntity);
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fd.admin.data_service_api.PersonService;
 import com.fd.admin.model.criteria.PersonListDetailsSearchCriteria;
-import com.fd.admin.model.entity.PersonListDetailsEntity;
+import com.fd.admin.model.entity.Person;
 import com.fd.admin.model.result.PersonListDetailsResult;
 
 /**
@@ -31,7 +31,7 @@ public class PersonController {
     }
     
     @RequestMapping(value = "/savePersonListDetails", method = RequestMethod.POST)
-    public boolean savePersonListDetails(@RequestBody PersonListDetailsEntity searchCriteria) {
+    public boolean savePersonListDetails(@RequestBody Person searchCriteria) {
         return personService.savePersonListDetails(searchCriteria);
     }
 	

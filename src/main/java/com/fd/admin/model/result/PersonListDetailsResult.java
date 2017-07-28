@@ -3,7 +3,7 @@ package com.fd.admin.model.result;
 import java.io.Serializable;
 import java.util.List;
 
-import com.fd.admin.model.entity.PersonListDetailsEntity;
+import com.fd.admin.model.entity.Person;
 
 /**
  * 
@@ -14,13 +14,13 @@ public class PersonListDetailsResult implements Serializable {
 	
 	private static final long serialVersionUID = -7407165827329251651L;
 	
-	private List<PersonListDetailsEntity> personListDetailsEntity;
+	private List<Person> personListDetailsEntity;
 
-	public List<PersonListDetailsEntity> getPersonListDetailsEntity() {
+	public List<Person> getPersonListDetailsEntity() {
 		return personListDetailsEntity;
 	}
 
-	public void setPersonListDetailsEntity(List<PersonListDetailsEntity> personListDetailsEntity) {
+	public void setPersonListDetailsEntity(List<Person> personListDetailsEntity) {
 		this.personListDetailsEntity = personListDetailsEntity;
 	}
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.fd.admin.model.entity.PersonListDetailsEntity;
+import com.fd.admin.model.entity.Person;
 
 /**
  * 
@@ -17,12 +17,12 @@ public class PersonValidator implements Validator {
 
 	@Override
     public boolean supports(Class<?> clazz) {
-        return PersonListDetailsEntity.class.isAssignableFrom(clazz);
+        return Person.class.isAssignableFrom(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-    	PersonListDetailsEntity personListDetailsEntity = (PersonListDetailsEntity) target;
+    	Person personListDetailsEntity = (Person) target;
         
         //Start firstName
         String firstName = StringUtils.stripToEmpty(personListDetailsEntity.getFirstName());
