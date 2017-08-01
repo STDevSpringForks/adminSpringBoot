@@ -22,6 +22,9 @@
 //
 //	private static final String VIEW_NEW_PROFILE = "generalProfile/newProfile"; 
 //	
+//	/**
+//	 * http://acodigo.blogspot.com/2017/05/spring-expression-language-spel.html
+//	 */
 //    @Value("#{countryOptionsP}")
 //    private Map<String, String> countryOptionsP;
 //
