@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- Paquete donde se encuentran los repositorios. -->
+	<jpa:repositories base-package="com.fd.admin.springdata.repository"></jpa:repositories>
+
+	<!-- Parámetros de base de datos. -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url" value="jdbc:mysql://localhost:3306/hibernate_adminSpringMVC"></property>
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver">
+		</property>
+		<property name="username" value="hbuser"></property>
+		<property name="password" value="hbuser"></property>
+	</bean>
+
+<!-- Gestor de entidades. -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="packagesToScan" value="com.fd.admin.springdata.domain"></property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="database" value="MYSQL"></property>
+				<property name="generateDdl" value="true"></property>
+				<property name="showSql" value="true"></property>
+			</bean>
+		</property>
+	</bean>
+	
+<!-- Dialecto JPA en ésta caso será Hibernate.-->
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"></bean>
+	
+<!-- Habilitar anotaciones spring. -->
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.fd.admin.springdata.service.impl"></context:component-scan>
+	
+<!-- Gestor de transacciones.	 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="jpaDialect" ref="jpaDialect"></property>
+	</bean>
+
+<!-- Habilitamos la anotación @Transactional -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

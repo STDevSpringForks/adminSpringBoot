@@ -44,6 +44,8 @@ import com.fd.admin.model.entity.Prestamo;
 import com.fd.admin.model.entity.Tarea;
 import com.fd.admin.model.internet.entity.InternetEmailAccounts;
 import com.fd.admin.model.internet.entity.InternetPages;
+import com.fd.admin.springdata.domain.Tareas;
+import com.fd.admin.springdata.service.TareasService;
 import com.fd.criptocurrency.data_service.service.BitsoService;
 import com.fd.criptocurrency.data_service.utils.UtilsBigDecimal;
 import com.fd.criptocurrency.model.BalanceCriptoDivisas;
@@ -80,7 +82,10 @@ public class BitsoWebController {
     @Autowired
     @Qualifier("googleMapServiceImpl")
     private GoogleMapService googleMapService;
-     
+    
+    @Autowired
+    @Qualifier("tareasServiceImpl")
+    private TareasService tareasService;
     
     /**
      * 
@@ -128,6 +133,11 @@ public class BitsoWebController {
     	
     	//-----------------------------------------------------
     	
+    	Tareas tareas = new Tareas();
+    	tareas.setTarea("Nueva tarea desde spring-Data");
+    	tareasService.save(tareas);
+    	
+    	
     	
     	/* Exampe: https://www.petrikainulainen.net/programming/spring-framework/spring-batch-tutorial-reading-information-from-a-database/ */
     	
@@ -160,36 +170,36 @@ public class BitsoWebController {
     	*/
     	
     	
-    	GeocoderRequestParams geocoderRequestParams = new GeocoderRequestParams();
-    	Session session = HibernateUtil.getSessionfactory().openSession();
-    	Transaction tx = null;
-    	try{
-    		tx = session.beginTransaction();
-    		
-    		
-    		CriteriaBuilder builder = session.getCriteriaBuilder();
-
-        	CriteriaQuery<GeocoderRequest> criteria = builder.createQuery( GeocoderRequest.class );
-        	Root<GeocoderRequest> root = criteria.from(GeocoderRequest.class);
-        	criteria.select(root);
-        	List<GeocoderRequest> geocoderRequestList = session.createQuery( criteria ).getResultList();
-        	geocoderRequestParams.setGeocoderRequestList(geocoderRequestList);
-    		
-        	
-    		tx.commit();
-    	}catch(Exception ex){
-    		
-    		if(tx != null){
-    			tx.rollback();
-    		}
-    		ex.printStackTrace();
-    	}
-    	finally{
-    		session.close();
-    	}
-    	
-    	
-    	googleMapService.retrieveGeocoding(geocoderRequestParams);
+//    	GeocoderRequestParams geocoderRequestParams = new GeocoderRequestParams();
+//    	Session session = HibernateUtil.getSessionfactory().openSession();
+//    	Transaction tx = null;
+//    	try{
+//    		tx = session.beginTransaction();
+//    		
+//    		
+//    		CriteriaBuilder builder = session.getCriteriaBuilder();
+//
+//        	CriteriaQuery<GeocoderRequest> criteria = builder.createQuery( GeocoderRequest.class );
+//        	Root<GeocoderRequest> root = criteria.from(GeocoderRequest.class);
+//        	criteria.select(root);
+//        	List<GeocoderRequest> geocoderRequestList = session.createQuery( criteria ).getResultList();
+//        	geocoderRequestParams.setGeocoderRequestList(geocoderRequestList);
+//    		
+//        	
+//    		tx.commit();
+//    	}catch(Exception ex){
+//    		
+//    		if(tx != null){
+//    			tx.rollback();
+//    		}
+//    		ex.printStackTrace();
+//    	}
+//    	finally{
+//    		session.close();
+//    	}
+//    	
+//    	
+//    	googleMapService.retrieveGeocoding(geocoderRequestParams);
     
     	
     	
