@@ -5,8 +5,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.format.annotation.NumberFormat;
-
 /**
  * 
  * @author Muguruza

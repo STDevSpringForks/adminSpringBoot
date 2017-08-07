@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.format.annotation.NumberFormat;
-
 import com.fd.admin.data_service.criptomonedas.bisto.BitsoPayloadTicker;
 
 /**

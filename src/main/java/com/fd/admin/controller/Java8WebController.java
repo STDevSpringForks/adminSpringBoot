@@ -1,8 +1,14 @@
 package com.fd.admin.controller;
 
 import java.io.FileReader;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,9 +30,14 @@ import javax.script.ScriptEngineManager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.fd.admin.springdata.domain.Tareas;
+import com.fd.admin.springdata.service.TareasService;
 
 
 /**
@@ -43,6 +54,44 @@ public class Java8WebController {
 	private ScriptEngine e;
 	private Invocable invocador;
 
+	class A { } class B extends A { } class C extends B { } class D extends C { }
+	
+	@Autowired
+    @Qualifier("tareasServiceImpl")
+    private TareasService tareasService;
+	
+	@RequestMapping(value = "/java8Testing",method = RequestMethod.GET)
+	public String java8Testing(){
+		
+		LocalDateTime ldt = LocalDateTime.parse("2015-01-02T17:13:50");
+		System.out.println(ldt.format(DateTimeFormatter.ISO_LOCAL_TIME));
+		System.out.println(ldt.toString());
+
+		//--------------------------
+		LocalDateTime ld = LocalDateTime.of(2015, Month.OCTOBER, 31, 10, 0);  
+		ZonedDateTime date = ZonedDateTime.of(ld, ZoneId.of("US/Eastern")); 
+		date = date.plus(Duration.ofDays(1)); 
+		System.out.println(date);
+		
+		date = ZonedDateTime.of(ld, ZoneId.of("US/Eastern")); 
+		date = date.plus(Period.ofDays(1)); 
+		System.out.println(date);
+		//--------------------------
+		
+		System.out.println("--------------------->>>>");
+		
+//		Tareas tareas = new Tareas();
+//    	tareas.setTarea("Nueva tarea desde spring-Data");
+//    	tareasService.save(tareas);
+    	
+    	System.out.println(tareasService.findAll());
+    	
+    	System.out.println("--------------------->>>>");
+		
+		
+		return "java8";
+	}
+	
 	@RequestMapping(value = "/javalambda1",method = RequestMethod.GET)
 	public String javalambda1(){
 		

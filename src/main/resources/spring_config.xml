@@ -5,9 +5,9 @@
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+ 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd 
+ 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd 
+ 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd"> 
 
 	<!-- Paquete donde se encuentran los repositorios. -->
 	<jpa:repositories base-package="com.fd.admin.springdata.repository"></jpa:repositories>
@@ -35,7 +35,7 @@
 		</property>
 	</bean>
 	
-<!-- Dialecto JPA en ésta caso será Hibernate.-->
+<!-- Dialecto JPA en ésta caso será Hibernate. -->
 	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"></bean>
 	
 <!-- Habilitar anotaciones spring. -->

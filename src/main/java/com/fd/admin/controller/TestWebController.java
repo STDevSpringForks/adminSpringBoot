@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.OneToOne;
 import javax.persistence.Query;
 import javax.persistence.Tuple;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -22,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.fd.admin.data_service.utils.HibernateUtil;
 import com.fd.admin.model.entity.Person;
 import com.fd.admin.model.entity.Prestamo;
-import com.fd.admin.model.entity.Tarea;
 import com.fd.admin.model.internet.entity.InternetEmailAccounts;
 import com.fd.admin.model.internet.entity.InternetPages;
 

@@ -16,10 +16,14 @@ import com.fd.admin.springdata.service.TareasService;
 public class TareasServiceImpl implements TareasService {
 
 	@Autowired
-	private TareasRepository TareasRepository;
+	private TareasRepository tareasRepository;
 	
 	public void save(Tareas tareas){
-		TareasRepository.save(tareas);
+		tareasRepository.save(tareas);
+	}
+	
+	public Iterable<Tareas> findAll(){
+		return tareasRepository.findAll();
 	}
 	
 }

@@ -1,6 +1,5 @@
 package com.fd.admin.data_service.service.impl;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,14 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.fd.admin.data_service.criptomonedas.bisto.BitsoTicker;
 import com.fd.admin.data_service_api.GoogleMapService;
 import com.fd.admin.model.GeocoderErrorObject;
 import com.fd.admin.model.GeocoderRequest;
 import com.fd.admin.model.GeocoderRequestParams;
 import com.fd.admin.model.GeocoderResult;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.model.GeocodingResult;

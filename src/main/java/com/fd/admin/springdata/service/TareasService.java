@@ -9,4 +9,5 @@ import com.fd.admin.springdata.domain.Tareas;
  */
 public interface TareasService {
 	public void save(Tareas tareas);
+	public Iterable<Tareas> findAll();
 }

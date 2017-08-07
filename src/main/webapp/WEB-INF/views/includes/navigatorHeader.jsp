@@ -34,6 +34,7 @@
 						<a href="${pageContext.request.contextPath}/java8/javaMultiArray" class="item">Java 8 MultiArray</a>
 						<a href="${pageContext.request.contextPath}/java8/ordenarLista" class="item">Java 8 OrdenarLista</a>
 						<a href="${pageContext.request.contextPath}/java8/funcionesJava" class="item">funcionesJava</a>
+						<a href="${pageContext.request.contextPath}/java8/java8Testing" class="item">java8Testing</a>
 						<a class="item">...</a>
 					</div>
 				</div>

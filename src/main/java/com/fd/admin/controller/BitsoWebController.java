@@ -1,26 +1,5 @@
 package com.fd.admin.controller;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.math.BigDecimal;
-import java.net.URLEncoder;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.IntStream;
-
-import javax.persistence.Query;
-import javax.persistence.Tuple;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Root;
-
-import org.apache.commons.lang3.StringUtils;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,20 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 
-import com.fd.admin.data_service.utils.HibernateUtil;
 import com.fd.admin.data_service_api.GoogleMapService;
-import com.fd.admin.model.GeocoderRequest;
-import com.fd.admin.model.GeocoderRequestParams;
-import com.fd.admin.model.entity.Person;
-import com.fd.admin.model.entity.Prestamo;
-import com.fd.admin.model.entity.Tarea;
-import com.fd.admin.model.internet.entity.InternetEmailAccounts;
-import com.fd.admin.model.internet.entity.InternetPages;
 import com.fd.admin.springdata.domain.Tareas;
 import com.fd.admin.springdata.service.TareasService;
+//import com.fd.admin.springdata.service.TareasService;
 import com.fd.criptocurrency.data_service.service.BitsoService;
 import com.fd.criptocurrency.data_service.utils.UtilsBigDecimal;
 import com.fd.criptocurrency.model.BalanceCriptoDivisas;
@@ -54,10 +24,6 @@ import com.fd.criptocurrency.model.OrderBookResult;
 import com.fd.criptocurrency.model.result.BitsoPayloadResult;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.maps.GeoApiContext;
-import com.google.maps.GeocodingApi;
-import com.google.maps.errors.ApiException;
-import com.google.maps.model.GeocodingResult;
 
 
 
@@ -82,10 +48,6 @@ public class BitsoWebController {
     @Autowired
     @Qualifier("googleMapServiceImpl")
     private GoogleMapService googleMapService;
-    
-    @Autowired
-    @Qualifier("tareasServiceImpl")
-    private TareasService tareasService;
     
     /**
      * 
@@ -132,11 +94,6 @@ public class BitsoWebController {
     	model.addAttribute("gananciaTotalMXN_MXN",UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasGanacia.getBalanceTOTAL_MXN()));
     	
     	//-----------------------------------------------------
-    	
-    	Tareas tareas = new Tareas();
-    	tareas.setTarea("Nueva tarea desde spring-Data");
-    	tareasService.save(tareas);
-    	
     	
     	
     	/* Exampe: https://www.petrikainulainen.net/programming/spring-framework/spring-batch-tutorial-reading-information-from-a-database/ */
