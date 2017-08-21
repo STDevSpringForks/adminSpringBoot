@@ -1,12 +1,15 @@
 package com.fd.admin.springdata.repository;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import java.sql.Timestamp;
+import java.util.List;
 
+import org.springframework.data.repository.CrudRepository;
+
+import com.fd.admin.springdata.domain.Persona;
 import com.fd.admin.springdata.domain.UrlSocialNetwork;
 
 /**
- * 
+ * JPQL
  * @author Muguruza
  *
  */
@@ -21,4 +24,17 @@ public interface UrlSocialNetworkRepository extends CrudRepository<UrlSocialNetw
 	 * -count
 	 * -delete
 	 */
+	
+	/**
+	 * https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
+	 * Example 5. Derived Count Query  ---- revisar la nomenclatura
+	 * Spring Data: SELECT * FROM urlsocialnetwork WHERE UrlSocialNetwork LIKE ...
+	 * @param urlSocialNetwork
+	 * @return
+	 */
+	public List<UrlSocialNetwork> findByUrlSocialNetworkLike(String urlSocialNetwork);
+	public List<UrlSocialNetwork> findByFechaTramiteLessThan(Timestamp urlSocialNetwork);
+	public Integer deleteByUrlSocialNetwork(String urlSocialNetwork);
+	public List<UrlSocialNetwork> findByPersona(Persona persona);
+	
 }

@@ -1,5 +1,7 @@
 package com.fd.personal.controller.web;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +52,7 @@ public class UrlSocialNetworkWebController {
 		System.out.println("--------------------->>>>");
     	
     	System.out.println(urlSocialNetworkService.findAll());
+    	List<UrlSocialNetwork> urlSocialNetworkList = urlSocialNetworkService.findByUrlSocialNetworkLike("facebook");
     	
     	System.out.println("--------------------->>>>");
     	
