@@ -36,7 +36,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fd.admin.springdata.domain.Tareas;
 import com.fd.admin.springdata.service.TareasService;
 
 
@@ -56,9 +55,9 @@ public class Java8WebController {
 
 	class A { } class B extends A { } class C extends B { } class D extends C { }
 	
-	@Autowired
-    @Qualifier("tareasServiceImpl")
-    private TareasService tareasService;
+//	@Autowired
+//    @Qualifier("tareasServiceImpl")
+//    private TareasService tareasService;
 	
 	@RequestMapping(value = "/java8Testing",method = RequestMethod.GET)
 	public String java8Testing(){
@@ -84,13 +83,32 @@ public class Java8WebController {
 //    	tareas.setTarea("Nueva tarea desde spring-Data");
 //    	tareasService.save(tareas);
     	
-    	System.out.println(tareasService.findAll());
+//    	System.out.println(tareasService.findAll());
     	
     	System.out.println("--------------------->>>>");
-		
-		
+    	
+    	String hola = "hola";
+    	String holab = new String("hola");
+    	
+    	System.out.println(hola == holab);
+    	System.out.println(hola.equals(holab));
+    	System.out.println(hola.intern() == holab.intern());
+    	
+    	System.out.println("--------------------->>>>");
+    	
+    	Integer val1 = new Integer(5);
+        int val2 = 9;
+        testInts(val1++, ++val2);
+        System.out.println(val1+" "+val2);
+    	
 		return "java8";
 	}
+	
+	 public static void testInts(Integer obj, int var){
+	        obj = var++;
+	        obj++;
+	 }
+	 
 	
 	@RequestMapping(value = "/javalambda1",method = RequestMethod.GET)
 	public String javalambda1(){

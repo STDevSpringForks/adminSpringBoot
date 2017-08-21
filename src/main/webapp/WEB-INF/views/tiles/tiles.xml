@@ -139,6 +139,12 @@
        <put-attribute name="body" value="/WEB-INF/views/error.jsp" />  
    </definition>
    
+    <!-- Social Network Page -->
+   <definition name="personal/socialNetwork/viewSocialNetwork" extends="base-definition">  
+       <put-attribute name="title" value="View Social Network" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/personal/socialNetwork/viewSocialNetwork.jsp" />  
+   </definition>
+   
    <!-- Java 8 Page -->
    <definition name="java8" extends="base-definition">  
        <put-attribute name="title" value="Java8" />  
@@ -147,7 +153,7 @@
    
    <!-- Estudiante Page -->
    <definition name="escuela/estudiante" extends="base-definition">  
-       <put-attribute name="title" value="Java8" />  
+       <put-attribute name="title" value="estudiante" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/escuela/estudiante.jsp" />  
    </definition>
    
@@ -159,7 +165,7 @@
    
    <!-- Estudiante Page -->
    <definition name="escuela/estudiante" extends="base-definition">  
-       <put-attribute name="title" value="Java8" />  
+       <put-attribute name="title" value="estudiante" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/escuela/estudiante.jsp" />  
    </definition>
    

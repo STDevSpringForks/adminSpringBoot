@@ -1,8 +1,7 @@
-package com.fd.admin.model.entity;
+package com.fd.admin.springdata.domain;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fd.admin.springdata.domain.UrlSocialNetwork;
-
 /**
  * 
  * @author Muguruza
@@ -20,7 +17,7 @@ import com.fd.admin.springdata.domain.UrlSocialNetwork;
  */
 @Entity
 @Table(name = "person")
-public class Person {
+public class Persona {
 
 	@Id
 	@Column(name = "id")
@@ -32,24 +29,21 @@ public class Person {
 	private String gender;
 	private String email;
 	
-	//fk_prestamo_person1
-	
-	public Person() {
+	public Persona() {
 	}
 	
-	public Person(String firstName, String lastName, String gender, String email) {
+	public Persona(String firstName, String lastName, String gender, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
 		this.email = email;
 	}
 	
-	/* Hacer la tabla person y tramite sea bidireccional entonces... */
-	//@OneToOne(mappedBy = "person") /* "person" es igual al nombre de que le da en la variable en la otra clase... en este caso prestamo en @OneToOne */
-	//private Prestamo prestamo;
-	
-	@OneToMany(mappedBy = "personId",cascade = CascadeType.REMOVE)
-	private Set<Tarea> tarea;
+	/**
+	 * personId es el nombre del atributoClase de la clase: UrlSocialNetwork.
+	 */
+	@OneToMany(mappedBy = "persona") /* Nombre del atributo en UrlSocialNetwork */
+	private Set<UrlSocialNetwork> urlSocialNetwork;
 	
 	public int getId() {
 		return id;

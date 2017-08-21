@@ -11,6 +11,7 @@
 
 	<!-- Paquete donde se encuentran los repositorios. -->
 	<jpa:repositories base-package="com.fd.admin.springdata.repository"></jpa:repositories>
+<!-- 	<jpa:repositories base-package="com.fd.personal.repository"></jpa:repositories> -->
 
 	<!-- Parámetros de base de datos. -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -21,7 +22,7 @@
 		<property name="password" value="hbuser"></property>
 	</bean>
 
-<!-- Gestor de entidades. -->
+	<!-- Gestor de entidades. -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
@@ -34,15 +35,29 @@
 			</bean>
 		</property>
 	</bean>
+<!-- 	<bean id="entityManagerFactory" -->
+<!-- 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> -->
+<!-- 		<property name="dataSource" ref="dataSource"></property> -->
+<!-- 		<property name="packagesToScan" value="com.fd.personal.model"></property> -->
+<!-- 		<property name="jpaVendorAdapter"> -->
+<!-- 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> -->
+<!-- 				<property name="database" value="MYSQL"></property> -->
+<!-- 				<property name="generateDdl" value="true"></property> -->
+<!-- 				<property name="showSql" value="true"></property> -->
+<!-- 			</bean> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
 	
-<!-- Dialecto JPA en ésta caso será Hibernate. -->
+	<!-- Dialecto JPA en ésta caso será Hibernate. -->
 	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"></bean>
 	
-<!-- Habilitar anotaciones spring. -->
+	<!-- Habilitar anotaciones spring. -->
 	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="com.fd.admin.springdata.service.impl"></context:component-scan>
+<!-- 	<context:component-scan base-package="com.fd.personal.service.impl"></context:component-scan> -->
 	
-<!-- Gestor de transacciones.	 -->
+	
+	<!-- Gestor de transacciones.	 -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
@@ -50,6 +65,6 @@
 		<property name="jpaDialect" ref="jpaDialect"></property>
 	</bean>
 
-<!-- Habilitamos la anotación @Transactional -->
+	<!-- Habilitamos la anotación @Transactional -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>
