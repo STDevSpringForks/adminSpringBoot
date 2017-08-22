@@ -3,6 +3,8 @@ package com.fd.admin.springdata.repository;
 import java.sql.Timestamp;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
 import com.fd.admin.springdata.domain.Persona;
@@ -36,5 +38,6 @@ public interface UrlSocialNetworkRepository extends CrudRepository<UrlSocialNetw
 	public List<UrlSocialNetwork> findByFechaTramiteLessThan(Timestamp urlSocialNetwork);
 	public Integer deleteByUrlSocialNetwork(String urlSocialNetwork);
 	public List<UrlSocialNetwork> findByPersona(Persona persona);
+	public Page<UrlSocialNetwork> findAll(Pageable pageable);
 	
 }

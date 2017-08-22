@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,6 +56,14 @@ public class UrlSocialNetworkWebController {
     	List<UrlSocialNetwork> urlSocialNetworkList = urlSocialNetworkService.findByUrlSocialNetworkLike("facebook");
     	
     	System.out.println("--------------------->>>>");
+    	
+    	int index = 1;
+    	Page<UrlSocialNetwork> page = urlSocialNetworkService.findAll(index - 1);
+    	
+    	//page.getContent() //Obtienes la lista de la página 1.
+    	//page.getTotalPages() //Numero de paginas que se crearon.
+    	
+    	//Solo se cambia el numero de index para ir obteniendo la lista de diferente pagina.
     	
 		return VIEW_SOCIAL_NETWORK;
 	}
