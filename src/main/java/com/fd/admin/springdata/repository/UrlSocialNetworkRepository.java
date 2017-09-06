@@ -35,7 +35,7 @@ public interface UrlSocialNetworkRepository extends CrudRepository<UrlSocialNetw
 	 * @return
 	 */
 	public List<UrlSocialNetwork> findByUrlSocialNetworkLike(String urlSocialNetwork);
-	public List<UrlSocialNetwork> findByFechaTramiteLessThan(Timestamp urlSocialNetwork);
+	//public List<UrlSocialNetwork> findByFechaTramiteLessThan(Timestamp urlSocialNetwork);
 	public Integer deleteByUrlSocialNetwork(String urlSocialNetwork);
 	public List<UrlSocialNetwork> findByPersona(Persona persona);
 	public Page<UrlSocialNetwork> findAll(Pageable pageable);

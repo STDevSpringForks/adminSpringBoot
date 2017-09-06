@@ -65,6 +65,12 @@
 						<a href="${pageContext.request.contextPath}/personal/socialNetwork/viewSocialNetwork" class="item">View Social Network</a>
 					</div>
 				</div>
+				<div class="column">
+					<h4 class="ui header">Testing API</h4>
+					<div class="ui link list">
+						<a href="${pageContext.request.contextPath}/api/viewMapBox" class="item">View MapBox</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		<a class="item"><i class="cart icon"></i> Checkout </a>

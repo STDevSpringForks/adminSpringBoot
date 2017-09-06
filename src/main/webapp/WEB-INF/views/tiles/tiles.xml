@@ -174,5 +174,11 @@
        <put-attribute name="title" value="Ethererum" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/ethereum/viewEthereum.jsp" />  
    </definition>
+   
+   <!-- Mapbox Page -->
+   <definition name="api/viewMapBox" extends="base-definition">  
+       <put-attribute name="title" value="View MapBox" />
+       <put-attribute name="body" value="/WEB-INF/views/pages/api/viewMapBox.jsp" />  
+   </definition>
       
 </tiles-definitions>

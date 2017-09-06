@@ -74,22 +74,22 @@ public class BitsoServiceImpl implements BitsoService {
 		
 		/* Start Balance manual, obtener la suma del balance por cada divisa desde Hibernate */
         BalancePerson personBalanceFroy = new BalancePerson();
-        personBalanceFroy.setBalanceBTC("0.00001286");
-        personBalanceFroy.setBalanceETH("0.06173024");
-        personBalanceFroy.setBalanceMXN("10.65");
-        personBalanceFroy.setBalanceXRP("0.800800");
+        personBalanceFroy.setBalanceBTC("0.00001286"); //BCH 0.00001286
+        personBalanceFroy.setBalanceETH("0.06727562");
+        personBalanceFroy.setBalanceMXN("0.00");
+        personBalanceFroy.setBalanceXRP("4.581943");
         
         BalancePerson personBalanceOfe = new BalancePerson();
         personBalanceOfe.setBalanceBTC("0.0");
-        personBalanceOfe.setBalanceETH("6.73243454");
-        personBalanceOfe.setBalanceMXN("0.0");
-        personBalanceOfe.setBalanceXRP("1218.673218");
+        personBalanceOfe.setBalanceETH("0.0");
+        personBalanceOfe.setBalanceMXN("51128.28");
+        personBalanceOfe.setBalanceXRP("0.0");
         
         BalancePerson personBalanceLily = new BalancePerson();
-        personBalanceLily.setBalanceBTC("0.00000585");
-        personBalanceLily.setBalanceETH("27.35506079");
-        personBalanceLily.setBalanceMXN("0.02");
-        personBalanceLily.setBalanceXRP("0.9828");
+        personBalanceLily.setBalanceBTC("0.00005585");  //BCH 0.00000585
+        personBalanceLily.setBalanceETH("6.22741710");
+        personBalanceLily.setBalanceMXN("139403.45");
+        personBalanceLily.setBalanceXRP("0.00");
         
         List<BalancePerson> balancePersonList = new ArrayList<>();
         balancePersonList.add(personBalanceFroy);
@@ -215,8 +215,8 @@ public class BitsoServiceImpl implements BitsoService {
 		/* Start Balance manual, obtener la suma del balance por cada divisa desde Hibernate */
         BalancePerson personBalanceCristobal_cuentaLily = new BalancePerson();
         personBalanceCristobal_cuentaLily.setBalanceBTC("0");
-        personBalanceCristobal_cuentaLily.setBalanceETH("0.72252227");
-        personBalanceCristobal_cuentaLily.setBalanceMXN("0");
+        personBalanceCristobal_cuentaLily.setBalanceETH("0.0");
+        personBalanceCristobal_cuentaLily.setBalanceMXN("4956.29");
         personBalanceCristobal_cuentaLily.setBalanceXRP("0");
         
         List<BalancePerson> balancePersonList = new ArrayList<>();
