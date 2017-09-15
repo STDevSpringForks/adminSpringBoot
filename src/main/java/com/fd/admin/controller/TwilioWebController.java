@@ -31,10 +31,10 @@ public class TwilioWebController {
     private static final String VIEW_TIWILIO_SMS = "twilio/viewTiwilioSMS";
 
     @Autowired
-    TwilioService twilioService;
+    private TwilioService twilioService;
     
     @Autowired
-    TwilioValidator twilioValidator;
+    private TwilioValidator twilioValidator;
     
     /**
      * This is a form Tiwilio SMS.

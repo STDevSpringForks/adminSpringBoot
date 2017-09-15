@@ -69,6 +69,7 @@
 					<h4 class="ui header">Testing API</h4>
 					<div class="ui link list">
 						<a href="${pageContext.request.contextPath}/api/viewMapBox" class="item">View MapBox</a>
+						<a href="${pageContext.request.contextPath}/viewTwitterHome" class="item">View Twitter</a>
 					</div>
 				</div>
 			</div>

@@ -2,6 +2,8 @@ package com.fd.admin;
 
 import java.util.Locale;
 
+import javax.inject.Inject;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +13,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.env.Environment;
+import org.springframework.social.connect.ConnectionFactoryLocator;
+import org.springframework.social.connect.support.ConnectionFactoryRegistry;
+import org.springframework.social.twitter.connect.TwitterConnectionFactory;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -36,7 +42,7 @@ import com.fd.adminHome.data_service.gastos.service.StorageService;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.fd")
 public class AdminSpringBootApplication extends WebMvcConfigurerAdapter {
-											      
+		
 	private static final String MESSAGE_SOURCE = "/WEB-INF/i18n/messages";
 	private static final String RESOURCES_LOCATION = "/resources/";
 	private static final String RESOURCES_HANDLER = RESOURCES_LOCATION + "**";

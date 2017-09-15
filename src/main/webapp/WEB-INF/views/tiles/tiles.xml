@@ -24,7 +24,30 @@
        <put-attribute name="title" value="View Tiwilio SMS" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/twilio/viewTwilioSMS.jsp" />  
    </definition>
-     
+   
+    <!-- Twitter Page -->
+   <definition name="viewTwitter" extends="base-definition">  
+       <put-attribute name="title" value="View Twitter" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/connect/viewTwitter.jsp" />  
+   </definition>
+   
+   <!-- Twitter Connect Page -->
+   <definition name="connect/twitterConnect" extends="base-definition">  
+       <put-attribute name="title" value="View Twitter Connect" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/connect/twitterConnect.jsp" />  
+   </definition>
+   
+   <!-- Twitter Connect Page -->
+   <definition name="connect/twitter" extends="base-definition">  
+       <put-attribute name="title" value="View Twitter Connect" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/connect/twitterConnected.jsp" />  
+   </definition>
+   
+   <definition name="connect/twitterConnected" extends="base-definition">  
+       <put-attribute name="title" value="View Twitter Connect" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/connect/twitterConnected.jsp" />  
+   </definition>
+   
    <!-- JasperReport Page -->
    <definition name="reports/viewJasperReport" extends="base-definition">  
        <put-attribute name="title" value="View JasperReport" />  

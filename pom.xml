@@ -351,6 +351,33 @@
 		    <version>3.8.1</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-twitter -->
+		<dependency>
+		    <groupId>org.springframework.social</groupId>
+		    <artifactId>spring-social-twitter</artifactId>
+		    <version>1.1.2.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.springframework.social</groupId>
+		  <artifactId>spring-social-web</artifactId>
+		  <version>1.1.0.RELEASE</version>
+		</dependency>
+		
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-core</artifactId>
+		    <version>2.9.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-api</artifactId>
+		    <version>2.9.0</version>
+		</dependency>
 		
 		
 		<!-- End Muguruza -->
