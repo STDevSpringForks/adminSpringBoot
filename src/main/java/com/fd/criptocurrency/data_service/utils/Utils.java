@@ -8,7 +8,7 @@ import javax.json.JsonObject;
 import javax.json.stream.JsonParsingException;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 
 /**
@@ -24,7 +24,7 @@ public class Utils {
 		
 		try{
 			// Send request
-	        HttpPost postRequest = new HttpPost(urlJSON);
+	        HttpGet postRequest = new HttpGet(urlJSON);
 	        postRequest.addHeader(CONTENT_TYPE,APPLICATION_JSON); //El tipo de contenido que regresará BITSO_URL_TICKER
 	
 	        /* 

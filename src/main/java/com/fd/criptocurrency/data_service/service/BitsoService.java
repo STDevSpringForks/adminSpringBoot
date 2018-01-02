@@ -49,8 +49,4 @@ public interface BitsoService {
 	 */
 	public OrderBookResult obtenerOrdenDeCompras();
 	
-	//Borrar ----
-	public BalanceCriptoDivisas obtenerBalanceDivisasInicialCristobal();
-	public BalanceCriptoDivisas obtenerBalanceDivisasCristobal(BitsoPayloadResult bitsoPayloadResult,FormBitsoBalance formBitsoBalance);
-	
 }

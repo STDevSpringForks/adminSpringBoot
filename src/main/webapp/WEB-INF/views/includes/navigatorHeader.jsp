@@ -17,7 +17,6 @@
 				<div class="column">
 					<h4 class="ui header">Ejemplos</h4>
 					<div class="ui link list">
-						<a href="${pageContext.request.contextPath}/escuela/estudiante" class="item">Estudiante</a>
 						<a href="${pageContext.request.contextPath}/escuela/areaTriangulo" class="item">Area Triangulo</a>
 						<a href="${pageContext.request.contextPath}/files/addTextToFile" class="item">RandomAccessFile</a>
 						<a class="item">Large</a>
@@ -55,7 +54,6 @@
 					<div class="ui link list">
 						<a href="${pageContext.request.contextPath}/bitso/viewBitso" class="item">Bitso</a>
 						<a href="${pageContext.request.contextPath}/bitso/viewBitsoOrderBook" class="item">Bitso Order Book</a>
-						<a href="${pageContext.request.contextPath}/bitso/viewBitsoCristobal" class="item">Bitso Cristobal</a>
 						<a href="${pageContext.request.contextPath}/ethereum/viewEthereum" class="item">Ethereum</a>
 					</div>
 				</div>

@@ -132,12 +132,6 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/bitso/viewBitsoOrderBook.jsp" />  
    </definition>
    
-   <!-- Bitso Cristobal Page -->
-   <definition name="bitso/viewBitsoCristobal" extends="base-definition">  
-       <put-attribute name="title" value="View Bitso Cristobal" />
-       <put-attribute name="body" value="/WEB-INF/views/pages/bitso/viewBitsoCristobal.jsp" />  
-   </definition>
-   
    <!-- Bitso Compra Page -->
    <definition name="bitso/viewBitsoCompral" extends="base-definition">  
        <put-attribute name="title" value="View Bitso Compra" />
@@ -174,22 +168,10 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/utils/java8.jsp" />  
    </definition>
    
-   <!-- Estudiante Page -->
-   <definition name="escuela/estudiante" extends="base-definition">  
-       <put-attribute name="title" value="estudiante" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/escuela/estudiante.jsp" />  
-   </definition>
-   
    <!-- Streams Page -->
    <definition name="streams" extends="base-definition">  
        <put-attribute name="title" value="exStreams" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/streams/exStreams.jsp" />  
-   </definition>
-   
-   <!-- Estudiante Page -->
-   <definition name="escuela/estudiante" extends="base-definition">  
-       <put-attribute name="title" value="estudiante" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/escuela/estudiante.jsp" />  
    </definition>
    
    <!-- Ethereum Page -->
