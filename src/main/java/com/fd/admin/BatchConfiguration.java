@@ -212,8 +212,8 @@
 //    	final DriverManagerDataSource dataSource = new DriverManagerDataSource();
 //    	dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 //    	dataSource.setUrl("jdbc:mysql://localhost:3306/hibernate_adminSpringMVC?useSSL=false&serverTimezone=UTC");
-//    	dataSource.setUsername("hbuser");
-//    	dataSource.setPassword("hbuser");
+//    	dataSource.setUsername("root");
+//    	dataSource.setPassword("abc123");
 //    	
 //    	return dataSource;
 //    	

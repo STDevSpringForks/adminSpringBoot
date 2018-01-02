@@ -23,8 +23,8 @@ public class JDBCRepositoryImpl implements JDBCRepository {
 
 		Connection myConn = null;
 		String jdbcUrl = "jdbc:mysql://localhost:3306/hibernate_adminSpringMVC?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-		String user = "hbuser";
-		String pass = "hbuser";
+		String user = "root";
+		String pass = "abc123";
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
