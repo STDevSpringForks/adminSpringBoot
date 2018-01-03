@@ -168,18 +168,6 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/utils/java8.jsp" />  
    </definition>
    
-   <!-- Streams Page -->
-   <definition name="streams" extends="base-definition">  
-       <put-attribute name="title" value="exStreams" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/streams/exStreams.jsp" />  
-   </definition>
-   
-   <!-- Ethereum Page -->
-   <definition name="ethereum/viewEthereum" extends="base-definition">  
-       <put-attribute name="title" value="Ethererum" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/ethereum/viewEthereum.jsp" />  
-   </definition>
-   
    <!-- Mapbox Page -->
    <definition name="api/viewMapBox" extends="base-definition">  
        <put-attribute name="title" value="View MapBox" />
