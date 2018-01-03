@@ -114,12 +114,6 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/exercises/viewJQuery3.jsp" />  
    </definition>
    
-   <!-- Ejercicios de Programacion Page -->
-   <definition name="ejerciciosProgramacion/viewEjercicios" extends="base-definition">  
-       <put-attribute name="title" value="View Ejercicios de Programación" />
-       <put-attribute name="body" value="/WEB-INF/views/pages/ejerciciosProgramacion/viewEjercicioProgramacion.jsp" />  
-   </definition>
-   
    <!-- Bitso Page -->
    <definition name="bitso/viewBitso" extends="base-definition">  
        <put-attribute name="title" value="View Bitso" />
@@ -160,12 +154,6 @@
    <definition name="personal/socialNetwork/viewSocialNetwork" extends="base-definition">  
        <put-attribute name="title" value="View Social Network" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/personal/socialNetwork/viewSocialNetwork.jsp" />  
-   </definition>
-   
-   <!-- Java 8 Page -->
-   <definition name="java8" extends="base-definition">  
-       <put-attribute name="title" value="Java8" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/utils/java8.jsp" />  
    </definition>
    
    <!-- Mapbox Page -->

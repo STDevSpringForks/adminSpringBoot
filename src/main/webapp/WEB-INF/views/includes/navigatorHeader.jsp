@@ -10,8 +10,6 @@
 					<div class="ui link list">
 						<a href="${pageContext.request.contextPath}/person/viewPerson" class="item"><span style="color: orange;">(wip) </span>Person</a>
 						<a href="${pageContext.request.contextPath}/contact/viewContact" class="item"><span style="color: orange;">(wip) </span>Contact Form</a>
-						<a href="${pageContext.request.contextPath}/modules/finance/viewFinance" class="item"><span style="color: orange;">(wip) </span>Finance</a>
-						<a href="${pageContext.request.contextPath}/streams/exStreams" class="item">exStreams</a>
 					</div>
 				</div>
 				<div class="column">
@@ -46,7 +44,6 @@
 						<a href="${pageContext.request.contextPath}/reports/viewJasperReport" class="item"><span style="color: red;">(new) </span>Jasper Repors</a>
 						<a href="${pageContext.request.contextPath}/email/viewSendEmailTest" class="item"><span style="color: orange;">(wip) </span>Send Email</a>
 						<a href="${pageContext.request.contextPath}/exercises/viewJQuery3" class="item"><span style="color: orange;">(wip) </span>JQuery3</a>
-						<a href="${pageContext.request.contextPath}/ejerciciosProgramacion/viewEjercicios" class="item">Ejercicios Programción</a>
 					</div>
 				</div>
 				<div class="column">
