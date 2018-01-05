@@ -13,15 +13,6 @@
 					</div>
 				</div>
 				<div class="column">
-					<h4 class="ui header">Ejemplos</h4>
-					<div class="ui link list">
-						<a href="${pageContext.request.contextPath}/escuela/areaTriangulo" class="item">Area Triangulo</a>
-						<a href="${pageContext.request.contextPath}/files/addTextToFile" class="item">RandomAccessFile</a>
-						<a class="item">Large</a>
-						<a class="item">Plus Sizes</a>
-					</div>
-				</div>
-				<div class="column">
 					<h4 class="ui header">Utils</h4>
 					<div class="ui link list">
 						<a href="${pageContext.request.contextPath}/twilio/viewTiwilioSMS" class="item">Twilio</a>

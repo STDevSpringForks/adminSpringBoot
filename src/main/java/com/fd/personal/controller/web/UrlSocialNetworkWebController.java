@@ -25,7 +25,6 @@ import com.fd.admin.springdata.service.UrlSocialNetworkService;
 @RequestMapping(value = "/personal/socialNetwork")
 public class UrlSocialNetworkWebController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(UrlSocialNetworkWebController.class);
 	private static final String VIEW_SOCIAL_NETWORK = "personal/socialNetwork/viewSocialNetwork";
 	
 	@Autowired
