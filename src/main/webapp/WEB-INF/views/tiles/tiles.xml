@@ -150,12 +150,6 @@
        <put-attribute name="body" value="/WEB-INF/views/error.jsp" />  
    </definition>
    
-    <!-- Social Network Page -->
-   <definition name="personal/socialNetwork/viewSocialNetwork" extends="base-definition">  
-       <put-attribute name="title" value="View Social Network" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/personal/socialNetwork/viewSocialNetwork.jsp" />  
-   </definition>
-   
    <!-- Mapbox Page -->
    <definition name="api/viewMapBox" extends="base-definition">  
        <put-attribute name="title" value="View MapBox" />

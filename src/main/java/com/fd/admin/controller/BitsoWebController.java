@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fd.admin.data_service_api.GoogleMapService;
-//import com.fd.admin.springdata.service.TareasService;
 import com.fd.criptocurrency.data_service.service.BitsoService;
 import com.fd.criptocurrency.data_service.utils.UtilsBigDecimal;
 import com.fd.criptocurrency.model.BalanceCriptoDivisas;
@@ -22,8 +21,6 @@ import com.fd.criptocurrency.model.OrderBookResult;
 import com.fd.criptocurrency.model.result.BitsoPayloadResult;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-
 
 /**
  * 

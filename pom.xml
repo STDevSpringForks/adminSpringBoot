@@ -250,47 +250,6 @@
 <!--             <version>0.5.0-SNAPSHOT</version> -->
 <!--         </dependency> -->
 		
-		<!-- Start Spring-Data -->
-		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
-		<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-jpa</artifactId>
-		    <version>1.11.6.RELEASE</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
-<!-- 		<dependency> -->
-<!-- 		    <groupId>org.apache.commons</groupId> -->
-<!-- 		    <artifactId>commons-dbcp2</artifactId> -->
-<!-- 		    <version>2.1.1</version> -->
-<!-- 		</dependency> -->
-		
-		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
-		<dependency>
-		    <groupId>commons-dbcp</groupId>
-		    <artifactId>commons-dbcp</artifactId>
-		    <version>1.4</version>
-		</dependency>
-				
-		
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-orm</artifactId>
-		    <version>4.3.10.RELEASE</version>
-		</dependency>
-		
-		<!--  org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jobOperator' defined in class path resource [org/springframework/boot/autoconfigure/batch/BatchAutoConfiguration.class]: Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/aspectj/util/PartialOrder$PartialComparable -->
-		<dependency>
-		  <groupId>org.aspectj</groupId>
-		  <artifactId>aspectjweaver</artifactId>
-		  <version>1.8.9</version>
-		</dependency>
-		
-		<!-- End Spring-Data -->
-		
-		
-		
 		<!-- batch excel -->
 		<dependency>
             <groupId>org.apache.poi</groupId>

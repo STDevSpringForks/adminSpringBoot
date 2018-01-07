@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fd.admin.springdata.domain.UrlSocialNetwork;
-
 /**
  * 
  * @author Muguruza
