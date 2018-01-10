@@ -38,7 +38,7 @@ public class HomeController {
         LOGGER.info("Welcome home! The client locale is {}.", locale);
         
        //-----Parameterized ------- http://memorynotfound.com/spring-mvc-internationalization-i18n-example/
-        String welcome = messageSource.getMessage("welcome.message", new Object[]{"Fermín Muguruza"}, locale);
+        String welcome = messageSource.getMessage("welcome.message", new Object[]{"Buenos días"}, locale);
         model.addAttribute("message", welcome);
         
         // obtain locale from LocaleContextHolder
