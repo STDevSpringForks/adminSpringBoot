@@ -82,7 +82,8 @@ public class TestWebController {
     	Query query = session.createQuery("from InternetEmailAccounts where email = :email ");
     	query.setParameter("email", "cm850101@gmail.com");
     	
-    	List<InternetEmailAccounts> listEmails = query.getResultList();
+    	@SuppressWarnings("unchecked")
+		List<InternetEmailAccounts> listEmails = query.getResultList();
     	System.out.println(listEmails.toString());
     	
     	session.getTransaction().commit();

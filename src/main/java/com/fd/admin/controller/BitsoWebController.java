@@ -1,7 +1,5 @@
 package com.fd.admin.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -31,7 +29,6 @@ import com.google.gson.GsonBuilder;
 @RequestMapping(value = "/bitso")
 public class BitsoWebController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(BitsoWebController.class);
     private static final String VIEW_BITSO = "bitso/viewBitso";
     private static final String VIEW_BITSO_ORDER_BOOK = "bitso/viewBitsoOrderBook";
     
