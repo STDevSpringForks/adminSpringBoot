@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fd.admin.data_service.validator.PersonValidator;
-import com.fd.admin.data_service_api.PersonService;
 import com.fd.admin.model.criteria.PersonListDetailsSearchCriteria;
 import com.fd.admin.model.entity.Person;
-import com.fd.admin.model.result.PersonListDetailsResult;
 
 /**
+ * 
+ * Esta clase solo se debe checar como esta implementado el personValidator.validate(
+ * 
  * 
  * @author Muguruza
  *
@@ -30,8 +31,8 @@ public class PersonWebController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PersonWebController.class);
 	private static final String VIEW_NEW_PERSON = "person/viewPerson";
 	
-	@Autowired
-    PersonService personService;
+//	@Autowired
+//  PersonService personService;
     
     @Autowired
     PersonValidator personValidator;
@@ -47,8 +48,8 @@ public class PersonWebController {
         model.addAttribute("personListDetailsEntity", personListDetailsEntity);
         
         PersonListDetailsSearchCriteria searchCriteria = new PersonListDetailsSearchCriteria();
-        PersonListDetailsResult personListDetailsResult = personService.retrievePersonListDetails(searchCriteria);
-        model.addAttribute("personListDetailsResult", personListDetailsResult);
+        //PersonListDetailsResult personListDetailsResult = personService.retrievePersonListDetails(searchCriteria);
+        //model.addAttribute("personListDetailsResult", personListDetailsResult);
         
         return VIEW_NEW_PERSON;
     }
@@ -69,8 +70,8 @@ public class PersonWebController {
                 return VIEW_NEW_PERSON;
             }
             
-            boolean bResult = personService.savePersonListDetails(personListDetailsEntity);
-            model.addAttribute("msgResult", bResult);
+            //boolean bResult = personService.savePersonListDetails(personListDetailsEntity);
+            model.addAttribute("msgResult", result);
 
         } catch (Exception e) {
             LOGGER.debug("viewPerson Exception ", e);
