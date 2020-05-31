@@ -1,9 +1,35 @@
-logging:
-  level:
-    #ROOT: DEBUG
-    org.springframework.web: ERROR
-    com.mkyong: DEBUG
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
-    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
-  file: /Users/mkyong/debug.log
+#logging:
+#    file: C:/adminSpringBoot/logs/${spring.application.name}.log
+#    level:
+#        com:
+#            fd: DEBUG
+#        org:
+#            springframework:
+#                web: ERROR
+#    pattern:
+#        console: '%d{yyyy-MMM-dd HH:mm:ss} - %msg%n'
+#        file: '%d{yyyy-MMM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+server:
+    servlet:
+        context-path: /web/common
+    port: 8080
+spring:
+    application:
+        name: adminSpringBoot
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: abc123
+        url: jdbc:mysql://localhost:3306/hibernate_adminSpringMVC?useSSL=false&serverTimezone=UTC
+        username: root
+    http:
+        multipart:
+            max-file-size: 10MB
+            max-request-size: 10MB
+    jpa:
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    social:
+        twitter:
+            app-id: IyOxuEnSuMxIoPyT7xO9belUl
+            app-secret: yoQfZ19IoQWJIptaGRR1q8PwEiGmWAyrqRbahXAzMYoXrFLpV7
