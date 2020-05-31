@@ -29,15 +29,15 @@
 		<property name="current_session_context_class">thread</property>
 		
 		<!-- Usar mapping en base a XML. -->
-		<mapping resource="com/fd/admin/model/internet/entity/InternetEmailAccounts.hbm.xml"/>
+		<mapping resource="com/fd/mvc/admin/model/internet/entity/InternetEmailAccounts.hbm.xml"/>
 		
 		<!-- Usar mapping en base a anotaciones. -->
 		<mapping class="com.fd.admin.model.internet.entity.InternetPages"/>
-		<mapping class="com.fd.admin.model.entity.Person"/>
-		<mapping class="com.fd.admin.model.entity.Prestamo"/>
-		<mapping class="com.fd.admin.model.entity.Tarea"/>
-		<mapping class="com.fd.adminHome.model.gastos.entity.GastoEntity"/>
-		<mapping class="com.fd.admin.model.GeocoderRequest"/>
+		<mapping class="com.fd.mvc.admin.model.entity.Person"/>
+		<mapping class="com.fd.mvc.admin.model.entity.Prestamo"/>
+		<mapping class="com.fd.mvc.admin.model.entity.Tarea"/>
+		<mapping class="com.fd.mvc.adminhome.model.gastos.entity.GastoEntity"/>
+		<mapping class="com.fd.mvc.admin.model.GeocoderRequest"/>
 		
 <!-- http://www.journaldev.com/2924/hibernate-one-to-many-mapping-annotation -->
 <!--		<mapping class="com.fd.admin.model.entity.PersonListDetailsEntity"/> -->

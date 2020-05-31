@@ -1,0 +1,83 @@
+package com.fd.mvc.admin.controller;
+
+import com.fd.mvc.admin.data_service.validator.PersonValidator;
+import com.fd.mvc.admin.model.criteria.PersonListDetailsSearchCriteria;
+import com.fd.mvc.admin.model.entity.Person;
+import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/**
+ * 
+ * Esta clase solo se debe checar como esta implementado el personValidator.validate(
+ * 
+ * 
+ * @author Muguruza
+ *
+ */
+@AllArgsConstructor
+@Controller
+@RequestMapping("/person")
+public class PersonWebController {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(PersonWebController.class);
+	private static final String VIEW_NEW_PERSON = "person/viewPerson";
+	
+//	@Autowired
+//  PersonService personService;
+    
+    private final PersonValidator personValidator;
+	
+	/**
+     * Ingresar a la forma para enviar SMS
+     * @param model
+     * @return
+     */
+    @GetMapping("/viewPerson")
+    public String formPayment(Model model) {
+    	Person personListDetailsEntity = new Person();
+        model.addAttribute("personListDetailsEntity", personListDetailsEntity);
+        
+        PersonListDetailsSearchCriteria searchCriteria = new PersonListDetailsSearchCriteria();
+        //PersonListDetailsResult personListDetailsResult = personService.retrievePersonListDetails(searchCriteria);
+        //model.addAttribute("personListDetailsResult", personListDetailsResult);
+        
+        return VIEW_NEW_PERSON;
+    }
+    
+    /**
+     * Enviar SMS
+     * @param twilioSMSSearchCriteria
+     * @param result
+     * @param model
+     * @return
+     */
+    @PostMapping("/viewPerson")
+    public String sendSMS(@ModelAttribute("personListDetailsEntity") Person personListDetailsEntity, BindingResult result, Model model) {
+        
+        try {
+        	personValidator.validate(personListDetailsEntity, result);
+            if (result.hasErrors()) {
+                return VIEW_NEW_PERSON;
+            }
+            
+            //boolean bResult = personService.savePersonListDetails(personListDetailsEntity);
+            model.addAttribute("msgResult", result);
+
+        } catch (Exception e) {
+            LOGGER.debug("viewPerson Exception ", e);
+            result.addError(new ObjectError("exception", e.getMessage()));
+        }
+        
+        return VIEW_NEW_PERSON;
+    }
+	
+}

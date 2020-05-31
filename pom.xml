@@ -3,18 +3,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.fd.adminSpringBoot</groupId>
+	<groupId>com.fd.mvc.adminSpringBoot</groupId>
 	<artifactId>adminSpringBoot</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>adminSpringBoot</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Proyecto ejemplo de Spring tiles-jsp</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-<!-- 		<version>1.4.3.RELEASE</version> Funciona spring batch  -->
 		<version>2.3.0.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
@@ -24,38 +23,17 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<apachetiles.version>3.0.8</apachetiles.version>
+		<lombok.version>1.18.12</lombok.version>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>api-v1-client-java-mvn-repo</id>
-			<url>https://raw.githubusercontent.com/blockchain/api-v1-client-java/mvn-repo/</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
-
 	<dependencies>
-		<dependency>
-			<groupId>info.blockchain</groupId>
-			<artifactId>api</artifactId>
-			<version>2.0.0</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Start Muguruza -->
+		<!-- Start -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
@@ -101,7 +79,6 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 		</dependency>
-
 
 		<!-- Start JSON Api Utils -->
 		<dependency>
@@ -235,48 +212,12 @@
         </dependency>
         <!-- batch excel -->
 		
-		<!--Start Para las queries SpringJPA -->
-		<!-- https://mvnrepository.com/artifact/com.mysema.querydsl/querydsl-core -->
-		<dependency>
-		    <groupId>com.mysema.querydsl</groupId>
-		    <artifactId>querydsl-core</artifactId>
-		    <version>3.7.4</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.mysema.querydsl/querydsl-jpa -->
-		<dependency>
-		    <groupId>com.mysema.querydsl</groupId>
-		    <artifactId>querydsl-jpa</artifactId>
-		    <version>3.7.4</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.mysema.querydsl/querydsl-apt -->
-		<dependency>
-		    <groupId>com.mysema.querydsl</groupId>
-		    <artifactId>querydsl-apt</artifactId>
-		    <version>3.7.4</version>
-		    <scope>provided</scope>
-		</dependency>
-		
-		
-		<!--End Para las queries SpringJPA -->
-		
-		<!-- https://mvnrepository.com/artifact/com.mapbox.mapboxsdk/mapbox-java-services -->
 		<dependency>
 		    <groupId>com.mapbox.mapboxsdk</groupId>
 		    <artifactId>mapbox-java-services</artifactId>
 		    <version>2.2.10</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp 
-		<dependency>
-		    <groupId>com.squareup.okhttp3</groupId>
-		    <artifactId>okhttp</artifactId>
-		    <version>3.8.1</version>
-		</dependency>
-		-->
-		
-		<!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-twitter -->
 		<dependency>
 		    <groupId>org.springframework.social</groupId>
 		    <artifactId>spring-social-twitter</artifactId>
@@ -300,10 +241,15 @@
 		    <artifactId>log4j-api</artifactId>
 		    <version>2.13.3</version>
 		</dependency>
-		
-		
-		<!-- End Muguruza -->
 
+		<!-- Utility dependencies -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -338,6 +284,5 @@
 
 		</plugins>
 	</build>
-
 
 </project>
