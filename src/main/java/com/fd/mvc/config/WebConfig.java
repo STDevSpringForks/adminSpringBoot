@@ -1,9 +1,5 @@
 package com.fd.mvc.config;
 
-import com.fd.mvc.adminhome.data_service.gastos.service.StorageProperties;
-import com.fd.mvc.adminhome.data_service.gastos.service.StorageService;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,20 +14,11 @@ import java.util.Locale;
 
 @EnableWebMvc
 @Configuration
-@EnableConfigurationProperties(StorageProperties.class)
 public class WebConfig implements WebMvcConfigurer {
 
     private static final String MESSAGE_SOURCE = "/WEB-INF/i18n/messages";
     private static final String RESOURCES_LOCATION = "/resources/";
     private static final String RESOURCES_HANDLER = RESOURCES_LOCATION + "**";
-
-    @Bean
-    CommandLineRunner init(StorageService storageService) {
-        return (args) -> {
-            storageService.deleteAll();
-            storageService.init();
-        };
-    }
 
     /**
      * Configure TilesConfigurer.

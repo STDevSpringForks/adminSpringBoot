@@ -29,7 +29,3 @@ spring:
         hibernate:
             naming:
                 physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    social:
-        twitter:
-            app-id: IyOxuEnSuMxIoPyT7xO9belUl
-            app-secret: yoQfZ19IoQWJIptaGRR1q8PwEiGmWAyrqRbahXAzMYoXrFLpV7
