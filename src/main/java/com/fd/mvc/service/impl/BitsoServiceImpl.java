@@ -123,7 +123,6 @@ public class BitsoServiceImpl implements BitsoService {
     @Override
     public BalanceCriptoDivisas obtenerBalanceDivisasInicial() {
 
-
         BalanceCriptoDivisas balanceCriptoDivisas = new BalanceCriptoDivisas();
 
         /* Start Mi Inversion Inicial */

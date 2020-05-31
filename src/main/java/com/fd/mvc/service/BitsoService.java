@@ -29,11 +29,6 @@ public interface BitsoService {
      */
     BalanceCriptoDivisas obtenerBalanceDivisas(BitsoPayloadResult bitsoPayloadResult, FormBitsoBalance formBitsoBalance);
 
-    /**
-     * Obtener el balance Inicial.
-     *
-     * @return
-     */
     BalanceCriptoDivisas obtenerBalanceDivisasInicial();
 
     /**
@@ -43,11 +38,6 @@ public interface BitsoService {
      */
     BalanceCriptoDivisas obtenerBalanceDivisasGanancia(BalanceCriptoDivisas balance, BalanceCriptoDivisas balanceInicial);
 
-    /**
-     * Obtener el listado de las ordenes de compra.
-     *
-     * @return
-     */
     OrderBookResult obtenerOrdenDeCompras();
 
 }

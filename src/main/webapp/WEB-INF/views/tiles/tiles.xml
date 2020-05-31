@@ -44,12 +44,6 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/reports/viewJasperReport.jsp"/>
     </definition>
 
-    <!-- Person Page -->
-    <definition name="person/viewPerson" extends="base-definition">
-        <put-attribute name="title" value="View Person"/>
-        <put-attribute name="body" value="/WEB-INF/views/pages/person/viewPerson.jsp"/>
-    </definition>
-
     <!-- Start Module Finance -->
     <!-- Module Finance/view Payments Page -->
     <definition name="modules/finance/payments/viewPaymentes" extends="base-definition">
@@ -62,18 +56,6 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/modules/finance/payments/formPayment.jsp"/>
     </definition>
     <!-- End Module Finance -->
-
-    <!-- Contact Page -->
-    <definition name="contact/viewContact" extends="base-definition">
-        <put-attribute name="title" value="View Contact"/>
-        <put-attribute name="body" value="/WEB-INF/views/pages/contact/viewContact.jsp"/>
-    </definition>
-
-    <!-- Email Page -->
-    <definition name="email/viewSendEmailTest" extends="base-definition">
-        <put-attribute name="title" value="View Email"/>
-        <put-attribute name="body" value="/WEB-INF/views/pages/email/viewSendEmailTest.jsp"/>
-    </definition>
 
     <!-- Palindromo Page -->
     <definition name="exercises/viewPalindrome" extends="base-definition">
@@ -115,18 +97,6 @@
     <definition name="bitso/viewBitsoCompral" extends="base-definition">
         <put-attribute name="title" value="View Bitso Compra"/>
         <put-attribute name="body" value="/WEB-INF/views/pages/bitso/viewBitsoCompra.jsp"/>
-    </definition>
-
-    <!-- Gastos Page -->
-    <definition name="home/gastos/addGasto" extends="base-definition">
-        <put-attribute name="title" value="Add Gasto"/>
-        <put-attribute name="body" value="/WEB-INF/views/pages/home/gastos/addGasto.jsp"/>
-    </definition>
-
-    <!-- Gastos Page -->
-    <definition name="criptoCurrency/mainCripto" extends="base-definition">
-        <put-attribute name="title" value="Add Gasto"/>
-        <put-attribute name="body" value="/WEB-INF/views/pages/home/gastos/addGasto.jsp"/>
     </definition>
 
     <!-- Error Page -->

@@ -11,7 +11,7 @@ import static com.fd.mvc.common.Constants.VIEW_PLACEAUTOCOMPLETE_ADDRESSFORM;
  */
 @Controller
 @RequestMapping("/googleMaps")
-public class AddressWebController {
+public class GoogleMapsWebController {
 
     @RequestMapping("/placeAutocompleteAddressForm")
     public String placeAutocompleteAddressForm() {

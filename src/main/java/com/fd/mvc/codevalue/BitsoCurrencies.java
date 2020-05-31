@@ -1,5 +1,8 @@
 package com.fd.mvc.codevalue;
 
+import lombok.Getter;
+
+@Getter
 public enum BitsoCurrencies {
 	
 	btc_mxn("btc_mxn"),
@@ -12,8 +15,4 @@ public enum BitsoCurrencies {
 		this.currency = currency;
 	}
 
-	public String getCurrency() {
-		return currency;
-	}
-	
 }
