@@ -56,7 +56,7 @@ public class JPAMysqlConfig {
         final Properties properties = new Properties();
         properties.setProperty("hibernate.show_sql", env.getProperty("mysql.jpa.show-sql"));
         properties.setProperty("hibernate.dialect", env.getProperty("mysql.jpa.properties.hibernate.dialect"));
-        properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("mysql.jpa.properties.hibernate.ddl-auto"));
+//        properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("mysql.jpa.properties.hibernate.ddl-auto"));
         return properties;
     }
 

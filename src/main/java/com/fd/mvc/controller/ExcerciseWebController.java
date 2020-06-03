@@ -42,7 +42,7 @@ public class ExcerciseWebController {
     @RequestMapping(value = "/viewPalindrome", method = RequestMethod.GET)
     public String viewPalindrome(Model model) {
         PalindromeSearchCriteria palindromeSearchCriteria = new PalindromeSearchCriteria();
-        model.addAttribute("palindromeSearchCriteria", palindromeSearchCriteria); // commandName="generalProfile"
+        model.addAttribute("palindromeSearchCriteria", palindromeSearchCriteria);
         return VIEW_PALINDROMO;
     }
 

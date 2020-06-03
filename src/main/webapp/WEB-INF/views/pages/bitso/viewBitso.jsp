@@ -82,6 +82,7 @@ ${balanceTotalMXN}
 	</table>
 </div>
 
+<%--
 <table id="example" class="ui celled table sortable" >
     <thead>
         <tr>
@@ -109,6 +110,7 @@ ${balanceTotalMXN}
 		</div>
 	</form:form>
 </div>
+--%>
 
 <script>
 $(document).ready(function() {

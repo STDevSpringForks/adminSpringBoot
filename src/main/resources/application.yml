@@ -13,10 +13,9 @@ spring:
 # -------------------------------- Datasources -------------------------------- #
 mysql:
     datasource:
-        #jdbc-Url: jdbc:mysql://localhost:3306/testdb?allowPublicKeyRetrieval=true&useSSL=false;useUnicode=true;useJDBCCompliantTimezoneShift=true;useLegacyDatetimeCode=false;serverTimezone=UTC
         jdbc-Url: jdbc:mysql://localhost:3306/hibernate_adminSpringMVC?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&useCursors=false&sendStringParametersAsUnicode=false&characterEncoding=UTF8
         username: root
-        password: abc123
+        password: root
         driver-class-name: com.mysql.cj.jdbc.Driver
         hikari:
             connection-test-query: SELECT 1 FROM DUAL
@@ -28,4 +27,4 @@ mysql:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL8Dialect
-                ddl-auto: create
+                #ddl-auto: create
