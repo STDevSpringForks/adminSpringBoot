@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Locale;
 
-import static com.fd.mvc.common.Constants.VIEW_HOME_CONTROLLER;
+//import static com.fd.mvc.common.Constants.VIEW_HOME_CONTROLLER;
 
 @Slf4j
 @Controller
@@ -38,7 +38,8 @@ public class HomeController {
         model.addAttribute("startMeeting", LocalTime.now());
         //-----Parameterized ---------- http://memorynotfound.com/spring-mvc-internationalization-i18n-example/
 
-        return VIEW_HOME_CONTROLLER;
+//        return VIEW_HOME_CONTROLLER;
+        return "home";
     }
 
 
