@@ -25,7 +25,7 @@
 		<apachetiles.version>3.0.8</apachetiles.version>
 		<lombok.version>1.18.12</lombok.version>
 		<hikaricp.version>3.4.2</hikaricp.version>
-		<hibernate-validator.version>7.0.0.Alpha3</hibernate-validator.version>
+		<hibernate-validator.version>7.0.0.CR1</hibernate-validator.version>
 	</properties>
 
 	<dependencies>
