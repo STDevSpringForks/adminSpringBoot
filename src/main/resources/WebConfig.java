@@ -11,8 +11,15 @@ import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    private static final String RESOURCES_LOCATION = "/resources/";
-    private static final String RESOURCES_HANDLER = RESOURCES_LOCATION + "**";
+    /**
+     * Prefix for static resources. Use the classpath prefix so resources are
+     * correctly located when the application is packaged as a jar.
+     */
+    private static final String RESOURCES_LOCATION = "classpath:/resources/";
+    /**
+     * Pattern that matches incoming requests for static resources.
+     */
+    private static final String RESOURCES_HANDLER = "/resources/**";
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
