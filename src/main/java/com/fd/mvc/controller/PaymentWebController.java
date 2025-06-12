@@ -99,9 +99,9 @@ public class PaymentWebController {
 
             // start a transaction
             log.info("Save paymentEntity...");
-            sessionPaymentEntity.save(paymentEntity);
+            sessionPaymentEntity.persist(paymentEntity);
             log.info("Save promoCodesEntity...");
-            sessionPromoCodesEntity.save(promoCodesEntity);
+            sessionPromoCodesEntity.persist(promoCodesEntity);
 
             // save the student object
             sessionPaymentEntity.getTransaction().commit();
