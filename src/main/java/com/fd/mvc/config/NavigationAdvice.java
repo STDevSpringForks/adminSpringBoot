@@ -19,6 +19,7 @@ public class NavigationAdvice {
         // Utils
         List<MenuItem> utils = new ArrayList<>();
         utils.add(new MenuItem("Twilio", "/twilio/viewTiwilioSMS"));
+        utils.add(new MenuItem("File Upload", "/upload"));
         menu.put("Utils", utils);
 
         // Exercises
@@ -35,6 +36,11 @@ public class NavigationAdvice {
         bitso.add(new MenuItem("Bitso", "/bitso/viewBitso"));
         bitso.add(new MenuItem("Bitso Order Book", "/bitso/viewBitsoOrderBook"));
         menu.put("Bitso", bitso);
+
+        // Finance
+        List<MenuItem> finance = new ArrayList<>();
+        finance.add(new MenuItem("Payments", "/modules/finance/payments/viewPaymentes"));
+        menu.put("Finance", finance);
 
         // Testing API
         List<MenuItem> api = new ArrayList<>();

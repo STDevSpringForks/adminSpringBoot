@@ -16,6 +16,10 @@ mvn package
 java -jar target/adminSpringBoot-0.0.1.jar
 ```
 
+Al iniciar la aplicación puedes navegar por todas las vistas usando el menú superior.
+Selecciona **Browse** para desplegar las secciones (Utils, Exercises, Finance, Bitso y Testing API)
+y accede a la página correspondiente de cada controlador.
+
 ## Documentación con Swagger
 
 Con la aplicación en ejecución puedes consultar y probar los endpoints desde el navegador accediendo a:
