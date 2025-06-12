@@ -29,7 +29,7 @@
 $(document).ready(function() {
     $('#orderBookResultCompra').DataTable({
         data: /*[[${orderBookResultCompra}]]*/ [],
-        order: [[ 1, 'desc' ]],
+        order: [ [ 1, 'desc' ] ],
         columns: [
             { data: 'book' },
             { data: 'price', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
@@ -43,7 +43,7 @@ $(document).ready(function() {
     }).columns.adjust();
     $('#orderBookResultVenta').DataTable({
         data: /*[[${orderBookResultVenta}]]*/ [],
-        order: [[ 1, 'asc' ]],
+        order: [ [ 1, 'asc' ] ],
         columns: [
             { data: 'book' },
             { data: 'price', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
