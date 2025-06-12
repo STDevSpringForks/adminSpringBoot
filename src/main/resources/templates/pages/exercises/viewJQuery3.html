@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>jQuery Example</title>
+    <title>JavaScript Example</title>
 </head>
 <body>
-<div th:replace="~{includes/header :: header(pageTitle='jQuery Example')}"></div>
+<div th:replace="~{includes/header :: header(pageTitle='JavaScript Example')}"></div>
 <img title="Get Width/Height" style="cursor: pointer;" id="imgLogo" alt="spring-logo" th:src="@{/resources/images/spring-logo.png}">
 <div class="buttonsShowHide">
     <button id="showLogo">Mostar</button>
@@ -12,32 +12,35 @@
 </div>
 <script th:src="@{/resources/js/simple-test.js}"></script>
 <script>
-$(function(){
+document.addEventListener('DOMContentLoaded', () => {
     fData();
     letFor();
-    $('#imgLogo').click(function(){
-        alertImg($(this));
+    const imgLogo = document.getElementById('imgLogo');
+    imgLogo.addEventListener('click', () => {
+        alertImg(imgLogo);
     });
-    $('#showLogo').click(function(){
-        $('#imgLogo').animate({"height":"240px"},1000);
+    document.getElementById('showLogo').addEventListener('click', () => {
+        imgLogo.style.transition = 'height 1s';
+        imgLogo.style.height = '240px';
     });
-    $('#hideLogo').click(function(){
-        $('#imgLogo').animate({"height":"120px"},1000);
+    document.getElementById('hideLogo').addEventListener('click', () => {
+        imgLogo.style.transition = 'height 1s';
+        imgLogo.style.height = '120px';
     });
 });
 function fData(){
-    var datosIMG = $('#hideLogo').data('datosIMG');
-    var jsonIMG = {uno:1,dos:2,tres:3};
-    $('#hideLogo').data('datosIMG',jsonIMG);
+    const hideLogo = document.getElementById('hideLogo');
+    const jsonIMG = {uno:1,dos:2,tres:3};
+    hideLogo.dataset.datosimg = JSON.stringify(jsonIMG);
 }
-function alertImg(t){
-    var w = t.width();
-    var h = t.height();
+function alertImg(el){
+    const w = el.clientWidth;
+    const h = el.clientHeight;
     alert('ancho: '+w+' alto: '+h);
 }
 function letFor(){
-    var arr=[{personas:[{nombre:'Miguel',edad:19},{nombre:'Esmeralda',edad:18},{nombre:'Karla',edad:21}]}];
-    for(let a of arr){console.log(a.personas[2]);}
+    const arr=[{personas:[{nombre:'Miguel',edad:19},{nombre:'Esmeralda',edad:18},{nombre:'Karla',edad:21}]}];
+    for(const a of arr){console.log(a.personas[2]);}
 }
 </script>
 <div th:replace="~{includes/footer :: footer}"></div>

@@ -34,24 +34,20 @@
     </form>
 </div>
 <script th:inline="javascript">
-$(document).ready(function() {
-    $('#example').DataTable({
-        data: /*[[${bitsoPayloadList}]]*/ [],
-        order: [[ 1, "desc" ]],
-        columns: [
-            { data: 'book' },
-            { data: 'ask', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
-            { data: 'bid', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
-            { data: 'high', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
-            { data: 'low', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') }
-        ],
-        fnRowCallback: function(nRow, aData){
-            if (aData.book && aData.book.includes('mxn')){
-                $('td',nRow).css('background-color', '#7BC0F3');
-            }
-        }
-    }).columns.adjust();
-    $('.menu .item').tab();
+document.addEventListener('DOMContentLoaded', () => {
+    const menuItems = document.querySelectorAll('.menu .item[data-tab]');
+    const segments = document.querySelectorAll('.tab.segment[data-tab]');
+    menuItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const tab = item.dataset.tab;
+            menuItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            segments.forEach(seg => {
+                seg.classList.toggle('active', seg.dataset.tab === tab);
+            });
+        });
+    });
 });
 </script>
 <div th:replace="~{includes/footer :: footer}"></div>

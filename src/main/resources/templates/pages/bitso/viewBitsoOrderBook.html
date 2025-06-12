@@ -26,35 +26,28 @@
     <tbody></tbody>
 </table>
 <script th:inline="javascript">
-$(document).ready(function() {
-    $('#orderBookResultCompra').DataTable({
-        data: /*[[${orderBookResultCompra}]]*/ [],
-        order: [ [ 1, 'desc' ] ],
-        columns: [
-            { data: 'book' },
-            { data: 'price', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
-            { data: 'amount', render: $.fn.dataTable.render.number(',', '.', 10, '') }
-        ],
-        fnRowCallback: function(nRow, aData){
-            if (aData.amount > 5.0){
-                $('td',nRow).css('background-color', '#7BC0F3');
+document.addEventListener('DOMContentLoaded', () => {
+    const compraData = /*[[${orderBookResultCompra}]]*/ [];
+    const ventaData = /*[[${orderBookResultVenta}]]*/ [];
+
+    const fillTable = (tableId, data, orderDesc) => {
+        const tbody = document.querySelector(`#${tableId} tbody`);
+        data.sort((a,b) => orderDesc ? b.price - a.price : a.price - b.price);
+        data.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${row.book}</td>
+                <td>${row.price.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2, style:'currency', currency:'USD'})}</td>
+                <td>${row.amount.toLocaleString('en-US', {minimumFractionDigits:10})}</td>`;
+            if (row.amount > 5.0){
+                tr.style.backgroundColor = '#7BC0F3';
             }
-        }
-    }).columns.adjust();
-    $('#orderBookResultVenta').DataTable({
-        data: /*[[${orderBookResultVenta}]]*/ [],
-        order: [ [ 1, 'asc' ] ],
-        columns: [
-            { data: 'book' },
-            { data: 'price', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
-            { data: 'amount', render: $.fn.dataTable.render.number(',', '.', 10, '') }
-        ],
-        fnRowCallback: function(nRow, aData){
-            if (aData.amount > 5.0){
-                $('td',nRow).css('background-color', '#7BC0F3');
-            }
-        }
-    }).columns.adjust();
+            tbody.appendChild(tr);
+        });
+    };
+
+    fillTable('orderBookResultCompra', compraData, true);
+    fillTable('orderBookResultVenta', ventaData, false);
 });
 </script>
 <div th:replace="~{includes/footer :: footer}"></div>
