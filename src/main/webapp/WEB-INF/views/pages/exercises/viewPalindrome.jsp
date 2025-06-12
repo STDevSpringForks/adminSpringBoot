@@ -1,3 +1,4 @@
+<%@ include file="/WEB-INF/views/includes/header.jsp" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
         <p>Validar Palíndromo</p>
@@ -17,4 +18,4 @@
 				<input class="ui basic blue button" type="submit" value="Validate Phrase" />
 			</div>
 		</form:form>
-	</div>
+	</div><%@ include file="/WEB-INF/views/includes/footer.jsp" %>

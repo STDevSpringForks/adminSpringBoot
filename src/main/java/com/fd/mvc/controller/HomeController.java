@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import com.fd.mvc.common.Constants;
 
 import java.time.LocalTime;
 
@@ -19,7 +20,7 @@ public class HomeController {
         log.debug("Getting home page");
         model.addAttribute("message", "Hola, Buenos días");
         model.addAttribute("startMeeting", LocalTime.now());
-        return "home";
+        return Constants.VIEW_HOME_CONTROLLER;
     }
 
 

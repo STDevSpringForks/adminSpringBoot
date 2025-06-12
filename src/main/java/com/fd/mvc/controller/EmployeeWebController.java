@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import com.fd.mvc.common.Constants;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class EmployeeWebController {
                 emp.setName("Pankaj");
                 emp.setId(id);
                 model.addAttribute("employee", emp);
-                return "home";
+                return Constants.VIEW_HOME_CONTROLLER;
             } else {
                 throw new DefaultCheckedException("Generic Exception, id=" + id);
             }

@@ -1,3 +1,4 @@
+<%@ include file="/WEB-INF/views/includes/header.jsp" %>
 	<div id="locationField">
 		<input id="autocomplete" placeholder="Enter your address" type="text"></input>
 	</div>
@@ -31,3 +32,4 @@
 	<div id="map"></div>
 <script src="${pageContext.request.contextPath}/resources/js/googleMaps/places-autocomplete-addressform.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1LbckIQe3RQf7eN0cvOkuttwSrGfqCDg&libraries=places&callback=initAutocomplete" async defer></script>
+<%@ include file="/WEB-INF/views/includes/footer.jsp" %>
