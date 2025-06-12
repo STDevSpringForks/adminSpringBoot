@@ -6,19 +6,19 @@
 <body>
 <div th:replace="~{includes/header :: header(pageTitle='View Palindrome')}"></div>
 <p>Validar Palíndromo</p>
-<div class="ui form">
+<div class="space-y-4">
     <form id="palindromeForm" th:action="@{/exercises/viewPalindrome}" method="post" th:object="${palindromeSearchCriteria}">
-        <div class="ten wide field">
+        <div class="w-full space-y-4">
             <p class="msgResult" th:text="${msgResult}"></p>
             <div th:if="${#fields.hasErrors('*')}">
                 <div th:errors="*" class="errorDiv"></div>
             </div>
-            <div class="field">
+            <div>
                 <label for="phrase">Phrase</label>
                 <input id="phrase" th:field="*{phrase}" placeholder="phrase" />
             </div>
-            <div class="field errorField" th:errors="*{phrase}"></div>
-            <input class="ui basic blue button" type="submit" value="Validate Phrase" />
+            <div class="errorField" th:errors="*{phrase}"></div>
+            <input class="px-4 py-2 bg-blue-500 text-white rounded" type="submit" value="Validate Phrase" />
         </div>
     </form>
 </div>

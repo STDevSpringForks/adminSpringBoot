@@ -5,7 +5,7 @@
 </head>
 <body>
 <div th:replace="~{includes/header :: header(pageTitle='Bitso Compra')}"></div>
-<table id="example" class="ui celled table sortable">
+<table id="example" class="table-auto border-collapse border border-gray-300 sortable">
     <thead>
         <tr>
             <th>BOOK</th>
@@ -17,19 +17,19 @@
     </thead>
     <tbody></tbody>
 </table>
-<div class="ui form">
+<div class="space-y-4">
     <form id="formBitso" th:action="@{/bitso/viewBitso}" method="post" th:object="${formBitsoBalance}">
-        <div class="ten wide field">
+        <div class="w-full space-y-4">
             <p class="msgResult" th:text="${msgResult}"></p>
             <div th:if="${#fields.hasErrors('*')}">
                 <div th:errors="*" class="errorDiv"></div>
             </div>
-            <div class="field">
-                <div class="ui labeled input">
+            <div>
+                <div class="flex items-center space-x-2">
                     <input th:field="*{precioEspeculativoETH}" placeholder="Especular precio ETH en MXN" />
                 </div>
             </div>
-            <input class="ui basic blue button" type="submit" value="Submit" />
+            <input class="px-4 py-2 bg-blue-500 text-white rounded" type="submit" value="Submit" />
         </div>
     </form>
 </div>

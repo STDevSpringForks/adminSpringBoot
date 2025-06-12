@@ -5,25 +5,25 @@
 </head>
 <body>
 <div th:replace="~{includes/header :: header(pageTitle='Twilio SMS')}"></div>
-<div class="ui form">
+<div class="space-y-4">
     <form id="formTwilio" th:action="@{/twilio/viewTiwilioSMS}" method="post" th:object="${twilioSMSSearchCriteria}">
-        <div class="ten wide field">
+        <div class="w-full space-y-4">
             <p class="msgResult" th:text="${msgResult}"></p>
             <div th:if="${#fields.hasErrors('*')}">
                 <div th:errors="*" class="errorDiv"></div>
             </div>
-            <div class="field">
+            <div>
                 <label for="phoneNumberTo">Phone Number To</label>
-                <div class="ui labeled input">
-                    <div title="For now, only Mexico" class="ui label">+521</div>
+                <div class="flex items-center space-x-2">
+                    <div title="For now, only Mexico" class="px-2 py-1 bg-gray-200 rounded">+521</div>
                     <input th:field="*{phoneNumberTo}" />
                 </div>
             </div>
-            <div class="field">
+            <div>
                 <label for="message">Message</label>
                 <textarea th:field="*{body}" rows="5" cols="30" placeholder="Message"></textarea>
             </div>
-            <input class="ui basic blue button" type="submit" value="Submit" />
+            <input class="px-4 py-2 bg-blue-500 text-white rounded" type="submit" value="Submit" />
         </div>
     </form>
 </div>
