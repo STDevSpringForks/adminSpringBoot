@@ -32,3 +32,6 @@ mysql:
 springdoc:
     swagger-ui:
         path: /swagger-ui.html
+
+upload:
+    directory: /tmp/uploads
