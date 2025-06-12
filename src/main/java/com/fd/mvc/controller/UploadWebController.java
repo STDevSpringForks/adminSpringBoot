@@ -3,6 +3,7 @@ package com.fd.mvc.controller;
 import com.fd.mvc.model.UploadForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,12 @@ import java.util.StringJoiner;
  */
 @Controller
 public class UploadWebController {
+
+    @GetMapping("/upload")
+    public String upload(Model model) {
+        model.addAttribute("uploadForm", new UploadForm());
+        return "pages/utils/upload";
+    }
 
     @PostMapping("/upload")
     public String multiFileUpload(@ModelAttribute UploadForm form,
