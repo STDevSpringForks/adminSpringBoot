@@ -22,13 +22,16 @@
     <input type="submit" value="Submit" />
 </form>
 <script>
-$(function(){
-    moveCursorToEnd($('form#formPayment input[name="amount"]'));
+document.addEventListener('DOMContentLoaded', () => {
+    const input = document.querySelector('form#formPayment input[name="amount"]');
+    moveCursorToEnd(input);
 });
 function moveCursorToEnd(input){
-    var originalValue = input.val();
-    input.val('');
-    input.blur().focus().val(originalValue);
+    const originalValue = input.value;
+    input.value = '';
+    input.blur();
+    input.focus();
+    input.value = originalValue;
 }
 </script>
 <div th:replace="~{includes/footer :: footer}"></div>

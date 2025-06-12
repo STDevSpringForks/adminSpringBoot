@@ -1,5 +1,5 @@
-$(function(){
-        // Common javascript initialization can go here
+document.addEventListener('DOMContentLoaded', () => {
+    // Common javascript initialization can go here
 });
 
 /**
@@ -7,7 +7,10 @@ $(function(){
  * @param input
  */
 function moveCursorToEnd(input) {
-    var originalValue = input.val();
-    input.val('');
-    input.blur().focus().val(originalValue);
+    const element = (typeof input === 'string') ? document.querySelector(input) : input;
+    const originalValue = element.value;
+    element.value = '';
+    element.blur();
+    element.focus();
+    element.value = originalValue;
 }

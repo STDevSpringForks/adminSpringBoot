@@ -28,19 +28,34 @@
     </form>
 </div>
 <script>
-var formTwilioPhoneNumberTo = $('form#formTwilio input[name="phoneNumberTo"]');
-var formTwilioBody = $('form#formTwilio textarea[name="body"]');
-$(function(){
-    formTwilioPhoneNumberTo.mask('(000) 000-0000', {
-        'translation': {0: {pattern: /[0-9*]/}}
-    });
-    moveCursorToEnd(formTwilioPhoneNumberTo);
-});
-formTwilioPhoneNumberTo.keyup(function(){
-    var phoneNumberToLenth = formTwilioPhoneNumberTo.cleanVal().length;
-    if(phoneNumberToLenth == 10){
-        formTwilioBody.focus();
+document.addEventListener('DOMContentLoaded', () => {
+    const formTwilioPhoneNumberTo = document.querySelector('form#formTwilio input[name="phoneNumberTo"]');
+    const formTwilioBody = document.querySelector('form#formTwilio textarea[name="body"]');
+
+    function formatPhone(value) {
+        const digits = value.replace(/\D/g, '').substring(0, 10);
+        let result = '';
+        if (digits.length > 0) {
+            result += '(' + digits.substring(0, 3);
+        }
+        if (digits.length >= 4) {
+            result += ') ' + digits.substring(3, 6);
+        }
+        if (digits.length >= 7) {
+            result += '-' + digits.substring(6, 10);
+        }
+        return { formatted: result, digits };
     }
+
+    formTwilioPhoneNumberTo.addEventListener('input', (e) => {
+        const { formatted, digits } = formatPhone(e.target.value);
+        e.target.value = formatted;
+        if (digits.length === 10) {
+            formTwilioBody.focus();
+        }
+    });
+
+    moveCursorToEnd(formTwilioPhoneNumberTo);
 });
 </script>
 <div th:replace="~{includes/footer :: footer}"></div>

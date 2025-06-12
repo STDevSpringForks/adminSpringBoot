@@ -22,13 +22,24 @@
     </div>
 </div>
 <script>
-    $('.mainMenu .menu .browse').popup({
-        inline: true,
-        hoverable: true,
-        position: 'bottom left',
-        delay: {
-            show: 300,
-            hide: 800
-        }
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    const browse = document.querySelector('.mainMenu .menu .browse');
+    const popup = document.querySelector('.ui.popup');
+    let hideTimeout;
+    const showPopup = () => {
+        clearTimeout(hideTimeout);
+        popup.classList.add('visible');
+        popup.classList.remove('hidden');
+    };
+    const hidePopup = () => {
+        hideTimeout = setTimeout(() => {
+            popup.classList.remove('visible');
+            popup.classList.add('hidden');
+        }, 800);
+    };
+    browse.addEventListener('mouseenter', showPopup);
+    browse.addEventListener('mouseleave', hidePopup);
+    popup.addEventListener('mouseenter', showPopup);
+    popup.addEventListener('mouseleave', hidePopup);
+});
 </script>
