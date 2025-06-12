@@ -64,7 +64,7 @@ public class UploadWebController {
 
     @GetMapping("/uploadStatus")
     public String uploadStatus() {
-        return "uploadStatus";
+        return "pages/utils/uploadStatus";
     }
 
 }

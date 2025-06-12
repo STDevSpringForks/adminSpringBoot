@@ -18,7 +18,7 @@ import java.io.IOException;
 @RequestMapping(value = "/api")
 public class MapBoxWebController {
 
-    private static final String VIEW_MAPBOX = "api/viewMapBox";
+    private static final String VIEW_MAPBOX = "pages/api/viewMapBox";
     private static final Logger LOGGER = LoggerFactory.getLogger(MapBoxWebController.class);
     
     @GetMapping("/viewMapBox")

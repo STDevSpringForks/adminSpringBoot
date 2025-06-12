@@ -1,3 +1,4 @@
+<%@ include file="/WEB-INF/views/includes/header.jsp" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -80,4 +81,4 @@ function letFor(){
 		console.log(a.personas[1].edad);
 	}
 }
-</script>
+</script><%@ include file="/WEB-INF/views/includes/footer.jsp" %>

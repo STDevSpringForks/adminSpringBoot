@@ -1,3 +1,4 @@
+<%@ include file="/WEB-INF/views/includes/header.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div>
@@ -13,4 +14,4 @@ Exception= ${exception.message}<br><br>
 <c:forEach items="${exception.stackTrace}" var="ste">
 	${ste}
 </c:forEach>
-</div>
+</div><%@ include file="/WEB-INF/views/includes/footer.jsp" %>
