@@ -7,5 +7,6 @@ import java.nio.file.Path;
  *
  * @param fileName original name of the uploaded file
  * @param location final storage location
+ * @param fileSize size of the uploaded file in bytes
  */
-public record FileUploadResult(String fileName, Path location) { }
+public record FileUploadResult(String fileName, Path location, long fileSize) { }
