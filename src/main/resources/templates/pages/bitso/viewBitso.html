@@ -86,7 +86,7 @@
 <script th:inline="javascript">
 $(document).ready(function() {
     $('#example').DataTable({
-        data: [[/*[[${bitsoPayloadList}]]*/]],
+        data: /*[[${bitsoPayloadList}]]*/ [],
         order: [[ 1, "desc" ]],
         columns: [
             { data: "book" },

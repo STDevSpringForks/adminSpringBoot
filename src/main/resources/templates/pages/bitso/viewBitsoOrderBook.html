@@ -28,7 +28,7 @@
 <script th:inline="javascript">
 $(document).ready(function() {
     $('#orderBookResultCompra').DataTable({
-        data: [[/*[[${orderBookResultCompra}]]*/]],
+        data: /*[[${orderBookResultCompra}]]*/ [],
         order: [[ 1, 'desc' ]],
         columns: [
             { data: 'book' },
@@ -42,7 +42,7 @@ $(document).ready(function() {
         }
     }).columns.adjust();
     $('#orderBookResultVenta').DataTable({
-        data: [[/*[[${orderBookResultVenta}]]*/]],
+        data: /*[[${orderBookResultVenta}]]*/ [],
         order: [[ 1, 'asc' ]],
         columns: [
             { data: 'book' },
