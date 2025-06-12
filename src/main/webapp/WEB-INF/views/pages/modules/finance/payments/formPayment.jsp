@@ -1,9 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-	<form:form id="formPayment" action="formPayment" method="post" modelAttribute="paymentSearchCriteria">
-		
-		<p><spring:message code="module.finance.payments.lblPayment" text="Payment" /></p>
+        <form:form id="formPayment" action="formPayment" method="post" modelAttribute="paymentSearchCriteria">
+
+                <p>Pago</p>
 		<p class="msgResult">${msgResult}</p>
 		<form:errors path="*" cssClass="errorDiv" element="div"/>
 		
