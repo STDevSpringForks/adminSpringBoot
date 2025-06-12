@@ -16,3 +16,8 @@ mvn package
 java -jar target/adminSpringBoot-0.0.1.jar
 ```
 
+## Requisitos
+
+Se necesita JDK 21 para compilar y ejecutar el proyecto.
+
+

@@ -55,14 +55,14 @@ public class GoogleMapServiceImpl implements GoogleMapService {
 				
 				geocodingResultList.add(results);
 				
-			} catch (Exception e) {
-				GeocoderErrorObject geocoderErrorObject = new GeocoderErrorObject();
-				
-				/*geocoderErrorObject.setId(geo.getIdGeocoderRequest());*/
-				geocoderErrorObject.setFormatAddress(sbAddress.toString());
-				geocoderErrorObject.setErrorMessage(e.getMessage());
-				
-				geocoderErrorObjectList.add(geocoderErrorObject);
+                        } catch (Exception e) {
+                                GeocoderErrorObject geocoderErrorObject =
+                                        new GeocoderErrorObject(
+                                                geo.getIdGeocoderRequest(),
+                                                sbAddress.toString(),
+                                                e.getMessage());
+
+                                geocoderErrorObjectList.add(geocoderErrorObject);
 				
 				log.error("Error in GeocodingApi.geocode: ", e);
 			}
@@ -122,14 +122,14 @@ public class GoogleMapServiceImpl implements GoogleMapService {
 			
 			geocodingResultList.add(results);
 			
-		} catch (/*ApiException | InterruptedException | IOException e | */Exception e) {
-			GeocoderErrorObject geocoderErrorObject = new GeocoderErrorObject();
-			
-			/*geocoderErrorObject.setId(geo.getIdGeocoderRequest());*/
-			geocoderErrorObject.setFormatAddress(sbAddress.toString());
-			geocoderErrorObject.setErrorMessage(e.getMessage());
-			
-			geocoderErrorObjectList.add(geocoderErrorObject);
+                } catch (/*ApiException | InterruptedException | IOException e | */Exception e) {
+                        GeocoderErrorObject geocoderErrorObject =
+                                new GeocoderErrorObject(
+                                        geocoderRequest.getIdGeocoderRequest(),
+                                        sbAddress.toString(),
+                                        e.getMessage());
+
+                        geocoderErrorObjectList.add(geocoderErrorObject);
 			
 			log.error("Error in GeocodingApi.geocode: ", e);
 		}
