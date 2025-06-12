@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.time.LocalTime;
 
-//import static com.fd.mvc.common.Constants.VIEW_HOME_CONTROLLER;
-
 @Controller
 public class HomeController {
 
@@ -18,14 +16,9 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Model model) {
-
         log.debug("Getting home page");
-
         model.addAttribute("message", "Hola, Buenos días");
-
         model.addAttribute("startMeeting", LocalTime.now());
-
-//        return VIEW_HOME_CONTROLLER;
         return "home";
     }
 

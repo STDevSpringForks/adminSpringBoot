@@ -8,7 +8,7 @@ spring:
         name: adminSpringBoot
     mvc:
         view:
-            prefix: /WEB-INF/views/
+            prefix: /WEB-INF/views/pages/
             suffix: .jsp
 
     datasource:
