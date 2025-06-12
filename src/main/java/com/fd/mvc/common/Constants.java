@@ -3,7 +3,7 @@ package com.fd.mvc.common;
 public interface Constants {
 
     //Views
-    String VIEW_HOME_CONTROLLER = "pages/home";
+    String VIEW_HOME_CONTROLLER = "home";
     String VIEW_PLACEAUTOCOMPLETE_ADDRESSFORM = "pages/googleMaps/placeAutocompleteAddressForm";
     String VIEW_PAYMENT = "pages/modules/finance/payments/viewPaymentes";
     String FORM_PAYMENT = "pages/modules/finance/payments/formPayment";
