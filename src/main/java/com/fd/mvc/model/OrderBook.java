@@ -1,11 +1,9 @@
 package com.fd.mvc.model;
 
 import com.fd.mvc.model.BitsoPayloadOrderBook;
-import lombok.Data;
 
 import java.io.Serializable;
 
-@Data
 public class OrderBook implements Serializable{
 
 	private static final long serialVersionUID = -2219364589608000040L;
@@ -17,4 +15,20 @@ public class OrderBook implements Serializable{
 		this.payload = new BitsoPayloadOrderBook();
 	}
 	
+    public boolean getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public BitsoPayloadOrderBook getPayload() {
+        return payload;
+    }
+
+    public void setPayload(BitsoPayloadOrderBook payload) {
+        this.payload = payload;
+    }
+
 }

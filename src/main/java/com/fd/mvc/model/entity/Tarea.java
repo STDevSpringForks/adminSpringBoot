@@ -1,10 +1,8 @@
 package com.fd.mvc.model.entity;
 
-import lombok.Data;
 
 import javax.persistence.*;
 
-@Data
 @Entity
 @Table(name = "tareas")
 public class Tarea {
@@ -19,5 +17,29 @@ public class Tarea {
 	
 	public Tarea() {
 	}
+
+    public int getIdTareas() {
+        return idTareas;
+    }
+
+    public void setIdTareas(int idTareas) {
+        this.idTareas = idTareas;
+    }
+
+    public String getTarea() {
+        return tarea;
+    }
+
+    public void setTarea(String tarea) {
+        this.tarea = tarea;
+    }
+
+    public Person getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Person personId) {
+        this.personId = personId;
+    }
 
 }

@@ -1,7 +1,7 @@
 package com.fd.mvc.controller;
 
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.joda.time.LocalTime;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -14,12 +14,15 @@ import java.util.Locale;
 
 //import static com.fd.mvc.common.Constants.VIEW_HOME_CONTROLLER;
 
-@Slf4j
 @Controller
-@AllArgsConstructor
 public class HomeController {
 
     private final MessageSource messageSource;
+    private static final Logger log = LoggerFactory.getLogger(HomeController.class);
+
+    public HomeController(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {

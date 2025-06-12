@@ -1,11 +1,9 @@
 package com.fd.mvc.model.entity;
 
-import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
 @Entity
 @Table(name = "person")
 public class Person {
@@ -39,5 +37,53 @@ public class Person {
 	@OneToMany(mappedBy = "personId",cascade = CascadeType.REMOVE)
 	private Set<Tarea> tarea;
 	
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Set<Tarea> getTarea() {
+        return tarea;
+    }
+
+    public void setTarea(Set<Tarea> tarea) {
+        this.tarea = tarea;
+    }
 
 }

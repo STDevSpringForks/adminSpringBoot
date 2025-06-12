@@ -7,8 +7,8 @@ import com.fd.mvc.service.ObjectsService;
 import com.fd.mvc.model.PalindromeSearchCriteria;
 import com.fd.mvc.model.SerializableGeneralSearchCriteria;
 import com.fd.mvc.model.entity.ObjectsEntity;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -30,14 +30,19 @@ import static com.fd.mvc.common.Constants.*;
  * 
  *
  */
-@Slf4j
-@AllArgsConstructor
 @Controller
 @RequestMapping("/exercises")
 public class ExcerciseWebController {
 
     private final PalindromeValidator palindromeValidator;
     private final ObjectsService objectsService;
+
+    private static final Logger log = LoggerFactory.getLogger(ExcerciseWebController.class);
+
+    public ExcerciseWebController(PalindromeValidator palindromeValidator, ObjectsService objectsService) {
+        this.palindromeValidator = palindromeValidator;
+        this.objectsService = objectsService;
+    }
 
     @RequestMapping(value = "/viewPalindrome", method = RequestMethod.GET)
     public String viewPalindrome(Model model) {

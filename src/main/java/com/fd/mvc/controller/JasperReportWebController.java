@@ -1,7 +1,8 @@
 package com.fd.mvc.controller;
 
 import com.fd.mvc.model.entity.Person;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -21,10 +22,11 @@ import static com.fd.mvc.common.Constants.VIEW_JASPER_REPORTS;
  * https://www.tutorialspoint.com/jasper_reports/jasper_report_parameters.htm
  *
  */
-@Slf4j
 @Controller
 @RequestMapping("/reports")
 public class JasperReportWebController {
+
+    private static final Logger log = LoggerFactory.getLogger(JasperReportWebController.class);
 
     @RequestMapping("/viewJasperReport")
     public String viewJasperReport() {

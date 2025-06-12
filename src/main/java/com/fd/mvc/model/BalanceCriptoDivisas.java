@@ -1,14 +1,12 @@
 package com.fd.mvc.model;
 
 import com.fd.mvc.model.BalancePerson;
-import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 public class BalanceCriptoDivisas implements Serializable {
 	
 	private static final long serialVersionUID = -1667831439437733051L;
@@ -32,5 +30,93 @@ public class BalanceCriptoDivisas implements Serializable {
 		this.balancePerson = new ArrayList<>();
 	}
 
+
+    public List<BalancePerson> getBalancePerson() {
+        return balancePerson;
+    }
+
+    public void setBalancePerson(List<BalancePerson> balancePerson) {
+        this.balancePerson = balancePerson;
+    }
+
+    public BigDecimal getBalanceETH() {
+        return balanceETH;
+    }
+
+    public void setBalanceETH(BigDecimal balanceETH) {
+        this.balanceETH = balanceETH;
+    }
+
+    public BigDecimal getBalanceXRP() {
+        return balanceXRP;
+    }
+
+    public void setBalanceXRP(BigDecimal balanceXRP) {
+        this.balanceXRP = balanceXRP;
+    }
+
+    public BigDecimal getBalanceBTC() {
+        return balanceBTC;
+    }
+
+    public void setBalanceBTC(BigDecimal balanceBTC) {
+        this.balanceBTC = balanceBTC;
+    }
+
+    public BigDecimal getBalanceMXN() {
+        return balanceMXN;
+    }
+
+    public void setBalanceMXN(BigDecimal balanceMXN) {
+        this.balanceMXN = balanceMXN;
+    }
+
+    public BigDecimal getBalanceETH_MXN() {
+        return balanceETH_MXN;
+    }
+
+    public void setBalanceETH_MXN(BigDecimal balanceETH_MXN) {
+        this.balanceETH_MXN = balanceETH_MXN;
+    }
+
+    public BigDecimal getBalanceXRP_MXN() {
+        return balanceXRP_MXN;
+    }
+
+    public void setBalanceXRP_MXN(BigDecimal balanceXRP_MXN) {
+        this.balanceXRP_MXN = balanceXRP_MXN;
+    }
+
+    public BigDecimal getBalanceBTC_MXN() {
+        return balanceBTC_MXN;
+    }
+
+    public void setBalanceBTC_MXN(BigDecimal balanceBTC_MXN) {
+        this.balanceBTC_MXN = balanceBTC_MXN;
+    }
+
+    public BigDecimal getBalanceMXN_MXN() {
+        return balanceMXN_MXN;
+    }
+
+    public void setBalanceMXN_MXN(BigDecimal balanceMXN_MXN) {
+        this.balanceMXN_MXN = balanceMXN_MXN;
+    }
+
+    public BigDecimal getBalanceTOTAL_MXN() {
+        return balanceTOTAL_MXN;
+    }
+
+    public void setBalanceTOTAL_MXN(BigDecimal balanceTOTAL_MXN) {
+        this.balanceTOTAL_MXN = balanceTOTAL_MXN;
+    }
+
+    public BigDecimal getComisionTOTAL_MXN() {
+        return comisionTOTAL_MXN;
+    }
+
+    public void setComisionTOTAL_MXN(BigDecimal comisionTOTAL_MXN) {
+        this.comisionTOTAL_MXN = comisionTOTAL_MXN;
+    }
 
 }

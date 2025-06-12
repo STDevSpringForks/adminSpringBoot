@@ -3,7 +3,8 @@ package com.fd.mvc.controller;
 import com.fd.mvc.model.Employee;
 import com.fd.mvc.exception.DefaultCheckedException;
 import com.fd.mvc.exception.EmployeeNotFoundException;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,9 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Slf4j
 @Controller
 public class EmployeeWebController {
+
+    private static final Logger log = LoggerFactory.getLogger(EmployeeWebController.class);
 
     @RequestMapping(value = "/emp/{id}", method = RequestMethod.GET)
     public String getEmployee(@PathVariable("id") int id, Model model) throws DefaultCheckedException {

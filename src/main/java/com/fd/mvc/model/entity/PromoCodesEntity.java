@@ -1,10 +1,8 @@
 package com.fd.mvc.model.entity;
 
-import lombok.Data;
 
 import javax.persistence.*;
 
-@Data
 @Entity
 @Table(name = "promo_codes")
 public class PromoCodesEntity {
@@ -15,5 +13,21 @@ public class PromoCodesEntity {
 	private int id;
 	@Column(name = "promo_code")
 	private String promoCode;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getPromoCode() {
+        return promoCode;
+    }
+
+    public void setPromoCode(String promoCode) {
+        this.promoCode = promoCode;
+    }
 
 }

@@ -8,16 +8,18 @@ import com.fd.mvc.service.GoogleMapService;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.model.GeocodingResult;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 @Service("googleMapService")
 public class GoogleMapServiceImpl implements GoogleMapService {
+
+        private static final Logger log = LoggerFactory.getLogger(GoogleMapServiceImpl.class);
 
 	@Override
 	public GeocoderResult retrieveGeocoding(GeocoderRequestParams geocoderRequestParams) {
