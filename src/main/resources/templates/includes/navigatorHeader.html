@@ -2,39 +2,12 @@
     <div class="ui menu">
         <a th:href="@{/}" class="item"><i class="home icon"></i> Home </a>
         <a class="browse item">Browse <i class="dropdown icon"></i></a>
-        <div class="ui fluid popup bottom left transition hidden" style="top: 554px; left: 1px; bottom: auto; right: auto; width: 670px;">
+        <div class="ui fluid popup bottom left transition hidden">
             <div class="ui four column relaxed divided grid">
-                <div class="column">
-                    <h4 class="ui header">Utils</h4>
+                <div class="column" th:each="entry : ${navigationMenu}">
+                    <h4 class="ui header" th:text="${entry.key}"></h4>
                     <div class="ui link list">
-                        <a th:href="@{/twilio/viewTiwilioSMS}" class="item">Twilio</a>
-                        <a class="item">...</a>
-                    </div>
-                </div>
-                <div class="column">
-                    <h4 class="ui header">Exercises</h4>
-                    <div class="ui link list">
-                        <a th:href="@{/exercises/viewPalindrome}" class="item">Palindromo</a>
-                        <a th:href="@{/exercises/viewSerializable}" class="item">Serialize</a>
-                        <a th:href="@{/googleMaps/placeAutocompleteAddressForm}" class="item">Google Map API</a>
-                        <a th:href="@{/reports/viewJasperReport}" class="item">Jasper Reports</a>
-                        <a th:href="@{/exercises/viewJQuery3}" class="item">JQuery3</a>
-                        <a class="item">...</a>
-                    </div>
-                </div>
-                <div class="column">
-                    <h4 class="ui header">Bitso</h4>
-                    <div class="ui link list">
-                        <a th:href="@{/bitso/viewBitso}" class="item">Bitso</a>
-                        <a th:href="@{/bitso/viewBitsoOrderBook}" class="item">Bitso Order Book</a>
-                        <a class="item">...</a>
-                    </div>
-                </div>
-                <div class="column">
-                    <h4 class="ui header">Testing API</h4>
-                    <div class="ui link list">
-                        <a th:href="@{/api/viewMapBox}" class="item">View MapBox</a>
-                        <a class="item">...</a>
+                        <a class="item" th:each="item : ${entry.value}" th:href="@{${item.path}}" th:text="${item.label}"></a>
                     </div>
                 </div>
             </div>
