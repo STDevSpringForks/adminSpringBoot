@@ -156,7 +156,7 @@ public class ExcerciseWebController {
 
             // start a transaction
             log.info("Save ObjectsEntity...");
-            sessionObjectsEntity.save(objectsEntity);
+            sessionObjectsEntity.persist(objectsEntity);
 
             // save the student object
             sessionObjectsEntity.getTransaction().commit();
