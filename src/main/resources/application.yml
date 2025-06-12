@@ -10,18 +10,6 @@ spring:
         view:
             prefix: /WEB-INF/views/pages/
             suffix: .jsp
-
-    datasource:
-        url: jdbc:mysql://localhost:3306/hibernate_adminSpringMVC?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&useCursors=false&sendStringParametersAsUnicode=false&characterEncoding=UTF8
-        username: root
-        password: root
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        hikari:
-            minimum-idle: 1
-            maximum-pool-size: 5
-            connection-test-query: SELECT 1 FROM DUAL
-            pool-name: SpringBootHikariMySQL
-
     jpa:
         show-sql: true
         hibernate:
@@ -29,3 +17,14 @@ spring:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL8Dialect
+
+mysql:
+    datasource:
+        jdbc-url: jdbc:mysql://localhost:3306/hibernate_adminSpringMVC?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&useCursors=false&sendStringParametersAsUnicode=false&characterEncoding=UTF8
+        username: root
+        password: root
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        minimum-idle: 1
+        maximum-pool-size: 5
+        connection-test-query: SELECT 1 FROM DUAL
+        pool-name: SpringBootHikariMySQL
