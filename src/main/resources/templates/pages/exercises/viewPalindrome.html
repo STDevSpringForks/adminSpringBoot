@@ -4,7 +4,7 @@
     <title>View Palindrome</title>
 </head>
 <body>
-<div th:replace="includes/header :: header"></div>
+<div th:replace="~{includes/header :: header(pageTitle='View Palindrome')}"></div>
 <p>Validar Palíndromo</p>
 <div class="ui form">
     <form id="palindromeForm" th:action="@{/exercises/viewPalindrome}" method="post" th:object="${palindromeSearchCriteria}">

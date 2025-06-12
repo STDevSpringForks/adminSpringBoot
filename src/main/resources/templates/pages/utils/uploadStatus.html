@@ -4,7 +4,7 @@
     <title>Upload Status</title>
 </head>
 <body>
-<div th:replace="includes/header :: header"></div>
+<div th:replace="~{includes/header :: header(pageTitle='Upload Status')}"></div>
 <div>
     <h1>Upload Status</h1>
     <h2>Message : <span th:text="${message}"></span></h2>

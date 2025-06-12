@@ -4,7 +4,7 @@
     <title>Home</title>
 </head>
 <body>
-<div th:replace="includes/header :: header"></div>
+<div th:replace="~{includes/header :: header(pageTitle='Home')}"></div>
 <img th:src="@{/resources/images/spring-logo.png}" />
 <h1>Ejemplo de Spring Boot</h1>
 <p th:text="${message}"></p>

@@ -1,4 +1,4 @@
-<div class="mainMenu" th:fragment="navigatorHeader">
+<div class="mainMenu" th:fragment="navigatorHeader(pageTitle)">
     <div class="ui menu">
         <a th:href="@{/}" class="item"><i class="home icon"></i> Home </a>
         <a class="browse item">Browse <i class="dropdown icon"></i></a>
@@ -45,7 +45,7 @@
 </div>
 <div class="ui secondary menu">
     <div class="item">
-        <a th:href="@{/}">Home</a>&nbsp;>&nbsp;<a id="btitle" href="#"></a>
+        <a th:href="@{/}">Home</a>&nbsp;>&nbsp;<a id="btitle" th:text="${pageTitle}" href="#"></a>
     </div>
 </div>
 <script>

@@ -1,10 +1,5 @@
 $(function(){
-	
-	/**
-	 * Example: Home > View Tiwilio SMS
-	 */
-	$('#btitle').html($('title').html());
-	
+        // Common javascript initialization can go here
 });
 
 /**
