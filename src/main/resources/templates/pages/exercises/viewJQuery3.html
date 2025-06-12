@@ -4,7 +4,7 @@
     <title>jQuery Example</title>
 </head>
 <body>
-<div th:replace="includes/header :: header"></div>
+<div th:replace="~{includes/header :: header(pageTitle='jQuery Example')}"></div>
 <img title="Get Width/Height" style="cursor: pointer;" id="imgLogo" alt="spring-logo" th:src="@{/resources/images/spring-logo.png}">
 <div class="buttonsShowHide">
     <button id="showLogo">Mostar</button>

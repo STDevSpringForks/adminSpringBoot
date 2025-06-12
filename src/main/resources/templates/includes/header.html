@@ -1,4 +1,4 @@
-<div th:fragment="header">
+<div th:fragment="header(pageTitle)">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.css" rel="stylesheet" type="text/css"/>
@@ -11,5 +11,5 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/css/dataTables.jqueryui.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/js/jquery.dataTables.min.js"></script>
 
-    <div th:replace="includes/navigatorHeader :: navigatorHeader"></div>
+    <div th:replace="~{includes/navigatorHeader :: navigatorHeader(pageTitle=${pageTitle})}"></div>
 </div>

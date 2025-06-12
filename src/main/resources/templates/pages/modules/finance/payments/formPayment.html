@@ -4,7 +4,7 @@
     <title>Form Payment</title>
 </head>
 <body>
-<div th:replace="includes/header :: header"></div>
+<div th:replace="~{includes/header :: header(pageTitle='Form Payment')}"></div>
 <form id="formPayment" th:action="@{/modules/finance/payments/formPayment}" method="post" th:object="${paymentSearchCriteria}">
     <p>Pago</p>
     <p class="msgResult" th:text="${msgResult}"></p>

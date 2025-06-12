@@ -4,7 +4,7 @@
     <title>View Payments</title>
 </head>
 <body>
-<div th:replace="includes/header :: header"></div>
+<div th:replace="~{includes/header :: header(pageTitle='View Payments')}"></div>
 <div id="menuPayments">
     | <a th:href="@{/modules/finance/payments/formPayment}">Add</a> |
 </div>

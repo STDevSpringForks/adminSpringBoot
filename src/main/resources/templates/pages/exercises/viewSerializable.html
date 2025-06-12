@@ -4,7 +4,7 @@
     <title>Serializable Example</title>
 </head>
 <body>
-<div th:replace="includes/header :: header"></div>
+<div th:replace="~{includes/header :: header(pageTitle='Serializable Example')}"></div>
 <div class="ui form">
     <form th:action="@{/exercises/viewSerializable}" method="post" th:object="${serializableGeneralSearchCriteria}">
         <div class="ten wide field">
