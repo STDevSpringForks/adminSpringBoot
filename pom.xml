@@ -21,7 +21,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 		<apachetiles.version>3.0.8</apachetiles.version>
 		<lombok.version>1.18.12</lombok.version>
 		<hikaricp.version>3.4.2</hikaricp.version>
@@ -148,6 +148,12 @@
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
 			<version>6.12.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.lowagie</groupId>
+					<artifactId>itext</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- Start JasperReports and Excel -->
 
