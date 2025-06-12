@@ -1,10 +1,8 @@
 package com.fd.mvc.model;
 
-import lombok.Data;
 
 import java.io.Serializable;
 
-@Data
 public class PersonListDetailsSearchCriteria implements Serializable {
 	
 	private static final long serialVersionUID = -5035844337297853242L;
@@ -12,4 +10,20 @@ public class PersonListDetailsSearchCriteria implements Serializable {
 	private String fristName;
 	private String lastName;
 	
+    public String getFristName() {
+        return fristName;
+    }
+
+    public void setFristName(String fristName) {
+        this.fristName = fristName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
 }

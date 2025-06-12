@@ -1,6 +1,5 @@
 package com.fd.mvc.common;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +15,9 @@ import java.util.Objects;
  * Clase de utilidad para BigDecimal
  *
  */
-@Slf4j
 public class UtilsBigDecimal {
+
+    private static final Logger log = LoggerFactory.getLogger(UtilsBigDecimal.class);
 
 	/**
 	 * Convertir un null a BigDecimal.Zero

@@ -1,6 +1,5 @@
 package com.fd.mvc.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -15,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-@Slf4j
 @Controller
 @RequestMapping(value = "/api")
 public class MapBoxWebController {
 
     private static final String VIEW_MAPBOX = "api/viewMapBox";
+    private static final Logger LOGGER = LoggerFactory.getLogger(MapBoxWebController.class);
     
     @GetMapping("/viewMapBox")
     public String viewMapBox(Model model) {

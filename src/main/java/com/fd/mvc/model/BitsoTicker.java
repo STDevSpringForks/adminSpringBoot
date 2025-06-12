@@ -1,13 +1,11 @@
 package com.fd.mvc.model;
 
 import com.fd.mvc.model.BitsoPayloadTicker;
-import lombok.Data;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 public class BitsoTicker implements Serializable {
 	
 	private static final long serialVersionUID = 1282407494420026551L;
@@ -19,5 +17,21 @@ public class BitsoTicker implements Serializable {
 		payload = new ArrayList<>();
 	}
 
+
+    public boolean getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public List<BitsoPayloadTicker> getPayload() {
+        return payload;
+    }
+
+    public void setPayload(List<BitsoPayloadTicker> payload) {
+        this.payload = payload;
+    }
 
 }

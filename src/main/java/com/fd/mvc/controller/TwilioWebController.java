@@ -4,8 +4,8 @@ import com.fd.mvc.service.impl.TwilioValidator;
 import com.fd.mvc.service.TwilioService;
 import com.fd.mvc.model.TwilioSMSSearchCriteria;
 import com.fd.mvc.model.TwilioSMSResult;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +18,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import static com.fd.mvc.common.Constants.VIEW_TIWILIO_SMS;
 
-@Slf4j
 @Controller
-@AllArgsConstructor
 @RequestMapping("/twilio")
 public class TwilioWebController {
 
     private final TwilioService twilioService;
     private final TwilioValidator twilioValidator;
+
+    private static final Logger log = LoggerFactory.getLogger(TwilioWebController.class);
+
+    public TwilioWebController(TwilioService twilioService, TwilioValidator twilioValidator) {
+        this.twilioService = twilioService;
+        this.twilioValidator = twilioValidator;
+    }
     
     @GetMapping("/viewTiwilioSMS")
     public String viewTiwilioSMS(Model model) {

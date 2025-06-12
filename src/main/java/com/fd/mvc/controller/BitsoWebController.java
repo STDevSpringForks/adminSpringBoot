@@ -8,7 +8,8 @@ import com.fd.mvc.model.OrderBookResult;
 import com.fd.mvc.service.BitsoService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,11 +22,16 @@ import static com.fd.mvc.common.Constants.VIEW_BITSO;
 import static com.fd.mvc.common.Constants.VIEW_BITSO_ORDER_BOOK;
 
 @Controller
-@AllArgsConstructor
 @RequestMapping(value = "/bitso")
 public class BitsoWebController {
 
     private final BitsoService bitsoService;
+
+    private static final Logger log = LoggerFactory.getLogger(BitsoWebController.class);
+
+    public BitsoWebController(BitsoService bitsoService) {
+        this.bitsoService = bitsoService;
+    }
 
     @GetMapping("/viewBitso")
     public String viewBitso(@ModelAttribute("formBitsoBalance") FormBitsoBalance formBitsoBalance, Model model) {

@@ -6,12 +6,14 @@ import com.fd.mvc.model.TwilioSMSResult;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-@Slf4j
 @Service("twilioService")
 public class TwilioServiceImpl implements TwilioService {
+
+    private static final Logger log = LoggerFactory.getLogger(TwilioServiceImpl.class);
 
     // Find your Account SID and Token at twilio.com/user/account
     public static final String ACCOUNT_SID = "ACf80d1a5a1df618f374592337c360b450";

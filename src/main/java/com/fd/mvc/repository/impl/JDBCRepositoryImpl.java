@@ -1,15 +1,17 @@
 package com.fd.mvc.repository.impl;
 
 import com.fd.mvc.repository.JDBCRepository;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-@Slf4j
 @Repository
 public class JDBCRepositoryImpl implements JDBCRepository {
+
+        private static final Logger log = LoggerFactory.getLogger(JDBCRepositoryImpl.class);
 
 	public Connection getConnectionJDBC() {
 

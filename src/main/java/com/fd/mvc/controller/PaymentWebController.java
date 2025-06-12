@@ -5,8 +5,8 @@ import com.fd.mvc.service.impl.PaymentValidator;
 import com.fd.mvc.model.PaymentSearchCriteria;
 import com.fd.mvc.model.entity.PaymentEntity;
 import com.fd.mvc.model.entity.PromoCodesEntity;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -26,13 +26,17 @@ import java.util.List;
 import static com.fd.mvc.common.Constants.FORM_PAYMENT;
 import static com.fd.mvc.common.Constants.VIEW_PAYMENT;
 
-@Slf4j
 @Controller
-@AllArgsConstructor
 @RequestMapping("/modules/finance/payments")
 public class PaymentWebController {
 
     private final PaymentValidator paymentValidator;
+
+    private static final Logger log = LoggerFactory.getLogger(PaymentWebController.class);
+
+    public PaymentWebController(PaymentValidator paymentValidator) {
+        this.paymentValidator = paymentValidator;
+    }
 
     @GetMapping("/viewPaymentes")
     public String viewPaymentes(Model model) {

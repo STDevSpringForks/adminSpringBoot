@@ -3,7 +3,6 @@ package com.fd.mvc.config.database;
 
 import com.fd.mvc.model.entity.DomainPackagesJPA;
 import com.fd.mvc.repository.RepositoryPackageMysql;
-import lombok.AllArgsConstructor;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +15,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-@AllArgsConstructor
 @Configuration
 @EnableJpaRepositories(
         entityManagerFactoryRef = "mysqlEntityManagerFactory",
@@ -27,6 +25,11 @@ public class JPAMysqlConfig {
 
     private final Environment env;
     private final DataSource datasourceMysql;
+
+    public JPAMysqlConfig(Environment env, DataSource datasourceMysql) {
+        this.env = env;
+        this.datasourceMysql = datasourceMysql;
+    }
 
     @Bean(name = "mysqlEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactory() {

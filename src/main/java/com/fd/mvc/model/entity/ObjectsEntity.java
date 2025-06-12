@@ -1,11 +1,9 @@
 package com.fd.mvc.model.entity;
 
-import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
 @Entity
 @Table(name = "objetos")
 public class ObjectsEntity implements Serializable {
@@ -18,5 +16,21 @@ public class ObjectsEntity implements Serializable {
     private int id;
 	@Column(name = "objeto")
 	private byte[] objeto;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public byte[] getObjeto() {
+        return objeto;
+    }
+
+    public void setObjeto(byte[] objeto) {
+        this.objeto = objeto;
+    }
 
 }
