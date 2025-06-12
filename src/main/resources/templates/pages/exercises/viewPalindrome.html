@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Palindrome</title>
+</head>
+<body>
+<div th:replace="includes/header :: header"></div>
+<p>Validar Palíndromo</p>
+<div class="ui form">
+    <form id="palindromeForm" th:action="@{/exercises/viewPalindrome}" method="post" th:object="${palindromeSearchCriteria}">
+        <div class="ten wide field">
+            <p class="msgResult" th:text="${msgResult}"></p>
+            <div th:if="${#fields.hasErrors('*')}">
+                <div th:errors="*" class="errorDiv"></div>
+            </div>
+            <div class="field">
+                <label for="phrase">Phrase</label>
+                <input id="phrase" th:field="*{phrase}" placeholder="phrase" />
+            </div>
+            <div class="field" th:errors="*{phrase}" class="errorField"></div>
+            <input class="ui basic blue button" type="submit" value="Validate Phrase" />
+        </div>
+    </form>
+</div>
+<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>

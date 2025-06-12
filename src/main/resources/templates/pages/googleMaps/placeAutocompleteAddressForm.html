@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Google Maps Autocomplete</title>
+</head>
+<body>
+<div th:replace="includes/header :: header"></div>
+<div id="locationField">
+    <input id="autocomplete" placeholder="Enter your address" type="text" />
+</div>
+<table id="address">
+    <tr>
+        <td class="label">Street address</td>
+        <td class="slimField"><input class="field" id="street_number" disabled="disabled" /></td>
+        <td class="wideField" colspan="2"><input class="field" id="route" disabled="disabled" /></td>
+    </tr>
+    <tr>
+        <td class="label">City</td>
+        <td class="wideField" colspan="3"><input class="field" id="locality" disabled="disabled" /></td>
+    </tr>
+    <tr>
+        <td class="label">State</td>
+        <td class="slimField"><input class="field" id="administrative_area_level_1" disabled="disabled" /></td>
+        <td class="label">Zip code</td>
+        <td class="wideField"><input class="field" id="postal_code" disabled="disabled" /></td>
+    </tr>
+    <tr>
+        <td class="label">Country</td>
+        <td class="wideField" colspan="3"><input class="field" id="country" disabled="disabled" /></td>
+    </tr>
+</table>
+<div id="map"></div>
+<script th:src="@{/resources/js/googleMaps/places-autocomplete-addressform.js}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1LbckIQe3RQf7eN0cvOkuttwSrGfqCDg&libraries=places&callback=initAutocomplete" async defer></script>
+<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bitso Order Book</title>
+</head>
+<body>
+<div th:replace="includes/header :: header"></div>
+<table id="orderBookResultCompra" class="ui celled table sortable">
+    <thead>
+        <tr>
+            <th>BOOK</th>
+            <th>Precio de compra</th>
+            <th>Monto a comprar</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<table id="orderBookResultVenta" class="ui celled table sortable">
+    <thead>
+        <tr>
+            <th>BOOK</th>
+            <th>Precio de Venta</th>
+            <th>Monto a comprar</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<script th:inline="javascript">
+$(document).ready(function() {
+    $('#orderBookResultCompra').DataTable({
+        data: [[/*[[${orderBookResultCompra}]]*/]],
+        order: [[ 1, 'desc' ]],
+        columns: [
+            { data: 'book' },
+            { data: 'price', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
+            { data: 'amount', render: $.fn.dataTable.render.number(',', '.', 10, '') }
+        ],
+        fnRowCallback: function(nRow, aData){
+            if (aData.amount > 5.0){
+                $('td',nRow).css('background-color', '#7BC0F3');
+            }
+        }
+    }).columns.adjust();
+    $('#orderBookResultVenta').DataTable({
+        data: [[/*[[${orderBookResultVenta}]]*/]],
+        order: [[ 1, 'asc' ]],
+        columns: [
+            { data: 'book' },
+            { data: 'price', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
+            { data: 'amount', render: $.fn.dataTable.render.number(',', '.', 10, '') }
+        ],
+        fnRowCallback: function(nRow, aData){
+            if (aData.amount > 5.0){
+                $('td',nRow).css('background-color', '#7BC0F3');
+            }
+        }
+    }).columns.adjust();
+});
+</script>
+<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>

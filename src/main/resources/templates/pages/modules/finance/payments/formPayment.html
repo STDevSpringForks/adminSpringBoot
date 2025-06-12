@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Form Payment</title>
+</head>
+<body>
+<div th:replace="includes/header :: header"></div>
+<form id="formPayment" th:action="@{/modules/finance/payments/formPayment}" method="post" th:object="${paymentSearchCriteria}">
+    <p>Pago</p>
+    <p class="msgResult" th:text="${msgResult}"></p>
+    <div th:if="${#fields.hasErrors('*')}">
+        <div th:errors="*" class="errorDiv"></div>
+    </div>
+    <div>
+        <input th:field="*{amount}" placeholder="Amount" />
+        <div th:errors="*{amount}" class="errorField"></div>
+    </div>
+    <div>
+        <input th:field="*{promoCode}" placeholder="Promo Code" />
+        <div th:errors="*{promoCode}" class="errorField"></div>
+    </div>
+    <input type="submit" value="Submit" />
+</form>
+<script>
+$(function(){
+    moveCursorToEnd($('form#formPayment input[name="amount"]'));
+});
+function moveCursorToEnd(input){
+    var originalValue = input.val();
+    input.val('');
+    input.blur().focus().val(originalValue);
+}
+</script>
+<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>
