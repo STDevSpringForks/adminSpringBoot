@@ -40,7 +40,7 @@ public class PaymentWebController {
 
     @GetMapping("/viewPaymentes")
     public String viewPaymentes(Model model) {
-        List<PaymentEntity> paymentEntityList = new ArrayList<PaymentEntity>();
+        List<PaymentEntity> paymentEntityList = new ArrayList<>();
         model.addAttribute("paymentEntityList", paymentEntityList);
         return VIEW_PAYMENT;
     }

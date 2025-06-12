@@ -33,7 +33,7 @@ public class JasperReportWebController {
 
         // TODO: jasperreports-5.0.1, need check api for version 6
         String sourceFileName = "C://tools/testReport.jasper";
-        String printFileName = null;
+        String printFileName;
 
         Person person = new Person();
         person.setEmail("javier.hernandez@company.com");
