@@ -9,6 +9,6 @@
 <h1>Ejemplo de Spring Boot</h1>
 <p th:text="${message}"></p>
 <p th:text="'Comenzamos la reunión a las ' + ${startMeeting}"></p>
-<div th:replace="includes/footer :: footer"></div>
+<div th:replace="~{includes/footer :: footer}"></div>
 </body>
 </html>
