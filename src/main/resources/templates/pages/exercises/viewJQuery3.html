@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>jQuery Example</title>
+</head>
+<body>
+<div th:replace="includes/header :: header"></div>
+<img title="Get Width/Height" style="cursor: pointer;" id="imgLogo" alt="spring-logo" th:src="@{/resources/images/spring-logo.png}">
+<div class="buttonsShowHide">
+    <button id="showLogo">Mostar</button>
+    <button id="hideLogo">Ocultar</button>
+</div>
+<script th:src="@{/resources/js/simple-test.js}"></script>
+<script>
+$(function(){
+    fData();
+    letFor();
+    $('#imgLogo').click(function(){
+        alertImg($(this));
+    });
+    $('#showLogo').click(function(){
+        $('#imgLogo').animate({"height":"240px"},1000);
+    });
+    $('#hideLogo').click(function(){
+        $('#imgLogo').animate({"height":"120px"},1000);
+    });
+});
+function fData(){
+    var datosIMG = $('#hideLogo').data('datosIMG');
+    var jsonIMG = {uno:1,dos:2,tres:3};
+    $('#hideLogo').data('datosIMG',jsonIMG);
+}
+function alertImg(t){
+    var w = t.width();
+    var h = t.height();
+    alert('ancho: '+w+' alto: '+h);
+}
+function letFor(){
+    var arr=[{personas:[{nombre:'Miguel',edad:19},{nombre:'Esmeralda',edad:18},{nombre:'Karla',edad:21}]}];
+    for(let a of arr){console.log(a.personas[2]);}
+}
+</script>
+<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>

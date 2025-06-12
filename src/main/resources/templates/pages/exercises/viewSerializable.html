@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Serializable Example</title>
+</head>
+<body>
+<div th:replace="includes/header :: header"></div>
+<div class="ui form">
+    <form th:action="@{/exercises/viewSerializable}" method="post" th:object="${serializableGeneralSearchCriteria}">
+        <div class="ten wide field">
+            <div th:if="${#fields.hasErrors('*')}">
+                <div th:errors="*" class="errorDiv"></div>
+            </div>
+            <div class="field">
+                <label for="search">Search</label>
+                <input type="text" id="search" th:field="*{search}" placeholder="Search" />
+            </div>
+            <input class="ui basic blue button" type="submit" value="Submit" />
+        </div>
+    </form>
+</div>
+<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>

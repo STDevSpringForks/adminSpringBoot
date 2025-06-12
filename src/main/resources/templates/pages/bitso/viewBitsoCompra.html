@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bitso Compra</title>
+</head>
+<body>
+<div th:replace="includes/header :: header"></div>
+<table id="example" class="ui celled table sortable">
+    <thead>
+        <tr>
+            <th>BOOK</th>
+            <th>Orden de Venta</th>
+            <th>Orden de Compra</th>
+            <th>Precio más alto</th>
+            <th>Precio más bajo</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<div class="ui form">
+    <form id="formBitso" th:action="@{/bitso/viewBitso}" method="post" th:object="${formBitsoBalance}">
+        <div class="ten wide field">
+            <p class="msgResult" th:text="${msgResult}"></p>
+            <div th:if="${#fields.hasErrors('*')}">
+                <div th:errors="*" class="errorDiv"></div>
+            </div>
+            <div class="field">
+                <div class="ui labeled input">
+                    <input th:field="*{precioEspeculativoETH}" placeholder="Especular precio ETH en MXN" />
+                </div>
+            </div>
+            <input class="ui basic blue button" type="submit" value="Submit" />
+        </div>
+    </form>
+</div>
+<script th:inline="javascript">
+$(document).ready(function() {
+    $('#example').DataTable({
+        data: [[/*[[${bitsoPayloadList}]]*/]],
+        order: [[ 1, "desc" ]],
+        columns: [
+            { data: 'book' },
+            { data: 'ask', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
+            { data: 'bid', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
+            { data: 'high', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
+            { data: 'low', render: $.fn.dataTable.render.number(',', '.', 2, '$ ') }
+        ],
+        fnRowCallback: function(nRow, aData){
+            if (aData.book && aData.book.includes('mxn')){
+                $('td',nRow).css('background-color', '#7BC0F3');
+            }
+        }
+    }).columns.adjust();
+    $('.menu .item').tab();
+});
+</script>
+<div th:replace="includes/footer :: footer"></div>
+</body>
+</html>
