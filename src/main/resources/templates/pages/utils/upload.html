@@ -6,7 +6,7 @@
 <body>
 <div th:replace="~{includes/header :: header(pageTitle='Upload Files')}"></div>
 <h1>Spring MVC multi files upload example</h1>
-<div class="ui form">
+<div class="space-y-4">
     <form method="POST" th:action="@{/upload}" th:object="${uploadForm}" enctype="multipart/form-data">
         <input type="file" name="files" /><br/>
         <input type="file" name="files" /><br/>

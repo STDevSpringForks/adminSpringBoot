@@ -5,38 +5,38 @@
 </head>
 <body>
 <div th:replace="~{includes/header :: header(pageTitle='Bitso')}"></div>
-<div class="ui image label">
+<div class="flex items-center space-x-2">
     <img th:src="@{/resources/images/criptoCurrency/ethereum.png}">
     <span th:text="${balanceTotalETH}"></span>
 </div>
-<div class="ui image label">
+<div class="flex items-center space-x-2">
     <img th:src="@{/resources/images/criptoCurrency/ripple.png}">
     <span th:text="${balanceTotalXRP}"></span>
 </div>
-<div class="ui image label">
+<div class="flex items-center space-x-2">
     <img th:src="@{/resources/images/criptoCurrency/bitcoin.png}">
     <span th:text="${balanceTotalBTC}"></span>
 </div>
-<div class="ui image label">
+<div class="flex items-center space-x-2">
     <img th:src="@{/resources/images/criptoCurrency/mxn.jpg}">
     <span th:text="${balanceTotalMXN}"></span>
 </div>
-<div class="ui image label">
+<div class="flex items-center space-x-2">
     Comisión TOTAL al finalizar los trade: &nbsp;&nbsp; <b th:text="${comisionTOTAL_MXN}"></b>
 </div>
-<div class="ui top attached tabular menu">
+<div class="menu flex border-b space-x-4">
     <a class="active item" data-tab="first">Inversión Inicial &nbsp;
-        <span class="ui teal tag label" th:text="${inversionInicialTotalMXN}"></span>
+        <span class="px-2 py-1 bg-teal-500 text-white rounded" th:text="${inversionInicialTotalMXN}"></span>
     </a>
     <a class="item" data-tab="second">Ganancia &nbsp;
-        <span class="ui teal  tag label" th:text="${gananciaTotalMXN_MXN}"></span>
+        <span class="px-2 py-1 bg-teal-500 text-white rounded" th:text="${gananciaTotalMXN_MXN}"></span>
     </a>
     <a class="item" data-tab="third">Balance Total &nbsp;
-        <span class="ui teal tag label" th:text="${balanceTotal_MXN}"></span>
+        <span class="px-2 py-1 bg-teal-500 text-white rounded" th:text="${balanceTotal_MXN}"></span>
     </a>
 </div>
-<div class="ui bottom attached active tab segment" data-tab="first">
-    <table class="ui sortable celled table">
+<div class="tab segment block active" data-tab="first">
+    <table class="table-auto border-collapse border border-gray-300 sortable">
         <tr>
             <th>ETH</th>
             <th>XRP</th>
@@ -51,8 +51,8 @@
         </tr>
     </table>
 </div>
-<div class="ui bottom attached tab segment" data-tab="second">
-    <table class="ui sortable celled table">
+<div class="tab segment hidden" data-tab="second">
+    <table class="table-auto border-collapse border border-gray-300 sortable">
         <tr>
             <th>ETH</th>
             <th>XRP</th>
@@ -67,8 +67,8 @@
         </tr>
     </table>
 </div>
-<div class="ui bottom attached tab segment" data-tab="third">
-    <table class="ui sortable celled table">
+<div class="tab segment hidden" data-tab="third">
+    <table class="table-auto border-collapse border border-gray-300 sortable">
         <tr>
             <th>ETH</th>
             <th>XRP</th>
