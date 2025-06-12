@@ -26,7 +26,10 @@ import java.sql.SQLException;
 public class GlobalExceptionHandler {
 
 	private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-        private static final String VIEW_ERROR = "error";
+    /**
+     * Name of the Thymeleaf template used to display errors.
+     */
+    private static final String VIEW_ERROR = "error";
 	
 	@ExceptionHandler(SQLException.class)
 	public String handleSQLException(HttpServletRequest request, Exception ex){

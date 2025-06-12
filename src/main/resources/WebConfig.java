@@ -3,7 +3,6 @@ package com.fd.mvc.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
@@ -42,17 +41,11 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     /**
-     * Configure ViewResolvers for Thymeleaf and fallback to JSP.
+     * Configure Thymeleaf as the single ViewResolver.
      */
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         registry.viewResolver(thymeleafViewResolver());
-
-        InternalResourceViewResolver jspResolver = new InternalResourceViewResolver();
-        jspResolver.setPrefix("/WEB-INF/views/");
-        jspResolver.setSuffix(".jsp");
-        jspResolver.setOrder(2);
-        registry.viewResolver(jspResolver);
     }
 
 
