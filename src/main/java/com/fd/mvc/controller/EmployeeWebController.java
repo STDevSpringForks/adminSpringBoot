@@ -27,27 +27,21 @@ public class EmployeeWebController {
     public String getEmployee(@PathVariable("id") int id, Model model) throws DefaultCheckedException {
 
         try {
-            //deliberately throwing different types of exception
-            if (id == 1) {
-                throw new EmployeeNotFoundException(id);
-            } else if (id == 2) {
-                throw new SQLException("SQLException, id=" + id);
-            } else if (id == 3) {
-                throw new IOException("IOException, id=" + id);
-            } else if (id == 10) {
-                Employee emp = new Employee();
-                emp.setName("Pankaj");
-                emp.setId(id);
-                model.addAttribute("employee", emp);
-                return Constants.VIEW_HOME_CONTROLLER;
-            } else {
-                throw new DefaultCheckedException("Generic Exception, id=" + id);
-            }
+            return switch (id) {
+                case 1 -> throw new EmployeeNotFoundException(id);
+                case 2 -> throw new SQLException("SQLException, id=" + id);
+                case 3 -> throw new IOException("IOException, id=" + id);
+                case 10 -> {
+                    var emp = new Employee("Pankaj", id);
+                    model.addAttribute("employee", emp);
+                    yield Constants.VIEW_HOME_CONTROLLER;
+                }
+                default -> throw new DefaultCheckedException("Generic Exception, id=" + id);
+            };
         } catch (Exception e) {
             log.error("getEmployee", e);
             throw new DefaultCheckedException(e.getMessage());
         }
-
 
     }
 
