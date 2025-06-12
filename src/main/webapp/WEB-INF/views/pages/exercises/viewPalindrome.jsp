@@ -1,7 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-	<p><spring:message code="lbl.validatePalindromo" text="Validar Palindromo" /></p>
+        <p>Validar Palíndromo</p>
 	<div class="ui form">
 		<form:form id="palindromeForm" action="viewPalindrome" method="post" modelAttribute="palindromeSearchCriteria" >
 			<div class="ten wide field">
