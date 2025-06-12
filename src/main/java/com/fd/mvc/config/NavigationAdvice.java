@@ -27,7 +27,7 @@ public class NavigationAdvice {
         exercises.add(new MenuItem("Palindromo", "/exercises/viewPalindrome"));
         exercises.add(new MenuItem("Serialize", "/exercises/viewSerializable"));
         exercises.add(new MenuItem("Google Map API", "/googleMaps/placeAutocompleteAddressForm"));
-        exercises.add(new MenuItem("Jasper Reports", "/reports/viewJasperReport"));
+        exercises.add(new MenuItem("PDF Reports", "/reports/viewPdfReport"));
         exercises.add(new MenuItem("JQuery3", "/exercises/viewJQuery3"));
         menu.put("Exercises", exercises);
 

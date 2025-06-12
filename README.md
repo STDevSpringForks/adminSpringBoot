@@ -54,4 +54,10 @@ Esto calculará el balance con los precios indicados y mostrará la vista actual
 
 Se necesita JDK 21 para compilar y ejecutar el proyecto.
 
+## Reportes en PDF
+
+La generación de reportes ahora se realiza usando la biblioteca **OpenHTML to PDF**.
+Desde el menú *Browse* selecciona "PDF Reports" para crear un archivo en
+`C:\tools\sample_report.pdf` a partir de una plantilla HTML sencilla.
+
 

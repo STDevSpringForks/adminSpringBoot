@@ -13,7 +13,7 @@ public interface Constants {
     String VIEW_BITSO = "pages/bitso/viewBitso";
     String VIEW_BITSO_ORDER_BOOK = "pages/bitso/viewBitsoOrderBook";
     String VIEW_TIWILIO_SMS = "pages/twilio/viewTwilioSMS";
-    String VIEW_JASPER_REPORTS = "pages/reports/viewJasperReport";
+    String VIEW_PDF_REPORT = "pages/reports/viewPdfReport";
 
     //General
     String APPLICATION_JSON = "application/json";
