@@ -59,7 +59,7 @@ public class MapBoxWebController {
     
     private void writeXLSFile() throws IOException {
 		
-		String excelFileName = "C://tools/Test.xls"; 	//Nombre del nuevo archivo a crear.
+		String excelFileName = "Test.xls"; 	//Nombre del nuevo archivo a crear.
 		String sheetName = "NombreDeLaHoja"; 			//Nombre de la hoja.
 
 		HSSFWorkbook wb = new HSSFWorkbook();			//Creando el libro.
