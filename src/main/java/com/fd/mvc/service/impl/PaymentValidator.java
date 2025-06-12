@@ -13,7 +13,7 @@ public class PaymentValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return PaymentValidator.class.isAssignableFrom(clazz);
+        return PaymentSearchCriteria.class.isAssignableFrom(clazz);
     }
 
     @Override
