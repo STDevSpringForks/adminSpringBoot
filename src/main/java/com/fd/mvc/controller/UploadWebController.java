@@ -50,6 +50,7 @@ public class UploadWebController {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
         } else {
             redirectAttributes.addFlashAttribute("message", "You successfully uploaded '" + uploadedFileName + "'");
+            redirectAttributes.addFlashAttribute("files", storedFiles);
         }
 
         return "redirect:/uploadStatus";

@@ -40,7 +40,10 @@ public class FileStorageServiceImpl implements FileStorageService {
                 Files.createDirectories(uploadDir);
                 Path destination = uploadDir.resolve(file.getOriginalFilename());
                 Files.write(destination, file.getBytes());
-                results.add(new FileUploadResult(file.getOriginalFilename(), destination));
+                results.add(new FileUploadResult(
+                        file.getOriginalFilename(),
+                        destination,
+                        file.getSize()));
             } catch (IOException e) {
                 log.error("Error saving file {}", file.getOriginalFilename(), e);
             }

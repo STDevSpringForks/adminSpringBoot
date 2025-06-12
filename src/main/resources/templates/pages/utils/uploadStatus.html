@@ -8,6 +8,22 @@
 <div>
     <h1>Upload Status</h1>
     <h2>Message : <span th:text="${message}"></span></h2>
+    <table class="ui celled striped table" th:if="${files}">
+        <thead>
+        <tr>
+            <th>File name</th>
+            <th>Size (KB)</th>
+            <th>Location</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="file : ${files}">
+            <td th:text="${file.fileName}"></td>
+            <td th:text="${#numbers.formatDecimal(file.fileSize / 1024.0, 1, 1)}"></td>
+            <td th:text="${file.location}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <div th:replace="~{includes/footer :: footer}"></div>
 </body>
