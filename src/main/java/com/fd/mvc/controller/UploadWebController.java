@@ -1,29 +1,36 @@
 package com.fd.mvc.controller;
 
 import com.fd.mvc.model.UploadForm;
+import com.fd.mvc.service.FileStorageService;
+import com.fd.mvc.service.FileUploadResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.StringJoiner;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
- * https://www.mkyong.com/spring/spring-mvc-file-upload-example-commons-fileupload/
- *
+ * Simple controller to demonstrate multipart file uploads. The implementation
+ * delegates the storage of each file to {@link FileStorageService}.
  */
 @Controller
 public class UploadWebController {
 
+    private final FileStorageService fileStorageService;
+
+    public UploadWebController(FileStorageService fileStorageService) {
+        this.fileStorageService = fileStorageService;
+    }
+
+    /**
+     * Displays the form used to select the files to upload.
+     */
     @GetMapping("/upload")
     public String upload(Model model) {
         model.addAttribute("uploadForm", new UploadForm());
@@ -34,31 +41,11 @@ public class UploadWebController {
     public String multiFileUpload(@ModelAttribute UploadForm form,
                                   RedirectAttributes redirectAttributes) {
 
-        StringJoiner sj = new StringJoiner(" , ");
+        List<FileUploadResult> storedFiles = fileStorageService.storeFiles(form.getFiles());
+        String uploadedFileName = storedFiles.stream()
+                .map(FileUploadResult::fileName)
+                .collect(Collectors.joining(", "));
 
-        for (MultipartFile file : form.getFiles()) {
-
-            if (file.isEmpty()) {
-                continue; //next pls
-            }
-
-            try {
-
-                byte[] bytes = file.getBytes();
-                // save uploaded file to this folder
-                String UPLOADED_FOLDER = "F://temp//";
-                Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-                Files.write(path, bytes);
-
-                sj.add(file.getOriginalFilename());
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        String uploadedFileName = sj.toString();
         if (StringUtils.isEmpty(uploadedFileName)) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
         } else {
@@ -69,6 +56,9 @@ public class UploadWebController {
 
     }
 
+    /**
+     * Shows the status page with the result message after uploading files.
+     */
     @GetMapping("/uploadStatus")
     public String uploadStatus() {
         return "pages/utils/uploadStatus";
