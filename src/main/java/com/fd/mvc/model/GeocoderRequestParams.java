@@ -10,7 +10,14 @@ public class GeocoderRequestParams {
 
 	public GeocoderRequestParams() {
 		geocoderRequestList = new ArrayList<>();
+
 	}
 
+	public List<GeocoderRequest> getGeocoderRequestList() {
+		return geocoderRequestList;
+	}
 
+	public void setGeocoderRequestList(List<GeocoderRequest> geocoderRequestList) {
+		this.geocoderRequestList = geocoderRequestList;
+	}
 }

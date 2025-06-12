@@ -1,7 +1,8 @@
 package com.fd.mvc.model.entity;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "promo_codes")

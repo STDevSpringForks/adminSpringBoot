@@ -44,11 +44,11 @@ public class SerializableGeneralSearchCriteria implements Serializable {
         this.browser = browser;
     }
 
-    public transient String getVersion() {
+    public String getVersion() {
         return version;
     }
 
-    public void setVersion(transient String version) {
+    public void setVersion(String version) {
         this.version = version;
     }
 
@@ -60,19 +60,19 @@ public class SerializableGeneralSearchCriteria implements Serializable {
         this.user = user;
     }
 
-    public transient LocalDate getDateSearched() {
+    public LocalDate getDateSearched() {
         return dateSearched;
     }
 
-    public void setDateSearched(transient LocalDate dateSearched) {
+    public void setDateSearched(LocalDate dateSearched) {
         this.dateSearched = dateSearched;
     }
 
-    public transient LocalTime getTimeSearched() {
+    public LocalTime getTimeSearched() {
         return timeSearched;
     }
 
-    public void setTimeSearched(transient LocalTime timeSearched) {
+    public void setTimeSearched(LocalTime timeSearched) {
         this.timeSearched = timeSearched;
     }
 

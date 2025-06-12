@@ -1,7 +1,8 @@
 package com.fd.mvc.model;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 
 @Entity
@@ -11,7 +12,7 @@ public class GeocoderRequest implements Serializable {
 	private static final long serialVersionUID = 2522973474804711107L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int idGeocoderRequest;
 	
 	/* Default attributes */

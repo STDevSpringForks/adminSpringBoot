@@ -2,7 +2,6 @@ package com.fd.mvc.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.joda.time.LocalTime;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
@@ -10,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.time.LocalTime;
 import java.util.Locale;
 
 //import static com.fd.mvc.common.Constants.VIEW_HOME_CONTROLLER;

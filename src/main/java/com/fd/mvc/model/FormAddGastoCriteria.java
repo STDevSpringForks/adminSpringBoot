@@ -37,11 +37,11 @@ public class FormAddGastoCriteria implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public transient MultipartFile getFileComprobante() {
+    public MultipartFile getFileComprobante() {
         return fileComprobante;
     }
 
-    public void setFileComprobante(transient MultipartFile fileComprobante) {
+    public void setFileComprobante(MultipartFile fileComprobante) {
         this.fileComprobante = fileComprobante;
     }
 

@@ -28,7 +28,7 @@ public class GoogleMapServiceImpl implements GoogleMapService {
 		
 		List<GeocoderRequest> geocoderRequestList = geocoderRequestParams.getGeocoderRequestList();
 		
-		List<GeocodingResult[]> geocodingResultList = new ArrayList<>();		
+		List<GeocodingResult[]> geocodingResultList = new ArrayList<>();
 		List<GeocoderErrorObject> geocoderErrorObjectList = new ArrayList<>();
 		
 		geocoderRequestList.forEach(geo ->{

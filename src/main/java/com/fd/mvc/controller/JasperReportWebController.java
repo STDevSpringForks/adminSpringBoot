@@ -1,12 +1,12 @@
 package com.fd.mvc.controller;
 
 import com.fd.mvc.model.entity.Person;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

@@ -7,10 +7,10 @@ import com.fd.mvc.common.UtilsBigDecimal;
 import com.fd.mvc.model.*;
 import com.fd.mvc.service.BitsoService;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import javax.json.JsonObject;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class BitsoServiceImpl implements BitsoService {
         JsonObject jsonTricker = Utils.readUrlJSON(BitsoConstants.BITSO_URL_TICKER);
 
         /* Obtener el valor booleano del atributo success, si este no se encuentra en el JSON obtener false por default. */
-        if (jsonTricker.getBoolean("success", false)) {
+        if (jsonTricker.has("success") && jsonTricker.get("success").getAsBoolean()) {
             bitsoTicker = new Gson().fromJson(jsonTricker.toString(), BitsoTicker.class);
         }
 
@@ -160,7 +160,7 @@ public class BitsoServiceImpl implements BitsoService {
         JsonObject jsonTricker = Utils.readUrlJSON(BitsoConstants.BITSO_URL_ORDER_BOOK_ETH_MXN);
 
         /* Obtener el valor booleano del atributo success, si este no se encuentra en el JSON obtener false por default. */
-        if (jsonTricker.getBoolean("success", false)) {
+        if (jsonTricker.has("success") && jsonTricker.get("success").getAsBoolean()) {
             orderBook = new Gson().fromJson(jsonTricker.toString(), OrderBook.class);
         }
 

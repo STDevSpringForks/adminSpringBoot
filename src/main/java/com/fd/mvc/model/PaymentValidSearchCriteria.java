@@ -1,11 +1,7 @@
 package com.fd.mvc.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import jakarta.validation.constraints.*;
 
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -26,7 +22,7 @@ public class PaymentValidSearchCriteria implements Serializable {
 	private BigDecimal amount;
 	
 	@NotEmpty
-	@Size(min=6, max=6, message="El codigo debe de ser de 6 caracteres.") 
+	@Size(min=6, max=6, message="El codigo debe de ser de 6 caracteres.")
 	private String promoCode;
 	
 	public BigDecimal getAmount() {
