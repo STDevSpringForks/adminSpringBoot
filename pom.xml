@@ -26,7 +26,7 @@
 		<hikaricp.version>5.1.0</hikaricp.version>
 	</properties>
 
-	<dependencies>
+        <dependencies>
 
 		<!-- Spring Web -->
 		<dependency>
@@ -136,15 +136,22 @@
 			<version>8.36.0</version>
 		</dependency>
 
-		<!-- Google Maps -->
-		<dependency>
-			<groupId>com.google.maps</groupId>
-			<artifactId>google-maps-services</artifactId>
-			<version>0.14.0</version>
-		</dependency>
+                <!-- Google Maps -->
+                <dependency>
+                        <groupId>com.google.maps</groupId>
+                        <artifactId>google-maps-services</artifactId>
+                        <version>0.14.0</version>
+                </dependency>
+
+                <!-- OpenAPI / Swagger -->
+                <dependency>
+                        <groupId>org.springdoc</groupId>
+                        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                        <version>2.5.0</version>
+                </dependency>
 
 
-	</dependencies>
+        </dependencies>
 
 	<build>
 		<plugins>

@@ -28,3 +28,7 @@ mysql:
         maximum-pool-size: 5
         connection-test-query: SELECT 1 FROM DUAL
         pool-name: SpringBootHikariMySQL
+
+springdoc:
+    swagger-ui:
+        path: /swagger-ui.html
