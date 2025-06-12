@@ -87,7 +87,7 @@
 $(document).ready(function() {
     $('#example').DataTable({
         data: /*[[${bitsoPayloadList}]]*/ [],
-        order: [[ 1, "desc" ]],
+        order: [ [ 1, "desc" ] ],
         columns: [
             { data: "book" },
             { data: "ask", render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
