@@ -11,110 +11,64 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
-@RequestMapping(value = "/api")
+@RequestMapping("/api")
 public class MapBoxWebController {
 
-    private static final String VIEW_MAPBOX = "pages/api/viewMapBox";
     private static final Logger LOGGER = LoggerFactory.getLogger(MapBoxWebController.class);
-    
+    private static final String VIEW_MAPBOX = "pages/api/viewMapBox";
+    private static final Path EXCEL_FILE = Paths.get("Test.xls");
+    private static final String SHEET_NAME = "NombreDeLaHoja";
+
     @GetMapping("/viewMapBox")
     public String viewMapBox(Model model) {
-    
-    	/*
-    	 String accessToken = "";
-    	
-    	 try {
-             MapboxGeocoding.Builder builder = new MapboxGeocoding.Builder()
-             .setAccessToken(accessToken)
-             .setMode(GeocodingCriteria.MODE_PLACES)
-             .setCountry("US") // US CA MX 
-             .setLimit(1)
-             .setLocation("1600 Pennsylvania Ave NW, Washington, DC 20500"); //White house
-
-             Response<GeocodingResponse> response = builder.build().executeCall();
-             double[] coordinates = response.body().getFeatures().get(0).getCenter();
-             
-             LOGGER.info(String.format("Found at '%f,%f'.", coordinates[0], coordinates[1]));
-             
-             //38.8976554,-77.1065698 Google
-             
-         } catch (Exception e) {
-        	 LOGGER.error("Geocoding failed.", e);
-         }
-    	
-         */
-    	
-    	try {
-			writeXLSFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
+        try {
+            Path filePath = createExcelFile();
+            model.addAttribute("excelFilePath", filePath.toAbsolutePath().toString());
+        } catch (IOException e) {
+            LOGGER.error("Error generating Excel file", e);
+            model.addAttribute("excelFilePath", "Error generando archivo Excel");
+        }
         return VIEW_MAPBOX;
     }
-    
-    private void writeXLSFile() throws IOException {
-		
-		String excelFileName = "Test.xls"; 	//Nombre del nuevo archivo a crear.
-		String sheetName = "NombreDeLaHoja"; 			//Nombre de la hoja.
 
-		HSSFWorkbook wb = new HSSFWorkbook();			//Creando el libro.
-		HSSFSheet sheet = wb.createSheet(sheetName);	//Creando la hoja.
+    private Path createExcelFile() throws IOException {
+        try (var workbook = new HSSFWorkbook()) {
+            HSSFSheet sheet = workbook.createSheet(SHEET_NAME);
 
-		//Iterando las filas=rows
-		for (int numeroDeRow = 0; numeroDeRow<5 ; numeroDeRow++) {
-			HSSFRow row = sheet.createRow(numeroDeRow);
-	
-			//Iterando las columnas=columns
-			for (int numeroDeColumna=0;numeroDeColumna < 5; numeroDeColumna++ ) {
-				HSSFCell cell = row.createCell(numeroDeColumna);
-				cell.setCellValue("Celda " + numeroDeRow + " " + numeroDeColumna);
-			}
-			
-		}
-		
-		
-		//Start --- Creando una fila para añadirla al inicio.
-		sheet.shiftRows(0, sheet.getLastRowNum(), 5);		//Insertamos 5 nuevas lineas desde la linea 0.
-		
-		HSSFRow row; 
-		
-		row = sheet.createRow(0);
-		row.createCell(0).setCellValue("--1--newRowC---");
-		row.createCell(1).setCellValue("--2--newRowC---");
-		row.createCell(2).setCellValue("--3--newRowC---");
-		row.createCell(3).setCellValue("--4--newRowC---");
-		row.createCell(4).setCellValue("--5--newRowC---");
-		row.createCell(5).setCellValue("--6--newRowC---");
-		
-		row = sheet.createRow(1);
-		row.createCell(0).setCellValue("--2--newRow---");
-		
-		row = sheet.createRow(2);
-		row.createCell(0).setCellValue("--3--newRow---");
-		
-		row = sheet.createRow(3);
-		row.createCell(0).setCellValue("--4--newRow---");
-		
-		for(int a = 0;a<6;a++){
-			//sheet.autoSizeColumn(a);
-			sheet.setColumnWidth(a,30*256);
-		}
-		
-		//End --- Creando una fila para añadirla al inicio.
-		
-		
-		FileOutputStream fileOut = new FileOutputStream(excelFileName);
-		
-		//Write this workbook to an Outputstream.
-		wb.write(fileOut);
-		fileOut.flush();
-		fileOut.close();
-	}
-    
-    
+            for (int r = 0; r < 5; r++) {
+                HSSFRow row = sheet.createRow(r);
+                for (int c = 0; c < 5; c++) {
+                    HSSFCell cell = row.createCell(c);
+                    cell.setCellValue("Celda " + r + " " + c);
+                }
+            }
+
+            sheet.shiftRows(0, sheet.getLastRowNum(), 5);
+
+            HSSFRow header = sheet.createRow(0);
+            for (int c = 0; c <= 5; c++) {
+                header.createCell(c).setCellValue("--" + (c + 1) + "--newRowC---");
+            }
+            sheet.createRow(1).createCell(0).setCellValue("--2--newRow---");
+            sheet.createRow(2).createCell(0).setCellValue("--3--newRow---");
+            sheet.createRow(3).createCell(0).setCellValue("--4--newRow---");
+
+            for (int c = 0; c <= 5; c++) {
+                sheet.setColumnWidth(c, 30 * 256);
+            }
+
+            Path outputPath = EXCEL_FILE.toAbsolutePath();
+            try (var out = Files.newOutputStream(outputPath)) {
+                workbook.write(out);
+            }
+            LOGGER.info("Excel file generated at {}", outputPath);
+            return outputPath;
+        }
+    }
 }
