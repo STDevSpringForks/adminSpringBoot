@@ -101,7 +101,14 @@
                 <dependency>
                         <groupId>commons-io</groupId>
                         <artifactId>commons-io</artifactId>
-                        <version>2.19.0</version>
+                        <!--
+                         Apache POI 5.4.0 needs a version of Commons IO that
+                         includes the UnsynchronizedByteArrayInputStream Builder
+                         API. Versions prior to 2.15 do not provide this class
+                         and result in runtime NoSuchMethodError issues when
+                         writing workbooks.
+                        -->
+                        <version>2.16.1</version>
                 </dependency>
 
 		<!-- Log -->
