@@ -64,13 +64,4 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler(RESOURCES_HANDLER).addResourceLocations(RESOURCES_LOCATION);
     }
 
-
-    /*
-     * The embedded servlet container provided by Spring Boot already serves
-     * static resources without requiring the default servlet handler. Enabling
-     * it explicitly causes a startup failure when the container does not
-     * expose a named default servlet. Removing this configuration allows Boot
-     * to handle static content correctly.
-     */
-
 }

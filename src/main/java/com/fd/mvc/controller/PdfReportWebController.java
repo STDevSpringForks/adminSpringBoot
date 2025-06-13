@@ -25,6 +25,7 @@ public class PdfReportWebController {
 
     @RequestMapping("/viewPdfReport")
     public String viewPdfReport() {
+
         // Sample data
         Person person = new Person();
         person.setEmail("javier.hernandez@company.com");

@@ -15,10 +15,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-/**
- * Simple controller to demonstrate multipart file uploads. The implementation
- * delegates the storage of each file to {@link FileStorageService}.
- */
 @Controller
 public class UploadWebController {
 
@@ -28,9 +24,6 @@ public class UploadWebController {
         this.fileStorageService = fileStorageService;
     }
 
-    /**
-     * Displays the form used to select the files to upload.
-     */
     @GetMapping("/upload")
     public String upload(Model model) {
         model.addAttribute("uploadForm", new UploadForm());
@@ -57,9 +50,6 @@ public class UploadWebController {
 
     }
 
-    /**
-     * Shows the status page with the result message after uploading files.
-     */
     @GetMapping("/uploadStatus")
     public String uploadStatus() {
         return "pages/utils/uploadStatus";

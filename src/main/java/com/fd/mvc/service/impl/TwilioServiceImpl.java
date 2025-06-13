@@ -21,7 +21,7 @@ public class TwilioServiceImpl implements TwilioService {
     
     @Override
     public TwilioSMSResult sendSMS(TwilioSMSSearchCriteria searchCriteria) {
-        TwilioSMSResult twilioSMSResult = new TwilioSMSResult();
+        TwilioSMSResult twilioSMSResult = new TwilioSMSResult();  //Froyo
         
         StringBuilder sbPhone = new StringBuilder();
         searchCriteria.setAreaCodeCountry("+521"); //HardCode Mexico

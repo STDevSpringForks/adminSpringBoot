@@ -51,8 +51,6 @@ public class GoogleMapServiceImpl implements GoogleMapService {
 					throw new Exception("No data availabe.");
 				}
 				
-				/*System.out.println(results[0].geometry.location.lat + " " + results[0].geometry.location.lng);*/
-				
 				geocodingResultList.add(results);
 				
                         } catch (Exception e) {

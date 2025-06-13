@@ -1,28 +1,8 @@
 package com.fd.mvc.common;
 
 import java.text.Normalizer;
-import java.util.List;
 
-/**
- * modificador de la interfaz public para que se pueda acceder desde cualquier paquete.
- *
- */
 public interface AdminUtils {
-	
-	static String getQuestionMarks(List<?> list){
-		StringBuilder sb = new StringBuilder();
-		int limit = 100000;
-		if (list.size() < limit) {
-			for (int a = 1; a <= list.size(); a++) {
-				if (a == list.size()) {
-					sb.append("?");
-				} else {
-					sb.append("?,");
-				}
-			}
-		}
-		return sb.toString();
-	}
 	
 	/**
 	 * Eliminando acentos creando un nuevo String inmutable = final.
@@ -64,14 +44,5 @@ public interface AdminUtils {
         }
 	}
 	
-	/**
-	 * Remplazar por Objeto de referencia. 
-	 * Método por default: org.apache.commons.lang3.StringUtils.stripAccents
-	 * @param frase
-	 */
-	static void eliminarAcentos(StringBuilder frase){
-		eliminarAcentos(frase,null);
-	}
-	
-	
+
 }
