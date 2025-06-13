@@ -5,7 +5,15 @@
 </head>
 <body>
 <div th:replace="~{includes/header :: header(pageTitle='PDF Report')}"></div>
-<h1>OK - PDF generado, revisa en : carpeta "tools" de tu directorio de usuario</h1>
+<div class="m-4 p-6 bg-green-50 border border-green-200 rounded-lg text-center">
+    <h1 class="text-2xl font-semibold text-green-700 mb-2">Reporte PDF generado</h1>
+    <p>
+        Se creó el archivo <code>sample_report.pdf</code> en la carpeta
+        <code>tools</code> dentro de tu directorio de usuario
+        (<em>por ejemplo</em> <code>~/tools/sample_report.pdf</code>).
+    </p>
+    <p class="mt-2">El PDF contiene un ejemplo sencillo de reporte con datos ficticios.</p>
+</div>
 <div th:replace="~{includes/footer :: footer}"></div>
 </body>
 </html>
