@@ -34,6 +34,7 @@ public class NavigationAdvice {
         // Bitso
         List<MenuItem> bitso = new ArrayList<>();
         bitso.add(new MenuItem("Bitso", "/bitso/viewBitso"));
+        bitso.add(new MenuItem("Bitso Compra", "/bitso/viewBitsoCompra"));
         bitso.add(new MenuItem("Bitso Order Book", "/bitso/viewBitsoOrderBook"));
         menu.put("Bitso", bitso);
 
