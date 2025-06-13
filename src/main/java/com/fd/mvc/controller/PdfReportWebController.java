@@ -7,8 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,7 +50,15 @@ public class PdfReportWebController {
         parameters.put("DATE_REPORT", LocalDate.now().toString());
         parameters.put("PERSON_LIST", dataList);
 
-        try (OutputStream os = new FileOutputStream("C://tools/sample_report.pdf")) {
+        Path pdfDir = Paths.get(System.getProperty("user.home"), "tools");
+        try {
+            Files.createDirectories(pdfDir);
+        } catch (Exception e) {
+            log.error("Error creating directory for PDF", e);
+        }
+
+        Path pdfPath = pdfDir.resolve("sample_report.pdf");
+        try (OutputStream os = Files.newOutputStream(pdfPath)) {
             String html = "<html><head><meta charset='UTF-8'></head><body>" +
                     "<h1>" + parameters.get("TITLE_REPORT") + "</h1>" +
                     "<p>Fecha: " + parameters.get("DATE_REPORT") + "</p>" +

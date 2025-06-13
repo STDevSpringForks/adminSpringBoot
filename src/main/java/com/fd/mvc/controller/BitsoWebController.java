@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static com.fd.mvc.common.Constants.VIEW_BITSO;
+import static com.fd.mvc.common.Constants.VIEW_BITSO_COMPRA;
 import static com.fd.mvc.common.Constants.VIEW_BITSO_ORDER_BOOK;
 
 @Controller
@@ -73,6 +74,12 @@ public class BitsoWebController {
         model.addAttribute("gananciaTotalMXN_MXN", UtilsBigDecimal.printDecimalFormatLocale(balanceCriptoDivisasGanacia.getBalanceTOTAL_MXN()));
 
         return VIEW_BITSO;
+    }
+
+    @GetMapping("/viewBitsoCompra")
+    public String viewBitsoCompra(@ModelAttribute("formBitsoBalance") FormBitsoBalance formBitsoBalance, Model model) {
+        model.addAttribute("formBitsoBalance", formBitsoBalance);
+        return VIEW_BITSO_COMPRA;
     }
 
     @PostMapping("/viewBitso")
