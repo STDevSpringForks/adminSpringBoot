@@ -59,7 +59,7 @@ public class PdfReportWebController {
 
         Path pdfPath = pdfDir.resolve("sample_report.pdf");
         try (OutputStream os = Files.newOutputStream(pdfPath)) {
-            String html = "<html><head><meta charset='UTF-8'></head><body>" +
+            String html = "<html><head><meta charset='UTF-8'/></head><body>" +
                     "<h1>" + parameters.get("TITLE_REPORT") + "</h1>" +
                     "<p>Fecha: " + parameters.get("DATE_REPORT") + "</p>" +
                     "<ul>";
