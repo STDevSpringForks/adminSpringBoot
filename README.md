@@ -58,6 +58,7 @@ Se necesita JDK 21 para compilar y ejecutar el proyecto.
 
 La generación de reportes ahora se realiza usando la biblioteca **OpenHTML to PDF**.
 Desde el menú *Browse* selecciona "PDF Reports" para crear un archivo en
-`C:\tools\sample_report.pdf` a partir de una plantilla HTML sencilla.
+`<usuario>/tools/sample_report.pdf` (carpeta `tools` dentro del directorio de usuario)
+a partir de una plantilla HTML sencilla.
 
 
